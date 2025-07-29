@@ -20,9 +20,276 @@
   <nav class="bg-red-600 text-white py-3 flex justify-center gap-8 shadow-md">
     <button onclick="showSection('clasificacion')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Clasificación</button>
     <button onclick="showSection('jornadas')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Jornadas</button>
+    <button onclick="showSection('reglamento')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Reglamento</button>
+    <button onclick="showSection('calendario')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Calendario</button>
+
   </nav>
 
   <main class="max-w-6xl mx-auto px-4 py-6 space-y-8">
+<!-- Reglamento -->
+<section id="reglamento" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
+  <section class="bg-gray-900 p-6 rounded-2xl shadow-lg space-y-6">
+  <h2 class="text-3xl font-bold text-red-400 text-center">📢 Información Importante para el Primer Día de Juego</h2>
+
+  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
+    <p class="text-gray-300 leading-relaxed">
+      Al inicio de una liga, 
+      cada mánager recibe:
+    </p>
+    <ul class="list-disc list-inside text-gray-300 mt-3 space-y-1">
+      <li>Un <span class="font-semibold text-white">equipo completo de 14 jugadores</span>.</li>
+      <li><span class="font-semibold text-white">100 millones</span> de saldo inicial.</li>
+    </ul>
+  </div>
+
+  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
+    <p class="text-gray-300 leading-relaxed">
+      Si recibes un equipo con un <span class="text-white font-semibold">valor de mercado inferior al promedio</span> calculado de la liga,
+      recibirás una <span class="font-semibold text-white">compensación adicional en saldo</span> 
+      para garantizar que todos los jugadores comiencen en igualdad de condiciones.
+    </p>
+    <p class="text-gray-300 leading-relaxed mt-3">
+      Esta compensación se determina con <span class="italic">fórmulas y parámetros específicos</span>,
+      tomando en cuenta el <span class="font-semibold text-white">valor de mercado promedio</span> 
+      de los jugadores en la liga.  
+      <br>Si tu equipo vale menos que esa cifra, 
+      se te otorga la <span class="font-semibold text-white">diferencia en dinero</span>.
+    </p>
+  </div>
+
+  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
+    <p class="text-gray-300 leading-relaxed">
+      <span class="text-red-300 font-semibold">ℹ️ Nota:</span>  
+      El monto adicional que recibas depende del 
+      <span class="font-semibold text-white">día y del valor de mercado</span> de los jugadores en ese momento, 
+      <span class="underline">no</span> del valor de los equipos de los demás mánagers.
+    </p>
+  </div>
+</section>
+
+<h2 class="text-2xl font-semibold mb-4 text-red-400">Tabla de fórmulas de puntuación de los jugadores</h2><div class="overflow-x-auto my-6">
+  <table class="table-auto border-collapse border border-gray-600 w-full text-sm text-left text-gray-300">
+    <thead class="bg-red-700 text-white">
+      <tr>
+        <th class="border border-gray-600 px-3 py-2">PARÁMETRO</th>
+        <th class="border border-gray-600 px-3 py-2">CONDICIÓN</th>
+        <th class="border border-gray-600 px-3 py-2">PUNTOS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Puntuaciones básicas -->
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Minutos Jugados</td>
+        <td class="border px-3 py-2">&lt; 60 min</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Minutos Jugados</td>
+        <td class="border px-3 py-2">&gt; 60 min</td>
+        <td class="border px-3 py-2">2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Gol Portero / Defensa</td>
+        <td class="border px-3 py-2">PT / DF</td>
+        <td class="border px-3 py-2">6</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Gol Mediocentro</td>
+        <td class="border px-3 py-2">MC</td>
+        <td class="border px-3 py-2">5</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Gol Delantero</td>
+        <td class="border px-3 py-2">DC</td>
+        <td class="border px-3 py-2">4</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Asistencia de Gol</td>
+        <td class="border px-3 py-2">Último pase que provoca un gol</td>
+        <td class="border px-3 py-2">3</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Asistencias sin Gol</td>
+        <td class="border px-3 py-2">Último pase que provoca una ocasión de gol manifiesta</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Portería a cero (Portero)</td>
+        <td class="border px-3 py-2">Habiendo jugado &gt; 60 min</td>
+        <td class="border px-3 py-2">4</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Portería a cero (Defensa)</td>
+        <td class="border px-3 py-2">Habiendo jugado &gt; 60 min</td>
+        <td class="border px-3 py-2">3</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Portería a cero (Mediocentro)</td>
+        <td class="border px-3 py-2">Habiendo jugado &gt; 60 min</td>
+        <td class="border px-3 py-2">2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Portería a cero (Delantero)</td>
+        <td class="border px-3 py-2">Habiendo jugado &gt; 60 min</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Penalti fallado</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Penalti parado</td>
+        <td class="border px-3 py-2">El portero intercede en la detención</td>
+        <td class="border px-3 py-2">5</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Penalti provocado</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Penalti cometido</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Goles recibidos Portero/Defensa</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">-2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Goles recibidos Medio/Delantero</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Tarjeta amarilla</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Doble Amarilla</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Tarjeta Roja</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-3</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Paradas Portero</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+
+      <!-- Bonus ataque -->
+      <tr class="bg-gray-900 text-red-400 font-bold">
+        <td colspan="3" class="border px-3 py-2 text-center">BONUS ATAQUE</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Tiros a puerta</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Regates logrados</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones al área</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+
+      <!-- Bonus defensivos -->
+      <tr class="bg-gray-900 text-red-400 font-bold">
+        <td colspan="3" class="border px-3 py-2 text-center">BONUS DEFENSIVOS</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones recuperados</td>
+        <td class="border px-3 py-2">Cada 5</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Despejes</td>
+        <td class="border px-3 py-2">Cada 3</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+
+      <!-- Pérdidas -->
+      <tr class="bg-gray-900 text-red-400 font-bold">
+        <td colspan="3" class="border px-3 py-2 text-center">PÉRDIDAS DE BALÓN</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones perdidos portero</td>
+        <td class="border px-3 py-2">Cada 8</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones perdidos defensa</td>
+        <td class="border px-3 py-2">Cada 8</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones perdidos centrocampista</td>
+        <td class="border px-3 py-2">Cada 10</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones perdidos delantero</td>
+        <td class="border px-3 py-2">Cada 12</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<section class="bg-gray-900 p-6 rounded-2xl shadow-lg space-y-6">
+  <h2 class="text-3xl font-bold text-red-400 text-center">🔥 Novedades</h2>
+
+  <!-- Blindaje -->
+  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
+    <h3 class="text-xl font-semibold text-red-300 mb-2">🛡️ Nueva Funcionalidad: Blindaje</h3>
+    <p class="text-gray-300 leading-relaxed">
+      Ahora podrás <span class="text-white font-semibold">proteger a un jugador</span> cada jornada 
+      para evitar que otro mánager pueda hacerte un <span class="italic">clausulazo</span> 
+      o ficharlo para su equipo.
+    </p>
+  </div>
+
+  <!-- Puntos DAZN -->
+  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
+    <h3 class="text-xl font-semibold text-red-300 mb-2">⚽ Puntos DAZN</h3>
+    <p class="text-gray-300 leading-relaxed">
+      Son <span class="text-white font-semibold">puntos extra</span> que se otorgan a los jugadores al 
+      final de cada partido. <br>
+      Funcionan igual que los <span class="italic">puntos Relevo</span> de la temporada pasada.
+    </p>
+  </div>
+</section>
+</section>
+
+<section id="calendario" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
+ <h2 class="text-2xl font-semibold mb-4 text-red-400">Calendario La Liga 25-26</h2>
+      <table class="table-auto w-full text-sm text-gray-300 border-collapse">
+        <thead class="bg-red-700 text-white">
+          <tr>
+            <th class="px-3 py-2 text-left">Local</th>
+            <th class="px-3 py-2 text-center">vs</th>
+            <th class="px-3 py-2 text-left">Visitante</th>
+            <th class="px-3 py-2 text-right">Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="calendarTableBody" class="divide-y divide-gray-800">
+          <tr><td colspan="4" class="text-center py-4">Cargando partidos...</td></tr>
+        </tbody>
+      </table>
+  </section>
+
+
 
     <!-- Clasificación Final -->
     <section id="clasificacion" class="bg-gray-900 p-6 rounded-2xl shadow-lg">
@@ -79,21 +346,39 @@
       { name: "Club B" },
       { name: "Club C" },
       { name: "Club D" },
+      { name: "Club E" },
+      { name: "Club F" },
+      { name: "Club G" },
+      { name: "Club H" },
+      { name: "Club I" },
+      { name: "Club J" },
     ];
 
     // Datos por jornada (ejemplo)
     const jornadas = [
       [
-        { club: "Club A", puntos: 10, penalizacion: 0, dinero: 0 },
-        { club: "Club B", puntos: 8, penalizacion: 0, dinero: 0 },
-        { club: "Club C", puntos: 4, penalizacion: 2, dinero: 2 },
-        { club: "Club D", puntos: 2, penalizacion: 1, dinero: 1 },
+        { club: "Club A", puntos: 98, penalizacion: 0, dinero: 0 },
+        { club: "Club B", puntos: 80, penalizacion: 0, dinero: 0 },
+        { club: "Club C", puntos: 46, penalizacion: 0, dinero: 0 },
+        { club: "Club D", puntos: 44, penalizacion: 0, dinero: 0 },
+        { club: "Club E", puntos: 40, penalizacion: 0, dinero: 0 },
+        { club: "Club F", puntos: 37, penalizacion: 0, dinero: 0 },
+        { club: "Club G", puntos: 31, penalizacion: 0, dinero: 0 },
+        { club: "Club H", puntos: 29, penalizacion: 0, dinero: 0 },
+        { club: "Club I", puntos: 24, penalizacion: 1, dinero: 1 },
+        { club: "Club J", puntos: 22, penalizacion: 2, dinero: 2 }        
       ],
       [
-        { club: "Club A", puntos: 5, penalizacion: 0, dinero: 0 },
-        { club: "Club B", puntos: 1, penalizacion: 2, dinero: 2 },
-        { club: "Club C", puntos: 7, penalizacion: 0, dinero: 0 },
-        { club: "Club D", puntos: 3, penalizacion: 1, dinero: 1 },
+        { club: "Club A", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Club B", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Club C", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Club D", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Club E", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Club F", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Club G", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Club H", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Club I", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Club J", puntos: 0, penalizacion: 0, dinero: 0 }
       ],
     ];
 
@@ -177,10 +462,56 @@
 
     // ==== MOSTRAR SECCIONES SEGÚN MENÚ ====
     function showSection(section) {
-      document.getElementById("clasificacion").classList.add("hidden");
-      document.getElementById("jornadas").classList.add("hidden");
-      document.getElementById(section).classList.remove("hidden");
+  const sections = ["clasificacion", "jornadas", "reglamento", "calendario"];
+  sections.forEach(id => document.getElementById(id).classList.add("hidden"));
+  document.getElementById(section).classList.remove("hidden");
+}
+// ==== CALENDARIO API SPORTS ====
+    const API_KEY = "3293e65ec5f775049e124ee3810d46da";
+    const calendarBody = document.getElementById("calendarTableBody");
+
+    fetch("https://cors-anywhere.herokuapp.com/https://v3.football.api-sports.io/fixtures?league=140&season=2025", {
+      method: "GET",
+      headers: { "x-apisports-key": API_KEY }
+    })
+      .then(response => response.json())
+      .then(data => {
+  console.log("Respuesta API:", data); // <-- Muestra todo en la consola del navegador
+
+  if (!data.response || data.response.length === 0) {
+    calendarBody.innerHTML = `<tr><td colspan="4" class="text-center py-4">No hay partidos disponibles</td></tr>`;
+    return;
+  }
+
+  mostrarCalendario(data.response);
+})
+      .catch(err => {
+        console.error(err);
+        calendarBody.innerHTML = `<tr><td colspan="4" class="text-center py-4">Error al cargar calendario</td></tr>`;
+      });
+
+    function mostrarCalendario(partidos) {
+      calendarBody.innerHTML = "";
+      partidos.forEach(match => {
+        const fecha = new Date(match.fixture.date).toLocaleString("es-ES", {
+          weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"
+        });
+        calendarBody.innerHTML += `
+          <tr class="odd:bg-gray-800 even:bg-gray-700">
+            <td class="px-3 py-2 flex items-center">
+              <img src="${match.teams.home.logo}" class="w-5 h-5 mr-2"> ${match.teams.home.name}
+            </td>
+            <td class="px-3 py-2 text-center">vs</td>
+            <td class="px-3 py-2 flex items-center">
+              <img src="${match.teams.away.logo}" class="w-5 h-5 mr-2"> ${match.teams.away.name}
+            </td>
+            <td class="px-3 py-2 text-right">${fecha}</td>
+          </tr>
+        `;
+      });
     }
+
+
   </script>
 </body>
 </html>
