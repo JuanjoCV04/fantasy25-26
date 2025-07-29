@@ -17,13 +17,12 @@
 </header>
 
   <!-- Barra de navegación secundaria -->
-  <nav class="bg-red-600 text-white py-3 flex justify-center gap-8 shadow-md">
-    <button onclick="showSection('clasificacion')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Clasificación</button>
-    <button onclick="showSection('jornadas')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Jornadas</button>
-    <button onclick="showSection('reglamento')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Reglamento</button>
-    <button onclick="showSection('calendario')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Calendario</button>
-
-  </nav>
+ <nav class="bg-red-600 text-white py-3 flex justify-center gap-4 shadow-md">
+  <button onclick="showSection('clasificacion', this)" class="nav-btn hover:bg-red-500 px-3 py-1 rounded font-semibold">Clasificación</button>
+  <button onclick="showSection('jornadas', this)" class="nav-btn hover:bg-red-500 px-3 py-1 rounded font-semibold">Jornadas</button>
+  <button onclick="showSection('reglamento', this)" class="nav-btn hover:bg-red-500 px-3 py-1 rounded font-semibold">Reglamento</button>
+  <button onclick="showSection('calendario', this)" class="nav-btn hover:bg-red-500 px-3 py-1 rounded font-semibold">Calendario</button>
+</nav>
 
   <main class="max-w-6xl mx-auto px-4 py-6 space-y-8">
 <!-- Reglamento -->
@@ -299,8 +298,8 @@
           <thead class="bg-gray-800">
             <tr>
               <th class="px-2 py-1 cursor-pointer" onclick="sortTable('name')">Club</th>
-              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('points')">Puntos Totales</th>
-              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('money')">Dinero a Pagar (€)</th>
+              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('points')">Puntos</th>
+              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('money')">Dinero (€)</th>
             </tr>
           </thead>
           <tbody id="finalTableBody"></tbody>
@@ -327,7 +326,6 @@
             <tr>
               <th>Club</th>
               <th>Puntos</th>
-              <th>Penalización</th>
               <th>Dinero (€)</th>
             </tr>
           </thead>
@@ -450,7 +448,6 @@
           <tr class="border-t border-gray-700 ${rowClass}">
             <td class="py-1">${entry.club}</td>
             <td class="py-1">${entry.puntos}</td>
-            <td class="py-1">${entry.penalizacion > 0 ? 'Sí' : 'No'}</td>
             <td class="py-1">${entry.dinero}</td>
           </tr>
         `;
