@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Liga Fantasy - LaLiga</title>
+  <link rel="icon" type="image/png" href="imagenes\LogoLaLigaSinFondo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white">
+
+<!-- Título principal con imágenes en línea -->
+<header class="py-6 shadow-lg bg-black flex justify-center items-center gap-3">
+  <img src="imagenes/LogoLaLiga.png" 
+       alt="Logo LaLiga" 
+       class="max-w-full h-24 md:h-32 lg:h-40">
+  <img src="imagenes/LogoFantasySinFondo.png" 
+       alt="Logo Fantasy sin fondo" 
+       class="max-w-full h-24 md:h-32 lg:h-40">
+</header>
+
+  <!-- Barra de navegación secundaria -->
+  <nav class="bg-red-600 text-white py-3 flex justify-center gap-8 shadow-md">
+    <button onclick="showSection('clasificacion')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Clasificación</button>
+    <button onclick="showSection('jornadas')" class="hover:bg-red-500 px-3 py-1 rounded font-semibold">Jornadas</button>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 py-6 space-y-8">
+
+    <!-- Clasificación Final -->
+    <section id="clasificacion" class="bg-gray-900 p-6 rounded-2xl shadow-lg">
+      <h2 class="text-2xl font-semibold mb-4 text-red-400">Clasificación Final</h2>
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full text-center border border-gray-700 text-white" id="finalTable">
+          <thead class="bg-gray-800">
+            <tr>
+              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('name')">Club</th>
+              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('points')">Puntos Totales</th>
+              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('money')">Dinero a Pagar (€)</th>
+            </tr>
+          </thead>
+          <tbody id="finalTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Bote Final -->
+      <div class="mt-6 p-4 bg-red-600 rounded-lg text-white font-semibold text-lg">
+        💰 Bote Final: <span id="boteFinal">0</span> €
+      </div>
+    </section>
+
+    <!-- Jornadas -->
+    <section id="jornadas" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
+      <h2 class="text-2xl font-semibold mb-4 text-red-400">Jornadas</h2>
+
+      <!-- Paginación -->
+      <div class="flex flex-wrap gap-2 mb-4" id="pagination"></div>
+
+      <!-- Tabla de la jornada -->
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full text-center border border-gray-700 text-white">
+          <thead class="bg-gray-800">
+            <tr>
+              <th>Club</th>
+              <th>Puntos</th>
+              <th>Penalización</th>
+              <th>Dinero (€)</th>
+            </tr>
+          </thead>
+          <tbody id="jornadaTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ==== CONFIGURACIÓN DE DATOS MANUAL ====
+
+    const clubs = [
+      { name: "Club A" },
+      { name: "Club B" },
+      { name: "Club C" },
+      { name: "Club D" },
+    ];
+
+    // Datos por jornada (ejemplo)
+    const jornadas = [
+      [
+        { club: "Club A", puntos: 10, penalizacion: 0, dinero: 0 },
+        { club: "Club B", puntos: 8, penalizacion: 0, dinero: 0 },
+        { club: "Club C", puntos: 4, penalizacion: 2, dinero: 2 },
+        { club: "Club D", puntos: 2, penalizacion: 1, dinero: 1 },
+      ],
+      [
+        { club: "Club A", puntos: 5, penalizacion: 0, dinero: 0 },
+        { club: "Club B", puntos: 1, penalizacion: 2, dinero: 2 },
+        { club: "Club C", puntos: 7, penalizacion: 0, dinero: 0 },
+        { club: "Club D", puntos: 3, penalizacion: 1, dinero: 1 },
+      ],
+    ];
+
+    // ==== CLASIFICACIÓN FINAL ====
+    let clasificacion = clubs.map(c => ({
+      name: c.name,
+      puntosTotales: 0,
+      dineroTotal: 0
+    }));
+
+    jornadas.forEach(jornada => {
+      jornada.forEach(entry => {
+        let club = clasificacion.find(c => c.name === entry.club);
+        if (club) {
+          club.puntosTotales += entry.puntos;
+          club.dineroTotal += entry.dinero;
+        }
+      });
+    });
+
+    const finalTableBody = document.getElementById("finalTableBody");
+    const boteFinalSpan = document.getElementById("boteFinal");
+
+    function renderFinalTable(data) {
+      finalTableBody.innerHTML = "";
+      let totalBote = 0;
+      data.forEach(club => {
+        totalBote += club.dineroTotal;
+        finalTableBody.innerHTML += `
+          <tr class="border-t border-gray-700">
+            <td class="py-1">${club.name}</td>
+            <td class="py-1">${club.puntosTotales}</td>
+            <td class="py-1">${club.dineroTotal}</td>
+          </tr>
+        `;
+      });
+      boteFinalSpan.textContent = totalBote;
+    }
+
+    renderFinalTable(clasificacion);
+
+    // ==== ORDENAR TABLA FINAL ====
+    function sortTable(by) {
+      if (by === "name") clasificacion.sort((a,b) => a.name.localeCompare(b.name));
+      if (by === "points") clasificacion.sort((a,b) => b.puntosTotales - a.puntosTotales);
+      if (by === "money") clasificacion.sort((a,b) => b.dineroTotal - a.dineroTotal);
+      renderFinalTable(clasificacion);
+    }
+
+    // ==== PAGINACIÓN DE JORNADAS ====
+    const pagination = document.getElementById("pagination");
+    const jornadaTableBody = document.getElementById("jornadaTableBody");
+
+    function renderPagination() {
+      for (let i = 0; i < jornadas.length; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = `J${i+1}`;
+        btn.className = "px-2 py-1 bg-red-600 hover:bg-red-500 rounded";
+        btn.onclick = () => renderJornada(i);
+        pagination.appendChild(btn);
+      }
+    }
+
+    function renderJornada(index) {
+      jornadaTableBody.innerHTML = "";
+      jornadas[index].forEach(entry => {
+        const rowClass = entry.penalizacion > 0 ? "bg-red-900" : "";
+        jornadaTableBody.innerHTML += `
+          <tr class="border-t border-gray-700 ${rowClass}">
+            <td class="py-1">${entry.club}</td>
+            <td class="py-1">${entry.puntos}</td>
+            <td class="py-1">${entry.penalizacion > 0 ? 'Sí' : 'No'}</td>
+            <td class="py-1">${entry.dinero}</td>
+          </tr>
+        `;
+      });
+    }
+
+    renderPagination();
+    renderJornada(0);
+
+    // ==== MOSTRAR SECCIONES SEGÚN MENÚ ====
+    function showSection(section) {
+      document.getElementById("clasificacion").classList.add("hidden");
+      document.getElementById("jornadas").classList.add("hidden");
+      document.getElementById(section).classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
