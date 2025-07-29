@@ -16,13 +16,24 @@
        class="max-w-full h-24 md:h-32 lg:h-40">
 </header>
 
-  <!-- Barra de navegación secundaria -->
- <nav class="bg-red-600 text-white py-3 flex justify-center gap-4 shadow-md">
-  <button onclick="showSection('clasificacion', this)" class="nav-btn hover:bg-red-500 px-3 py-1 rounded font-semibold">Clasificación</button>
-  <button onclick="showSection('jornadas', this)" class="nav-btn hover:bg-red-500 px-3 py-1 rounded font-semibold">Jornadas</button>
-  <button onclick="showSection('reglamento', this)" class="nav-btn hover:bg-red-500 px-3 py-1 rounded font-semibold">Reglamento</button>
-  <button onclick="showSection('calendario', this)" class="nav-btn hover:bg-red-500 px-3 py-1 rounded font-semibold">Calendario</button>
+<!-- Barra de navegación con dropdown -->
+<nav class="bg-red-600 text-white py-3 flex justify-center shadow-md relative">
+  <div class="relative">
+    <!-- Botón principal -->
+    <button onclick="toggleMenu()" class="px-4 py-2 rounded font-semibold bg-red-700 hover:bg-red-500">
+      Menú ▾
+    </button>
+
+    <!-- Menú desplegable -->
+    <div id="dropdownMenu" class="absolute left-0 mt-2 w-40 bg-red-700 rounded shadow-lg hidden">
+      <button onclick="showSection('clasificacion', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación</button>
+      <button onclick="showSection('jornadas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Jornadas</button>
+      <button onclick="showSection('reglamento', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Reglamento</button>
+      <button onclick="showSection('calendario', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Calendario</button>
+    </div>
+  </div>
 </nav>
+
 
   <main class="max-w-6xl mx-auto px-4 py-6 space-y-8">
 <!-- Reglamento -->
@@ -507,6 +518,31 @@
         `;
       });
     }
+
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.classList.toggle("hidden");
+}
+
+// Cierra el menú si clicas fuera
+document.addEventListener("click", function(event) {
+  const menu = document.getElementById("dropdownMenu");
+  if (!event.target.closest("nav")) {
+    menu.classList.add("hidden");
+  }
+});
+
+// Muestra la sección y cierra el menú
+function showSection(section, btn) {
+  const sections = ["clasificacion", "jornadas", "reglamento", "calendario"];
+  
+  // Oculta todas las secciones
+  sections.forEach(id => document.getElementById(id).classList.add("hidden"));
+  document.getElementById(section).classList.remove("hidden");
+
+  // Cierra el menú desplegable después de elegir
+  document.getElementById("dropdownMenu").classList.add("hidden");
+}
 
 
   </script>
