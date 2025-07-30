@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -26,10 +25,14 @@
 
     <!-- Menú desplegable -->
     <div id="dropdownMenu" class="absolute left-0 mt-2 w-40 bg-red-700 rounded shadow-lg hidden">
-      <button onclick="showSection('clasificacion', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación</button>
+      <button onclick="showSection('clasificacion', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación Fantasy</button>
       <button onclick="showSection('jornadas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Jornadas</button>
       <button onclick="showSection('reglamento', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Reglamento</button>
       <button onclick="showSection('calendario', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Calendario</button>
+      <button onclick="showSection('estadisticas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Estadisticas</button>
+      <button onclick="showSection('clasificacionLaLiga', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación LALIGA</button>
+
+
     </div>
   </div>
 </nav>
@@ -70,9 +73,9 @@
   <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
     <p class="text-gray-300 leading-relaxed">
       <span class="text-red-300 font-semibold">ℹ️ Nota:</span>  
-      El monto adicional que recibas depende del 
-      <span class="font-semibold text-white">día y del valor de mercado</span> de los jugadores en ese momento, 
-      <span class="underline">no</span> del valor de los equipos de los demás mánagers.
+      Necesito que todos los participantes de la liga se unan a la liga lo antes posible 
+      <span class="font-semibold text-white">el dia 1 a las 17:00</span> los que se metan mas tarde de las 19:00
+      <span class="underline">NO</span> podra hacer clausulazos.
     </p>
   </div>
 </section>
@@ -282,6 +285,8 @@
 </section>
 </section>
 
+  <!-- CALENDARIO -->
+
 <section id="calendario" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
  <h2 class="text-2xl font-semibold mb-4 text-red-400">Calendario La Liga 25-26</h2>
       <table class="table-auto w-full text-sm text-gray-300 border-collapse">
@@ -298,12 +303,48 @@
         </tbody>
       </table>
   </section>
+<section id="clasificacionLaLiga" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
+  <h2 class="text-2xl font-semibold mb-4 text-red-400">Clasificación LaLiga</h2>
+  
+  <!-- Tabla de Clasificación LALIGA -->
+  <div class="overflow-x-auto">
+    <table class="table-auto w-full text-center border border-gray-700 text-white">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-2 py-1">Pos</th>
+          <th class="px-2 py-1">Equipo</th>
+          <th class="px-2 py-1">Puntos</th>
+          <th class="px-2 py-1">Jugados</th>
+          <th class="px-2 py-1">Ganados</th>
+          <th class="px-2 py-1">Empates</th>
+          <th class="px-2 py-1">Perdidos</th>
+        </tr>
+      </thead>
+      <tbody id="tablaClasificacion"></tbody>
+    </table>
+  </div>
+</section>
 
-
+  <!-- ESTADISTICAS -->
+    <section id="estadisticas" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
+     <h2 class="text-2xl font-semibold mb-4 text-red-400">Estadisticas proximamente ....</h2>
+    </section>
 
     <!-- Clasificación Final -->
     <section id="clasificacion" class="bg-gray-900 p-6 rounded-2xl shadow-lg">
-      <h2 class="text-2xl font-semibold mb-4 text-red-400">Clasificación Final</h2>
+     <h2 class="text-2xl font-semibold mb-4 text-red-400 flex items-center gap-2">
+  Clasificación Final
+  <button onclick="toggleInfo()" class="text-white rounded-full w-6 h-6 flex items-center justify-center">
+    ℹ️
+  </button>
+</h2>
+
+<!-- Información oculta -->
+<p id="infoClasificacion" class="hidden text-gray-300 bg-gray-800 p-3 rounded-lg mb-4">
+  Tocando los titulares de la tabla se ordenan segun (Club alfabeticamente, puntos o dinero).
+</p>
+
+      
       <div class="overflow-x-auto">
         <table class="table-auto w-full text-center border border-gray-700 text-white" id="finalTable">
           <thead class="bg-gray-800">
@@ -325,7 +366,18 @@
 
     <!-- Jornadas -->
     <section id="jornadas" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
-      <h2 class="text-2xl font-semibold mb-4 text-red-400">Jornadas</h2>
+     <h2 class="text-2xl font-semibold mb-4 text-red-400 flex items-center gap-2">
+  Jornadas 
+  <button onclick="toggleInfo2()" class="text-white rounded-full w-6 h-6 flex items-center justify-center">
+    ℹ️
+  </button>
+</h2>
+
+<!-- Información oculta -->
+<p id="infoJornadas" class="hidden text-gray-300 bg-gray-800 p-3 rounded-lg mb-4">
+  La tabla de puntacion actualizada se añadirá 24h después del último partido disputado de la jornada.
+</p>
+
 
       <!-- Paginación -->
       <div class="flex flex-wrap gap-2 mb-4" id="pagination"></div>
@@ -474,6 +526,55 @@
   sections.forEach(id => document.getElementById(id).classList.add("hidden"));
   document.getElementById(section).classList.remove("hidden");
 }
+
+
+function toggleInfo2() {
+  const info = document.getElementById("infoJornadas");
+  info.classList.toggle("hidden");
+}
+function toggleInfo() {
+  const info = document.getElementById("infoClasificacion");
+  info.classList.toggle("hidden");
+}
+// ==== CALENDARIO API SPORTS 2.0 ====
+
+ async function cargarClasificacion() {
+    try {
+      const respuesta = await fetch("https://api-football-v1.p.rapidapi.com/v3/standings?league=140&season=2024", {
+        headers: {
+          "X-RapidAPI-Key": "3293e65ec5f775049e124ee3810d46da", // reemplázala con tu key de API-Football
+          "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
+        }
+      });
+
+      const datos = await respuesta.json();
+      const tabla = datos.response[0].league.standings[0]; // Primera tabla de standings
+      const tbody = document.getElementById("tablaClasificacion");
+      tbody.innerHTML = "";
+
+      tabla.forEach((equipo, i) => {
+        tbody.innerHTML += `
+          <tr class="border-t border-gray-700">
+            <td class="py-1">${i+1}</td>
+            <td class="py-1 flex items-center gap-2 justify-center">
+              <img src="${equipo.team.logo}" alt="${equipo.team.name}" class="h-6 w-6">
+              ${equipo.team.name}
+            </td>
+            <td class="py-1">${equipo.points}</td>
+            <td class="py-1">${equipo.all.played}</td>
+            <td class="py-1">${equipo.all.win}</td>
+            <td class="py-1">${equipo.all.draw}</td>
+            <td class="py-1">${equipo.all.lose}</td>
+          </tr>
+        `;
+      });
+    } catch (error) {
+      console.error("Error cargando la clasificación:", error);
+    }
+  }
+
+  cargarClasificacion();
+
 // ==== CALENDARIO API SPORTS ====
     const API_KEY = "3293e65ec5f775049e124ee3810d46da";
     const calendarBody = document.getElementById("calendarTableBody");
@@ -534,7 +635,7 @@ document.addEventListener("click", function(event) {
 
 // Muestra la sección y cierra el menú
 function showSection(section, btn) {
-  const sections = ["clasificacion", "jornadas", "reglamento", "calendario"];
+  const sections = ["clasificacion", "jornadas", "reglamento", "calendario", "estadisticas","clasificacionLaLiga"];
   
   // Oculta todas las secciones
   sections.forEach(id => document.getElementById(id).classList.add("hidden"));
