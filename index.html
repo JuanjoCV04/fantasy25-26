@@ -28,7 +28,6 @@
       <button onclick="showSection('clasificacion', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación Fantasy</button>
       <button onclick="showSection('jornadas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Jornadas</button>
       <button onclick="showSection('reglamento', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Reglamento</button>
-      <button onclick="showSection('calendario', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Calendario</button>
       <button onclick="showSection('estadisticas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Estadisticas</button>
       <button onclick="showSection('clasificacionLaLiga', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación LALIGA</button>
 
@@ -41,44 +40,6 @@
   <main class="max-w-6xl mx-auto px-4 py-6 space-y-8">
 <!-- Reglamento -->
 <section id="reglamento" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
-  <section class="bg-gray-900 p-6 rounded-2xl shadow-lg space-y-6">
-  <h2 class="text-3xl font-bold text-red-400 text-center">📢 Información Importante para el Primer Día de Juego</h2>
-
-  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
-    <p class="text-gray-300 leading-relaxed">
-      Al inicio de una liga, 
-      cada mánager recibe:
-    </p>
-    <ul class="list-disc list-inside text-gray-300 mt-3 space-y-1">
-      <li>Un <span class="font-semibold text-white">equipo completo de 14 jugadores</span>.</li>
-      <li><span class="font-semibold text-white">100 millones</span> de saldo inicial.</li>
-    </ul>
-  </div>
-
-  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
-    <p class="text-gray-300 leading-relaxed">
-      Si recibes un equipo con un <span class="text-white font-semibold">valor de mercado inferior al promedio</span> calculado de la liga,
-      recibirás una <span class="font-semibold text-white">compensación adicional en saldo</span> 
-      para garantizar que todos los jugadores comiencen en igualdad de condiciones.
-    </p>
-    <p class="text-gray-300 leading-relaxed mt-3">
-      Esta compensación se determina con <span class="italic">fórmulas y parámetros específicos</span>,
-      tomando en cuenta el <span class="font-semibold text-white">valor de mercado promedio</span> 
-      de los jugadores en la liga.  
-      <br>Si tu equipo vale menos que esa cifra, 
-      se te otorga la <span class="font-semibold text-white">diferencia en dinero</span>.
-    </p>
-  </div>
-
-  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
-    <p class="text-gray-300 leading-relaxed">
-      <span class="text-red-300 font-semibold">ℹ️ Nota:</span>  
-      Necesito que todos los participantes de la liga se unan a la liga lo antes posible 
-      <span class="font-semibold text-white">el dia 1 a las 17:00</span> los que se metan mas tarde de las 19:00
-      <span class="underline">NO</span> podra hacer clausulazos.
-    </p>
-  </div>
-</section>
 
 <h2 class="text-2xl font-semibold mb-4 text-red-400">Tabla de fórmulas de puntuación de los jugadores</h2><div class="overflow-x-auto my-6">
   <table class="table-auto border-collapse border border-gray-600 w-full text-sm text-left text-gray-300">
@@ -287,22 +248,7 @@
 
   <!-- CALENDARIO -->
 
-<section id="calendario" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
- <h2 class="text-2xl font-semibold mb-4 text-red-400">Calendario La Liga 25-26</h2>
-      <table class="table-auto w-full text-sm text-gray-300 border-collapse">
-        <thead class="bg-red-700 text-white">
-          <tr>
-            <th class="px-3 py-2 text-left">Local</th>
-            <th class="px-3 py-2 text-center">vs</th>
-            <th class="px-3 py-2 text-left">Visitante</th>
-            <th class="px-3 py-2 text-right">Fecha</th>
-          </tr>
-        </thead>
-        <tbody id="calendarTableBody" class="divide-y divide-gray-800">
-          <tr><td colspan="4" class="text-center py-4">Cargando partidos...</td></tr>
-        </tbody>
-      </table>
-  </section>
+
 <section id="clasificacionLaLiga" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
   <h2 class="text-2xl font-semibold mb-4 text-red-400">Clasificación LaLiga</h2>
   
@@ -403,43 +349,43 @@
     // ==== CONFIGURACIÓN DE DATOS MANUAL ====
 
     const clubs = [
-      { name: "Club A" },
-      { name: "Club B" },
-      { name: "Club C" },
-      { name: "Club D" },
-      { name: "Club E" },
-      { name: "Club F" },
-      { name: "Club G" },
-      { name: "Club H" },
-      { name: "Club I" },
-      { name: "Club J" },
+      { name: "MrMaxi01" },
+      { name: "su_florentineza123" },
+      { name: "tonidiaz22" },
+      { name: "Juanjonete04" },
+      { name: "Kino04" },
+      { name: "La Sergioneta CF" },
+      { name: "Achoman" },
+      { name: "Philip$" },
+      { name: "Juanpm_43" },
+      { name: "Rabovic" },
     ];
 
     // Datos por jornada (ejemplo)
     const jornadas = [
       [
-        { club: "Club A", puntos: 98, penalizacion: 0, dinero: 0 },
-        { club: "Club B", puntos: 80, penalizacion: 0, dinero: 0 },
-        { club: "Club C", puntos: 46, penalizacion: 0, dinero: 0 },
-        { club: "Club D", puntos: 44, penalizacion: 0, dinero: 0 },
-        { club: "Club E", puntos: 40, penalizacion: 0, dinero: 0 },
-        { club: "Club F", puntos: 37, penalizacion: 0, dinero: 0 },
-        { club: "Club G", puntos: 31, penalizacion: 0, dinero: 0 },
-        { club: "Club H", puntos: 29, penalizacion: 0, dinero: 0 },
-        { club: "Club I", puntos: 24, penalizacion: 1, dinero: 1 },
-        { club: "Club J", puntos: 22, penalizacion: 2, dinero: 2 }        
+        { club: "MrMaxi01", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "su_florentineza123", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "tonidiaz22", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Juanjonete04", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Kino04", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "La Sergioneta CF", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Achoman", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Philip$", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Juanpm_43", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Rabovic", puntos: 0, penalizacion: 0, dinero: 0 }        
       ],
       [
-        { club: "Club A", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Club B", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Club C", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Club D", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Club E", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Club F", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Club G", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Club H", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Club I", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Club J", puntos: 0, penalizacion: 0, dinero: 0 }
+        { club: "MrMaxi01", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "su_florentineza123", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "tonidiaz22", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Juanjonete04", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Kino04", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "La Sergioneta CF", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Achoman", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Philip$", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Juanpm_43", puntos: 0, penalizacion: 0, dinero: 0 },
+        { club: "Rabovic", puntos: 0, penalizacion: 0, dinero: 0 }        
       ],
     ];
 
@@ -470,7 +416,7 @@
         totalBote += club.dineroTotal;
         finalTableBody.innerHTML += `
           <tr class="border-t border-gray-700">
-            <td class="py-1">${club.name}</td>
+            <td class="py-1 text-center">${club.name}</td>
             <td class="py-1">${club.puntosTotales}</td>
             <td class="py-1">${club.dineroTotal}</td>
           </tr>
@@ -536,89 +482,49 @@ function toggleInfo() {
   const info = document.getElementById("infoClasificacion");
   info.classList.toggle("hidden");
 }
-// ==== CALENDARIO API SPORTS 2.0 ====
+// ==== Tabla API SPORTS 2.0 ====
 
- async function cargarClasificacion() {
-    try {
-      const respuesta = await fetch("https://api-football-v1.p.rapidapi.com/v3/standings?league=140&season=2024", {
-        headers: {
-          "X-RapidAPI-Key": "3293e65ec5f775049e124ee3810d46da", // reemplázala con tu key de API-Football
-          "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
-        }
-      });
+async function cargarClasificacion() {
+  try {
+    const respuesta = await fetch("https://v3.football.api-sports.io/standings?league=140&season=2023", {
+      headers: {
+        "x-rapidapi-key": "3293e65ec5f775049e124ee3810d46da",
+        "x-rapidapi-host": "v3.football.api-sports.io"
+      }
+    });
 
-      const datos = await respuesta.json();
-      const tabla = datos.response[0].league.standings[0]; // Primera tabla de standings
-      const tbody = document.getElementById("tablaClasificacion");
-      tbody.innerHTML = "";
+    if (!respuesta.ok) throw new Error(`HTTP error: ${respuesta.status}`);
 
-      tabla.forEach((equipo, i) => {
-        tbody.innerHTML += `
-          <tr class="border-t border-gray-700">
-            <td class="py-1">${i+1}</td>
-            <td class="py-1 flex items-center gap-2 justify-center">
-              <img src="${equipo.team.logo}" alt="${equipo.team.name}" class="h-6 w-6">
-              ${equipo.team.name}
-            </td>
-            <td class="py-1">${equipo.points}</td>
-            <td class="py-1">${equipo.all.played}</td>
-            <td class="py-1">${equipo.all.win}</td>
-            <td class="py-1">${equipo.all.draw}</td>
-            <td class="py-1">${equipo.all.lose}</td>
-          </tr>
-        `;
-      });
-    } catch (error) {
-      console.error("Error cargando la clasificación:", error);
-    }
+    const datos = await respuesta.json();
+    console.log(datos); // Para comprobar la estructura
+
+    const tabla = datos.response[0].league.standings[0];
+    const tbody = document.getElementById("tablaClasificacion");
+    tbody.innerHTML = "";
+
+    tabla.forEach((equipo, i) => {
+      tbody.innerHTML += `
+        <tr class="border-t border-gray-700">
+          <td class="py-1">${i+1}</td>
+          <td class="py-1 flex items-center gap-2 justify-center">
+            <img src="${equipo.team.logo}" alt="${equipo.team.name}" class="h-6 w-6">
+            ${equipo.team.name}
+          </td>
+          <td class="py-1">${equipo.points}</td>
+          <td class="py-1">${equipo.all.played}</td>
+          <td class="py-1">${equipo.all.win}</td>
+          <td class="py-1">${equipo.all.draw}</td>
+          <td class="py-1">${equipo.all.lose}</td>
+        </tr>
+      `;
+    });
+  } catch (error) {
+    console.error("Error cargando la clasificación:", error);
   }
+}
 
-  cargarClasificacion();
+cargarClasificacion();
 
-// ==== CALENDARIO API SPORTS ====
-    const API_KEY = "3293e65ec5f775049e124ee3810d46da";
-    const calendarBody = document.getElementById("calendarTableBody");
-
-    fetch("https://cors-anywhere.herokuapp.com/https://v3.football.api-sports.io/fixtures?league=140&season=2025", {
-      method: "GET",
-      headers: { "x-apisports-key": API_KEY }
-    })
-      .then(response => response.json())
-      .then(data => {
-  console.log("Respuesta API:", data); // <-- Muestra todo en la consola del navegador
-
-  if (!data.response || data.response.length === 0) {
-    calendarBody.innerHTML = `<tr><td colspan="4" class="text-center py-4">No hay partidos disponibles</td></tr>`;
-    return;
-  }
-
-  mostrarCalendario(data.response);
-})
-      .catch(err => {
-        console.error(err);
-        calendarBody.innerHTML = `<tr><td colspan="4" class="text-center py-4">Error al cargar calendario</td></tr>`;
-      });
-
-    function mostrarCalendario(partidos) {
-      calendarBody.innerHTML = "";
-      partidos.forEach(match => {
-        const fecha = new Date(match.fixture.date).toLocaleString("es-ES", {
-          weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"
-        });
-        calendarBody.innerHTML += `
-          <tr class="odd:bg-gray-800 even:bg-gray-700">
-            <td class="px-3 py-2 flex items-center">
-              <img src="${match.teams.home.logo}" class="w-5 h-5 mr-2"> ${match.teams.home.name}
-            </td>
-            <td class="px-3 py-2 text-center">vs</td>
-            <td class="px-3 py-2 flex items-center">
-              <img src="${match.teams.away.logo}" class="w-5 h-5 mr-2"> ${match.teams.away.name}
-            </td>
-            <td class="px-3 py-2 text-right">${fecha}</td>
-          </tr>
-        `;
-      });
-    }
 
 function toggleMenu() {
   const menu = document.getElementById("dropdownMenu");
@@ -635,7 +541,7 @@ document.addEventListener("click", function(event) {
 
 // Muestra la sección y cierra el menú
 function showSection(section, btn) {
-  const sections = ["clasificacion", "jornadas", "reglamento", "calendario", "estadisticas","clasificacionLaLiga"];
+  const sections = ["clasificacion", "jornadas", "reglamento", "estadisticas","clasificacionLaLiga"];
   
   // Oculta todas las secciones
   sections.forEach(id => document.getElementById(id).classList.add("hidden"));
@@ -644,8 +550,6 @@ function showSection(section, btn) {
   // Cierra el menú desplegable después de elegir
   document.getElementById("dropdownMenu").classList.add("hidden");
 }
-
-
   </script>
 </body>
 </html>

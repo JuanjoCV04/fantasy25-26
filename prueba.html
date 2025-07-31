@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clasificación LaLiga</title>
+  <script defer>
+    async function cargarClasificacion() {
+      try {
+        const respuesta = await fetch("https://v3.football.api-sports.io/standings?league=140&season=2021", {
+          headers: {
+            "x-rapidapi-key": "3293e65ec5f775049e124ee3810d46da",
+            "x-rapidapi-host": "v3.football.api-sports.io"
+          }
+        });
+
+        console.log("Estado HTTP:", respuesta.status);
+
+        if (!respuesta.ok) {
+          throw new Error("Error en la respuesta HTTP");
+        }
+
+        const datos = await respuesta.json();
+        console.log("Respuesta completa:", datos);
+
+        // Verificamos si la API ha devuelto datos
+        if (!datos.response || datos.response.length === 0) {
+          console.warn("No se recibió ningún dato de la API.");
+          return;
+        }
+
+        const tabla = datos.response[0].league.standings[0];
+        console.log("Tabla procesada:", tabla);
+
+        const tbody = document.getElementById("tablaClasificacion");
+        tbody.innerHTML = "";
+
+        tabla.forEach((equipo, i) => {
+          tbody.innerHTML += `
+            <tr class="border-t border-gray-700">
+              <td class="py-1">${i + 1}</td>
+              <td class="py-1 flex items-center gap-2 justify-center">
+                <img src="${equipo.team.logo}" alt="${equipo.team.name}" class="h-6 w-6">
+                ${equipo.team.name}
+              </td>
+              <td class="py-1">${equipo.points}</td>
+              <td class="py-1">${equipo.all.played}</td>
+              <td class="py-1">${equipo.all.win}</td>
+              <td class="py-1">${equipo.all.draw}</td>
+              <td class="py-1">${equipo.all.lose}</td>
+            </tr>
+          `;
+        });
+      } catch (error) {
+        console.error("Error cargando la clasificación:", error);
+      }
+    }
+    console.log("JS cargado correctamente");
+
+    document.addEventListener("DOMContentLoaded", cargarClasificacion);
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-6">
+  <section class="bg-gray-900 p-6 rounded-2xl shadow-lg">
+    <div class="overflow-x-auto">
+      <table class="table-auto w-full text-center border border-gray-700 text-white">
+        <thead class="bg-gray-800">
+          <tr>
+            <th class="px-2 py-1">Pos</th>
+            <th class="px-2 py-1">Equipo</th>
+            <th class="px-2 py-1">Puntos</th>
+            <th class="px-2 py-1">Jugados</th>
+            <th class="px-2 py-1">Ganados</th>
+            <th class="px-2 py-1">Empates</th>
+            <th class="px-2 py-1">Perdidos</th>
+          </tr>
+        </thead>
+        <tbody id="tablaClasificacion"></tbody>
+      </table>
+    </div>
+  </section>
+</body>
+</html>
