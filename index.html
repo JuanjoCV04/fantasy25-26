@@ -1,7 +1,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.85">
+  <meta name="viewport" content="width=device-width, initial-scale=0.82">
   <title>Mi Liga Fantasy - LaLiga</title>
   <link rel="icon" type="image/png" href="imagenes\LogoLaLigaSinFondo.png">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -553,72 +553,63 @@ function showSection(section, btn) {
     if ([18, 19, 20].includes(num)) return "text-red-500 font-bold";
     return ""; // Sin color para otras posiciones
   }
+function actualizarNombresClub() {
+  const isMobile = window.innerWidth <= 768;
+  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
-  function renderTabla(data) {
-  const tbody = document.getElementById("tablaClasificacion");
-  tbody.innerHTML = "";
+  document.querySelectorAll("[data-club]").forEach(span => {
+    const nombre = span.dataset.club;
+    const codigo = span.dataset.codigo;
 
-  data.forEach(equipo => {
-    const tr = document.createElement("tr");
-
-    // Posición con color según regla
-    const posClass = getPosColor(equipo.posicion);
-    const tdPos = `<td class="border border-gray-700 ${posClass} font-bold">${equipo.posicion}</td>`;
-
-    // Detectamos si es móvil vertical (<=768px de ancho y orientación portrait)
-    const isMobile = window.innerWidth <= 768;
-    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-
-    let tdClub;
     if (isMobile && isPortrait) {
-      // Móvil en vertical → solo código
-      tdClub = `
-        <td class="border border-gray-700 px-2 py-1">
-          <div class="flex items-center justify-between">
-            <span class="flex items-center">
-              <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
-              ${equipo.codigo}
-            </span>
-          </div>
-        </td>
-      `;
+      span.lastChild.textContent = codigo; // Solo código
     } else {
-      // PC o móvil en horizontal → nombre completo
-      tdClub = `
+      span.lastChild.textContent = nombre; // Nombre completo
+    }
+  });
+}
+
+// Render inicial de la tabla
+fetch("clasificacion_laliga.json")
+  .then(response => response.json())
+  .then(data => {
+    const tbody = document.getElementById("tablaClasificacion");
+    tbody.innerHTML = "";
+
+    data.forEach(equipo => {
+      const tr = document.createElement("tr");
+
+      const posClass = getPosColor(equipo.posicion);
+      const tdPos = `<td class="border border-gray-700 ${posClass} font-bold">${equipo.posicion}</td>`;
+
+      // Aquí dejamos un <span> con dataset para no recrear la fila después
+      const tdClub = `
         <td class="border border-gray-700 px-2 py-1">
           <div class="flex items-center justify-between">
-            <span class="flex items-center">
+            <span class="flex items-center" data-club="${equipo.club}" data-codigo="${equipo.codigo}">
               <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
               ${equipo.club}
             </span>
           </div>
         </td>
       `;
-    }
 
-    // Estadísticas nombradas
-    const stats = ["J","G","E","P","GF","GC","DIF","PTS"]
-      .map(key => `<td class="border border-gray-700">${equipo.estadisticas[key]}</td>`)
-      .join("");
+      const stats = ["J","G","E","P","GF","GC","DIF","PTS"]
+        .map(key => `<td class="border border-gray-700">${equipo.estadisticas[key]}</td>`)
+        .join("");
 
-    tr.innerHTML = tdPos + tdClub + stats;
-    tbody.appendChild(tr);
+      tr.innerHTML = tdPos + tdClub + stats;
+      tbody.appendChild(tr);
+    });
+
+    // Ajuste inicial según orientación
+    actualizarNombresClub();
   });
-}
 
-// Cargar JSON y renderizar tabla
-let equiposData = [];
-fetch("clasificacion_laliga.json")
-  .then(response => response.json())
-  .then(data => {
-    equiposData = data;
-    renderTabla(equiposData);
-  })
-  .catch(err => console.error("Error cargando JSON:", err));
+// Solo cambiamos los textos sin borrar la tabla
+window.addEventListener("resize", actualizarNombresClub);
+window.addEventListener("orientationchange", actualizarNombresClub);
 
-// Vuelve a renderizar al cambiar el tamaño o la orientación
-window.addEventListener("resize", () => renderTabla(equiposData));
-window.addEventListener("orientationchange", () => renderTabla(equiposData));
 </script>
 </body>
 </html>
