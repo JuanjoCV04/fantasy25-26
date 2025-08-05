@@ -302,11 +302,11 @@
     </td>
   </tr>
 </tfoot>
-
-
     </table>
   </div>
 </section>
+
+
 
   <!-- ESTADISTICAS -->
     <section id="estadisticas" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
@@ -499,7 +499,6 @@
         `;
       });
     }
-
     renderPagination();
     renderJornada(0);
 
@@ -569,17 +568,33 @@ fetch("clasificacion_laliga.json")
       const posClass = getPosColor(equipo.posicion);
       const tdPos = `<td class="border border-gray-700 ${posClass} font-bold">${equipo.posicion}</td>`;
 
-      // Equipo con escudo a la derecha
-      const tdClub = `
-        <td class="border border-gray-700 px-2 py-1">
-          <div class="flex items-center justify-between">
-            <span class="flex items-center">
-              <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
-              ${equipo.club}
-            </span>
-          </div>
-        </td>
-      `;
+      // Declaramos la variable fuera del if
+      let tdClub;
+
+      // Equipo con escudo a la derecha en PC, a la izquierda en móvil
+      if (window.innerWidth <= 768) {
+        tdClub = `
+          <td class="border border-gray-700 px-2 py-1">
+            <div class="flex items-center justify-between">
+              <span class="flex items-center">
+                <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
+                ${equipo.codigo}
+              </span>
+            </div>
+          </td>
+        `;
+      } else {
+        tdClub = `
+          <td class="border border-gray-700 px-2 py-1">
+            <div class="flex items-center justify-between">
+              <span class="flex items-center">
+                <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
+                ${equipo.club}
+              </span>
+            </div>
+          </td>
+        `;
+      }
 
       // Estadísticas nombradas
       const stats = ["J","G","E","P","GF","GC","DIF","PTS"]
@@ -592,6 +607,7 @@ fetch("clasificacion_laliga.json")
     });
   })
   .catch(err => console.error("Error cargando JSON:", err));
+
 
 </script>
 </body>
