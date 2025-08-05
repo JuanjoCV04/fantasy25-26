@@ -554,61 +554,71 @@ function showSection(section, btn) {
     return ""; // Sin color para otras posiciones
   }
 
-  // Cargar JSON y llenar la tabla
+  function renderTabla(data) {
+  const tbody = document.getElementById("tablaClasificacion");
+  tbody.innerHTML = "";
+
+  data.forEach(equipo => {
+    const tr = document.createElement("tr");
+
+    // Posición con color según regla
+    const posClass = getPosColor(equipo.posicion);
+    const tdPos = `<td class="border border-gray-700 ${posClass} font-bold">${equipo.posicion}</td>`;
+
+    // Detectamos si es móvil vertical (<=768px de ancho y orientación portrait)
+    const isMobile = window.innerWidth <= 768;
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+    let tdClub;
+    if (isMobile && isPortrait) {
+      // Móvil en vertical → solo código
+      tdClub = `
+        <td class="border border-gray-700 px-2 py-1">
+          <div class="flex items-center justify-between">
+            <span class="flex items-center">
+              <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
+              ${equipo.codigo}
+            </span>
+          </div>
+        </td>
+      `;
+    } else {
+      // PC o móvil en horizontal → nombre completo
+      tdClub = `
+        <td class="border border-gray-700 px-2 py-1">
+          <div class="flex items-center justify-between">
+            <span class="flex items-center">
+              <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
+              ${equipo.club}
+            </span>
+          </div>
+        </td>
+      `;
+    }
+
+    // Estadísticas nombradas
+    const stats = ["J","G","E","P","GF","GC","DIF","PTS"]
+      .map(key => `<td class="border border-gray-700">${equipo.estadisticas[key]}</td>`)
+      .join("");
+
+    tr.innerHTML = tdPos + tdClub + stats;
+    tbody.appendChild(tr);
+  });
+}
+
+// Cargar JSON y renderizar tabla
+let equiposData = [];
 fetch("clasificacion_laliga.json")
   .then(response => response.json())
   .then(data => {
-    const tbody = document.getElementById("tablaClasificacion");
-    tbody.innerHTML = "";
-
-    data.forEach(equipo => {
-      const tr = document.createElement("tr");
-
-      // Posición con color según regla
-      const posClass = getPosColor(equipo.posicion);
-      const tdPos = `<td class="border border-gray-700 ${posClass} font-bold">${equipo.posicion}</td>`;
-
-      // Declaramos la variable fuera del if
-      let tdClub;
-
-      // Equipo con escudo a la derecha en PC, a la izquierda en móvil
-      if (window.innerWidth <= 768) {
-        tdClub = `
-          <td class="border border-gray-700 px-2 py-1">
-            <div class="flex items-center justify-between">
-              <span class="flex items-center">
-                <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
-                ${equipo.codigo}
-              </span>
-            </div>
-          </td>
-        `;
-      } else {
-        tdClub = `
-          <td class="border border-gray-700 px-2 py-1">
-            <div class="flex items-center justify-between">
-              <span class="flex items-center">
-                <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
-                ${equipo.club}
-              </span>
-            </div>
-          </td>
-        `;
-      }
-
-      // Estadísticas nombradas
-      const stats = ["J","G","E","P","GF","GC","DIF","PTS"]
-        .map(key => `<td class="border border-gray-700">${equipo.estadisticas[key]}</td>`)
-        .join("");
-
-      // Insertar fila
-      tr.innerHTML = tdPos + tdClub + stats;
-      tbody.appendChild(tr);
-    });
+    equiposData = data;
+    renderTabla(equiposData);
   })
   .catch(err => console.error("Error cargando JSON:", err));
 
-
+// Vuelve a renderizar al cambiar el tamaño o la orientación
+window.addEventListener("resize", () => renderTabla(equiposData));
+window.addEventListener("orientationchange", () => renderTabla(equiposData));
 </script>
 </body>
 </html>
