@@ -1,7 +1,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.82">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8">
   <title>Mi Liga Fantasy - LaLiga</title>
   <link rel="icon" type="image/png" href="imagenes\LogoLaLigaSinFondo.png">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -553,6 +553,7 @@ function showSection(section, btn) {
     if ([18, 19, 20].includes(num)) return "text-red-500 font-bold";
     return ""; // Sin color para otras posiciones
   }
+// Función para actualizar los nombres según orientación
 function actualizarNombresClub() {
   const isMobile = window.innerWidth <= 768;
   const isPortrait = window.matchMedia("(orientation: portrait)").matches;
@@ -561,15 +562,12 @@ function actualizarNombresClub() {
     const nombre = span.dataset.club;
     const codigo = span.dataset.codigo;
 
-    if (isMobile && isPortrait) {
-      span.lastChild.textContent = codigo; // Solo código
-    } else {
-      span.lastChild.textContent = nombre; // Nombre completo
-    }
+    // Cambiamos solo el texto después del icono
+    span.querySelector(".nombreClub").textContent = (isMobile && isPortrait) ? codigo : nombre;
   });
 }
 
-// Render inicial de la tabla
+// Cargar JSON y llenar la tabla
 fetch("clasificacion_laliga.json")
   .then(response => response.json())
   .then(data => {
@@ -579,37 +577,40 @@ fetch("clasificacion_laliga.json")
     data.forEach(equipo => {
       const tr = document.createElement("tr");
 
+      // Posición con color según regla
       const posClass = getPosColor(equipo.posicion);
       const tdPos = `<td class="border border-gray-700 ${posClass} font-bold">${equipo.posicion}</td>`;
 
-      // Aquí dejamos un <span> con dataset para no recrear la fila después
+      // Celda del club con dataset para cambiar texto luego
       const tdClub = `
         <td class="border border-gray-700 px-2 py-1">
           <div class="flex items-center justify-between">
             <span class="flex items-center" data-club="${equipo.club}" data-codigo="${equipo.codigo}">
               <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
-              ${equipo.club}
+              <span class="nombreClub">${equipo.club}</span>
             </span>
           </div>
         </td>
       `;
 
+      // Estadísticas nombradas
       const stats = ["J","G","E","P","GF","GC","DIF","PTS"]
         .map(key => `<td class="border border-gray-700">${equipo.estadisticas[key]}</td>`)
         .join("");
 
+      // Insertar fila
       tr.innerHTML = tdPos + tdClub + stats;
       tbody.appendChild(tr);
     });
 
     // Ajuste inicial según orientación
     actualizarNombresClub();
-  });
+  })
+  .catch(err => console.error("Error cargando JSON:", err));
 
-// Solo cambiamos los textos sin borrar la tabla
+// Solo actualiza el texto, no recrea la tabla => sin tirones
 window.addEventListener("resize", actualizarNombresClub);
 window.addEventListener("orientationchange", actualizarNombresClub);
-
 </script>
 </body>
 </html>
