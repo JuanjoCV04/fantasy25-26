@@ -246,27 +246,64 @@
 </section>
 </section>
 
-  <!-- CALENDARIO -->
-
-
+  <!-- Clasificación LALIGA -->
 <section id="clasificacionLaLiga" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
   <h2 class="text-2xl font-semibold mb-4 text-red-400">Clasificación LaLiga</h2>
-  
   <!-- Tabla de Clasificación LALIGA -->
-  <div class="overflow-x-auto">
+<div class="overflow-x-auto">
     <table class="table-auto w-full text-center border border-gray-700 text-white">
       <thead class="bg-gray-800">
         <tr>
           <th class="px-2 py-1">Pos</th>
           <th class="px-2 py-1">Equipo</th>
-          <th class="px-2 py-1">Puntos</th>
-          <th class="px-2 py-1">Jugados</th>
-          <th class="px-2 py-1">Ganados</th>
-          <th class="px-2 py-1">Empates</th>
-          <th class="px-2 py-1">Perdidos</th>
+          <th class="px-2 py-1">J</th>
+          <th class="px-2 py-1">G</th>
+          <th class="px-2 py-1">E</th>
+          <th class="px-2 py-1">P</th>
+          <th class="px-2 py-1">GF</th>
+          <th class="px-2 py-1">GC</th>
+          <th class="px-2 py-1">DIF</th>
+          <th class="px-2 py-1">PTS</th>
         </tr>
       </thead>
       <tbody id="tablaClasificacion"></tbody>
+<tfoot class="bg-gray-800 text-gray-300">
+  <tr>
+    <td colspan="10" class="px-2 py-4 text-left">
+      <div class="grid grid-cols-3 gap-6">
+        <!-- Columna 1: Leyenda de colores -->
+        <div>
+          <p class="mb-2"><strong class="text-blue-400">🔵</strong> Champions League</p>
+          <p class="mb-2"><strong class="text-orange-400">🟠</strong> Europa League</p>
+          <p class="mb-2"><strong class="text-green-400">🟢</strong> Conference League</p>
+          <p class="mb-4"><strong class="text-red-400">🔴</strong> Descenso</p>
+        </div>
+
+        <!-- Columna 2: Glosario (Parte 1) -->
+        <div>
+          <ul class="list-disc list-inside text-sm">
+            <li><strong>J:</strong> Número de partidos jugados</li>
+            <li><strong>G:</strong> Partidos ganados</li>
+            <li><strong>E:</strong> Empates</li>
+            <li><strong>P:</strong> Derrotas</li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Glosario (Parte 2) -->
+        <div>
+          <ul class="list-disc list-inside text-sm">
+            <li><strong>GF:</strong> Goles a favor</li>
+            <li><strong>GC:</strong> Goles en contra</li>
+            <li><strong>DIF:</strong> Diferencia de goles</li>
+            <li><strong>PTS:</strong> Puntos</li>
+          </ul>
+        </div>
+      </div>
+    </td>
+  </tr>
+</tfoot>
+
+
     </table>
   </div>
 </section>
@@ -482,50 +519,6 @@ function toggleInfo() {
   const info = document.getElementById("infoClasificacion");
   info.classList.toggle("hidden");
 }
-// ==== Tabla API SPORTS 2.0 ====
-
-async function cargarClasificacion() {
-  try {
-    const respuesta = await fetch("https://v3.football.api-sports.io/standings?league=140&season=2023", {
-      headers: {
-        "x-rapidapi-key": "3293e65ec5f775049e124ee3810d46da",
-        "x-rapidapi-host": "v3.football.api-sports.io"
-      }
-    });
-
-    if (!respuesta.ok) throw new Error(`HTTP error: ${respuesta.status}`);
-
-    const datos = await respuesta.json();
-    console.log(datos); // Para comprobar la estructura
-
-    const tabla = datos.response[0].league.standings[0];
-    const tbody = document.getElementById("tablaClasificacion");
-    tbody.innerHTML = "";
-
-    tabla.forEach((equipo, i) => {
-      tbody.innerHTML += `
-        <tr class="border-t border-gray-700">
-          <td class="py-1">${i+1}</td>
-          <td class="py-1 flex items-center gap-2 justify-center">
-            <img src="${equipo.team.logo}" alt="${equipo.team.name}" class="h-6 w-6">
-            ${equipo.team.name}
-          </td>
-          <td class="py-1">${equipo.points}</td>
-          <td class="py-1">${equipo.all.played}</td>
-          <td class="py-1">${equipo.all.win}</td>
-          <td class="py-1">${equipo.all.draw}</td>
-          <td class="py-1">${equipo.all.lose}</td>
-        </tr>
-      `;
-    });
-  } catch (error) {
-    console.error("Error cargando la clasificación:", error);
-  }
-}
-
-cargarClasificacion();
-
-
 function toggleMenu() {
   const menu = document.getElementById("dropdownMenu");
   menu.classList.toggle("hidden");
@@ -550,6 +543,56 @@ function showSection(section, btn) {
   // Cierra el menú desplegable después de elegir
   document.getElementById("dropdownMenu").classList.add("hidden");
 }
-  </script>
+
+//=== CARGAR TABLA DE CLASIFICACION LALIGA ====
+// Función para asignar color según la posición
+  function getPosColor(pos) {
+    const num = parseInt(pos);
+    if ([1, 2, 3, 4].includes(num)) return "text-blue-400 font-bold";
+    if (num === 5) return "text-orange-400 font-bold";
+    if (num === 6) return "text-green-400 font-bold";
+    if ([18, 19, 20].includes(num)) return "text-red-500 font-bold";
+    return ""; // Sin color para otras posiciones
+  }
+
+  // Cargar JSON y llenar la tabla
+fetch("clasificacion_laliga.json")
+  .then(response => response.json())
+  .then(data => {
+    const tbody = document.getElementById("tablaClasificacion");
+    tbody.innerHTML = "";
+
+    data.forEach(equipo => {
+      const tr = document.createElement("tr");
+
+      // Posición con color según regla
+      const posClass = getPosColor(equipo.posicion);
+      const tdPos = `<td class="border border-gray-700 ${posClass} font-bold">${equipo.posicion}</td>`;
+
+      // Equipo con escudo a la derecha
+      const tdClub = `
+        <td class="border border-gray-700 px-2 py-1">
+          <div class="flex items-center justify-between">
+            <span class="flex items-center">
+              <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
+              ${equipo.club}
+            </span>
+          </div>
+        </td>
+      `;
+
+      // Estadísticas nombradas
+      const stats = ["J","G","E","P","GF","GC","DIF","PTS"]
+        .map(key => `<td class="border border-gray-700">${equipo.estadisticas[key]}</td>`)
+        .join("");
+
+      // Insertar fila
+      tr.innerHTML = tdPos + tdClub + stats;
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(err => console.error("Error cargando JSON:", err));
+
+</script>
 </body>
 </html>
