@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h2 class="text-2xl font-semibold mb-4 text-red-400">Tabla de fórmulas de puntuación de los jugadores</h2><div class="overflow-x-auto my-6">
+  <table class="table-auto border-collapse border border-gray-600 w-full text-sm text-left text-gray-300">
+    <thead class="bg-red-700 text-white">
+      <tr>
+        <th class="border border-gray-600 px-3 py-2">PARÁMETRO</th>
+        <th class="border border-gray-600 px-3 py-2">CONDICIÓN</th>
+        <th class="border border-gray-600 px-3 py-2">PUNTOS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Puntuaciones básicas -->
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Minutos Jugados</td>
+        <td class="border px-3 py-2">&lt; 60 min</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Minutos Jugados</td>
+        <td class="border px-3 py-2">&gt; 60 min</td>
+        <td class="border px-3 py-2">2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Gol Portero / Defensa</td>
+        <td class="border px-3 py-2">PT / DF</td>
+        <td class="border px-3 py-2">6</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Gol Mediocentro</td>
+        <td class="border px-3 py-2">MC</td>
+        <td class="border px-3 py-2">5</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Gol Delantero</td>
+        <td class="border px-3 py-2">DC</td>
+        <td class="border px-3 py-2">4</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Asistencia de Gol</td>
+        <td class="border px-3 py-2">Último pase que provoca un gol</td>
+        <td class="border px-3 py-2">3</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Asistencias sin Gol</td>
+        <td class="border px-3 py-2">Último pase que provoca una ocasión de gol manifiesta</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Portería a cero (Portero)</td>
+        <td class="border px-3 py-2">Habiendo jugado &gt; 60 min</td>
+        <td class="border px-3 py-2">4</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Portería a cero (Defensa)</td>
+        <td class="border px-3 py-2">Habiendo jugado &gt; 60 min</td>
+        <td class="border px-3 py-2">3</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Portería a cero (Mediocentro)</td>
+        <td class="border px-3 py-2">Habiendo jugado &gt; 60 min</td>
+        <td class="border px-3 py-2">2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Portería a cero (Delantero)</td>
+        <td class="border px-3 py-2">Habiendo jugado &gt; 60 min</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Penalti fallado</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Penalti parado</td>
+        <td class="border px-3 py-2">El portero intercede en la detención</td>
+        <td class="border px-3 py-2">5</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Penalti provocado</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Penalti cometido</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Goles recibidos Portero/Defensa</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">-2</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Goles recibidos Medio/Delantero</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Tarjeta amarilla</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Doble Amarilla</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Tarjeta Roja</td>
+        <td class="border px-3 py-2">Indistintamente de la demarcación</td>
+        <td class="border px-3 py-2">-3</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Paradas Portero</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+
+      <!-- Bonus ataque -->
+      <tr class="bg-gray-900 text-red-400 font-bold">
+        <td colspan="3" class="border px-3 py-2 text-center">BONUS ATAQUE</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Tiros a puerta</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Regates logrados</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones al área</td>
+        <td class="border px-3 py-2">Cada 2</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+
+      <!-- Bonus defensivos -->
+      <tr class="bg-gray-900 text-red-400 font-bold">
+        <td colspan="3" class="border px-3 py-2 text-center">BONUS DEFENSIVOS</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones recuperados</td>
+        <td class="border px-3 py-2">Cada 5</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Despejes</td>
+        <td class="border px-3 py-2">Cada 3</td>
+        <td class="border px-3 py-2">1</td>
+      </tr>
+
+      <!-- Pérdidas -->
+      <tr class="bg-gray-900 text-red-400 font-bold">
+        <td colspan="3" class="border px-3 py-2 text-center">PÉRDIDAS DE BALÓN</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones perdidos portero</td>
+        <td class="border px-3 py-2">Cada 8</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones perdidos defensa</td>
+        <td class="border px-3 py-2">Cada 8</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones perdidos centrocampista</td>
+        <td class="border px-3 py-2">Cada 10</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+      <tr class="odd:bg-gray-800">
+        <td class="border px-3 py-2">Balones perdidos delantero</td>
+        <td class="border px-3 py-2">Cada 12</td>
+        <td class="border px-3 py-2">-1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Novedades -->
+<section class="bg-gray-900 p-6 rounded-2xl shadow-lg space-y-6">
+  <h2 class="text-3xl font-bold text-red-400 text-center">🔥 Novedades</h2>
+
+  <!-- Blindaje -->
+  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
+    <h3 class="text-xl font-semibold text-red-300 mb-2">🛡️ Nueva Funcionalidad: Blindaje</h3>
+    <p class="text-gray-300 leading-relaxed">
+      Ahora podrás <span class="text-white font-semibold">proteger a un jugador</span> cada jornada 
+      para evitar que otro mánager pueda hacerte un <span class="italic">clausulazo</span> 
+      o ficharlo para su equipo.
+    </p>
+  </div>
+
+  <!-- Puntos DAZN -->
+  <div class="bg-gray-800 p-5 rounded-xl border border-red-600 hover:shadow-red-500/30 hover:shadow-lg transition">
+    <h3 class="text-xl font-semibold text-red-300 mb-2">⚽ Puntos DAZN</h3>
+    <p class="text-gray-300 leading-relaxed">
+      Son <span class="text-white font-semibold">puntos extra</span> que se otorgan a los jugadores al 
+      final de cada partido. <br>
+      Funcionan igual que los <span class="italic">puntos Relevo</span> de la temporada pasada.
+    </p>
+  </div>
+</section>
+</body>
+</html>
