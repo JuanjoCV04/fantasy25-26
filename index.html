@@ -27,9 +27,9 @@
     <div id="dropdownMenu" class="absolute left-0 mt-2 w-40 bg-red-700 rounded shadow-lg hidden">
       <button onclick="showSection('clasificacion', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación Fantasy</button>
       <button onclick="showSection('jornadas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Jornadas</button>
-      <button onclick="showSection('reglamento', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Reglamento</button>
-      <button onclick="showSection('estadisticas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Estadisticas</button>
       <button onclick="showSection('clasificacionLaLiga', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación LALIGA</button>
+      <button onclick="showSection('reglamento', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Reglamento</button>
+     <!-- <button onclick="showSection('estadisticas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Estadisticas</button>-->
 
 
     </div>
@@ -206,16 +206,16 @@
     // Datos por jornada (ejemplo)
     const jornadas = [
       [
-        { club: "MrMaxi01", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "su_florentineza123", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "tonidiaz22", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Juanjonete04", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Kino04", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "La Sergioneta CF", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Achoman", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Philip$", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Juanpm_43", puntos: 0, penalizacion: 0, dinero: 0 },
-        { club: "Rabovic", puntos: 0, penalizacion: 0, dinero: 0 }        
+        { club: "MrMaxi01", puntos: 72, penalizacion: 0, dinero: 0 },
+        { club: "su_florentineza123", puntos: 96, penalizacion: 0, dinero: 0 },
+        { club: "tonidiaz22", puntos: 68, penalizacion: 1, dinero: 1 },
+        { club: "Juanjonete04", puntos: 75, penalizacion: 0, dinero: 0 },
+        { club: "Kino04", puntos: 86, penalizacion: 0, dinero: 0 },
+        { club: "La Sergioneta CF", puntos: 87, penalizacion: 0, dinero: 0 },
+        { club: "Achoman", puntos: 53, penalizacion: 2, dinero: 2 },
+        { club: "Philip$", puntos: 71, penalizacion: 0, dinero: 0 },
+        { club: "Juanpm_43", puntos: 50, penalizacion: 3, dinero: 3 },
+        { club: "Rabovic", puntos: 78, penalizacion: 0, dinero: 0 }        
       ],
       [
         { club: "MrMaxi01", puntos: 0, penalizacion: 0, dinero: 0 },
@@ -247,6 +247,8 @@
         }
       });
     });
+  // Ordenar por puntos de mayor a menor antes de renderizar
+    clasificacion.sort((a, b) => b.puntosTotales - a.puntosTotales);
 
     const finalTableBody = document.getElementById("finalTableBody");
     const boteFinalSpan = document.getElementById("boteFinal");
@@ -293,7 +295,9 @@
 
     function renderJornada(index) {
       jornadaTableBody.innerHTML = "";
-      jornadas[index].forEach(entry => {
+      // Copia y ordena la jornada por puntos de mayor a menor
+      const jornadaOrdenada = [...jornadas[index]].sort((a, b) => b.puntos - a.puntos);
+      jornadaOrdenada.forEach(entry => {
         const rowClass = entry.penalizacion > 0 ? "bg-red-900" : "";
         jornadaTableBody.innerHTML += `
           <tr class="border-t border-gray-700 ${rowClass}">
