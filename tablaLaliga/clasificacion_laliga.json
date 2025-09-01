@@ -1,88 +1,148 @@
 [
   {
     "posicion": "1",
-    "codigo": "VLR",
-    "club": "Villarreal",
+    "codigo": "MAD",
+    "club": "Real Madrid",
     "estadisticas": {
-      "J": "2",
-      "G": "2",
+      "J": "3",
+      "G": "3",
       "E": "0",
       "P": "0",
-      "GF": "7",
-      "GC": "0",
-      "DIF": "+7",
-      "PTS": "6"
+      "GF": "6",
+      "GC": "1",
+      "DIF": "+5",
+      "PTS": "9"
     }
   },
   {
     "posicion": "2",
-    "codigo": "BAR",
-    "club": "Barcelona",
+    "codigo": "ATH",
+    "club": "Athletic Club",
     "estadisticas": {
-      "J": "2",
-      "G": "2",
+      "J": "3",
+      "G": "3",
       "E": "0",
       "P": "0",
       "GF": "6",
-      "GC": "2",
-      "DIF": "+4",
-      "PTS": "6"
+      "GC": "3",
+      "DIF": "+3",
+      "PTS": "9"
     }
   },
   {
     "posicion": "3",
-    "codigo": "MAD",
-    "club": "Real Madrid",
+    "codigo": "VLR",
+    "club": "Villarreal",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
       "G": "2",
-      "E": "0",
+      "E": "1",
       "P": "0",
-      "GF": "4",
-      "GC": "0",
-      "DIF": "+4",
-      "PTS": "6"
+      "GF": "8",
+      "GC": "1",
+      "DIF": "+7",
+      "PTS": "7"
     }
   },
   {
     "posicion": "4",
-    "codigo": "GET",
-    "club": "Getafe",
+    "codigo": "BAR",
+    "club": "Barcelona",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
       "G": "2",
-      "E": "0",
+      "E": "1",
       "P": "0",
-      "GF": "4",
-      "GC": "1",
-      "DIF": "+3",
-      "PTS": "6"
+      "GF": "7",
+      "GC": "3",
+      "DIF": "+4",
+      "PTS": "7"
     }
   },
   {
     "posicion": "5",
-    "codigo": "ATH",
-    "club": "Athletic Club",
+    "codigo": "ESP",
+    "club": "Espanyol",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
       "G": "2",
-      "E": "0",
+      "E": "1",
       "P": "0",
-      "GF": "4",
-      "GC": "2",
+      "GF": "5",
+      "GC": "3",
       "DIF": "+2",
-      "PTS": "6"
+      "PTS": "7"
     }
   },
   {
     "posicion": "6",
-    "codigo": "ESP",
-    "club": "Espanyol",
+    "codigo": "GET",
+    "club": "Getafe",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
+      "G": "2",
+      "E": "0",
+      "P": "1",
+      "GF": "4",
+      "GC": "4",
+      "DIF": "0",
+      "PTS": "6"
+    }
+  },
+  {
+    "posicion": "7",
+    "codigo": "ELC",
+    "club": "Elche",
+    "estadisticas": {
+      "J": "3",
+      "G": "1",
+      "E": "2",
+      "P": "0",
+      "GF": "4",
+      "GC": "2",
+      "DIF": "+2",
+      "PTS": "5"
+    }
+  },
+  {
+    "posicion": "8",
+    "codigo": "BET",
+    "club": "Real Betis",
+    "estadisticas": {
+      "J": "4",
+      "G": "1",
+      "E": "2",
+      "P": "1",
+      "GF": "4",
+      "GC": "4",
+      "DIF": "0",
+      "PTS": "5"
+    }
+  },
+  {
+    "posicion": "9",
+    "codigo": "VAL",
+    "club": "Valencia",
+    "estadisticas": {
+      "J": "3",
       "G": "1",
       "E": "1",
-      "P": "0",
+      "P": "1",
+      "GF": "4",
+      "GC": "2",
+      "DIF": "+2",
+      "PTS": "4"
+    }
+  },
+  {
+    "posicion": "10",
+    "codigo": "RAY",
+    "club": "Rayo Vallecano",
+    "estadisticas": {
+      "J": "3",
+      "G": "1",
+      "E": "1",
+      "P": "1",
       "GF": "4",
       "GC": "3",
       "DIF": "+1",
@@ -90,197 +150,137 @@
     }
   },
   {
-    "posicion": "7",
-    "codigo": "BET",
-    "club": "Real Betis",
+    "posicion": "11",
+    "codigo": "ALA",
+    "club": "Alavés",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
       "G": "1",
       "E": "1",
-      "P": "0",
-      "GF": "2",
-      "GC": "1",
-      "DIF": "+1",
+      "P": "1",
+      "GF": "3",
+      "GC": "3",
+      "DIF": "0",
       "PTS": "4"
     }
   },
   {
-    "posicion": "8",
-    "codigo": "RAY",
-    "club": "Rayo Vallecano",
-    "estadisticas": {
-      "J": "2",
-      "G": "1",
-      "E": "0",
-      "P": "1",
-      "GF": "3",
-      "GC": "2",
-      "DIF": "+1",
-      "PTS": "3"
-    }
-  },
-  {
-    "posicion": "9",
-    "codigo": "ALA",
-    "club": "Alavés",
-    "estadisticas": {
-      "J": "2",
-      "G": "1",
-      "E": "0",
-      "P": "1",
-      "GF": "2",
-      "GC": "2",
-      "DIF": "0",
-      "PTS": "3"
-    }
-  },
-  {
-    "posicion": "10",
-    "codigo": "OSA",
-    "club": "Osasuna",
-    "estadisticas": {
-      "J": "2",
-      "G": "1",
-      "E": "0",
-      "P": "1",
-      "GF": "1",
-      "GC": "1",
-      "DIF": "0",
-      "PTS": "3"
-    }
-  },
-  {
-    "posicion": "11",
-    "codigo": "SOC",
-    "club": "Real Sociedad",
-    "estadisticas": {
-      "J": "2",
-      "G": "0",
-      "E": "2",
-      "P": "0",
-      "GF": "3",
-      "GC": "3",
-      "DIF": "0",
-      "PTS": "2"
-    }
-  },
-  {
     "posicion": "12",
-    "codigo": "ELC",
-    "club": "Elche",
+    "codigo": "SEV",
+    "club": "Sevilla FC",
     "estadisticas": {
-      "J": "2",
-      "G": "0",
-      "E": "2",
-      "P": "0",
-      "GF": "2",
-      "GC": "2",
+      "J": "3",
+      "G": "1",
+      "E": "0",
+      "P": "2",
+      "GF": "5",
+      "GC": "5",
       "DIF": "0",
-      "PTS": "2"
+      "PTS": "3"
     }
   },
   {
     "posicion": "13",
-    "codigo": "ATL",
-    "club": "Atlético Madrid",
+    "codigo": "OSA",
+    "club": "Osasuna",
     "estadisticas": {
-      "J": "2",
-      "G": "0",
-      "E": "1",
-      "P": "1",
-      "GF": "2",
-      "GC": "3",
+      "J": "3",
+      "G": "1",
+      "E": "0",
+      "P": "2",
+      "GF": "1",
+      "GC": "2",
       "DIF": "-1",
-      "PTS": "1"
+      "PTS": "3"
     }
   },
   {
     "posicion": "14",
-    "codigo": "VAL",
-    "club": "Valencia",
+    "codigo": "VIG",
+    "club": "Celta Vigo",
     "estadisticas": {
-      "J": "2",
+      "J": "4",
       "G": "0",
-      "E": "1",
+      "E": "3",
       "P": "1",
-      "GF": "1",
-      "GC": "2",
-      "DIF": "-1",
-      "PTS": "1"
+      "GF": "3",
+      "GC": "5",
+      "DIF": "-2",
+      "PTS": "3"
     }
   },
   {
     "posicion": "15",
-    "codigo": "VIG",
-    "club": "Celta Vigo",
+    "codigo": "OVI",
+    "club": "Real Oviedo",
     "estadisticas": {
-      "J": "2",
-      "G": "0",
-      "E": "1",
-      "P": "1",
+      "J": "3",
+      "G": "1",
+      "E": "0",
+      "P": "2",
       "GF": "1",
-      "GC": "3",
-      "DIF": "-2",
-      "PTS": "1"
+      "GC": "5",
+      "DIF": "-4",
+      "PTS": "3"
     }
   },
   {
     "posicion": "16",
-    "codigo": "MLA",
-    "club": "Mallorca",
+    "codigo": "SOC",
+    "club": "Real Sociedad",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
       "G": "0",
-      "E": "1",
+      "E": "2",
       "P": "1",
-      "GF": "1",
+      "GF": "3",
       "GC": "4",
-      "DIF": "-3",
-      "PTS": "1"
+      "DIF": "-1",
+      "PTS": "2"
     }
   },
   {
     "posicion": "17",
-    "codigo": "LEV",
-    "club": "Levante",
+    "codigo": "ATL",
+    "club": "Atlético Madrid",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
       "G": "0",
-      "E": "0",
-      "P": "2",
+      "E": "2",
+      "P": "1",
       "GF": "3",
-      "GC": "5",
-      "DIF": "-2",
-      "PTS": "0"
+      "GC": "4",
+      "DIF": "-1",
+      "PTS": "2"
     }
   },
   {
     "posicion": "18",
-    "codigo": "SEV",
-    "club": "Sevilla FC",
+    "codigo": "MLA",
+    "club": "Mallorca",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
       "G": "0",
-      "E": "0",
+      "E": "1",
       "P": "2",
-      "GF": "3",
-      "GC": "5",
-      "DIF": "-2",
-      "PTS": "0"
+      "GF": "2",
+      "GC": "6",
+      "DIF": "-4",
+      "PTS": "1"
     }
   },
   {
     "posicion": "19",
-    "codigo": "OVI",
-    "club": "Real Oviedo",
+    "codigo": "LEV",
+    "club": "Levante",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
       "G": "0",
       "E": "0",
-      "P": "2",
-      "GF": "0",
-      "GC": "5",
-      "DIF": "-5",
+      "P": "3",
+      "GF": "3",
+      "GC": "7",
+      "DIF": "-4",
       "PTS": "0"
     }
   },
@@ -289,13 +289,13 @@
     "codigo": "GIR",
     "club": "Girona",
     "estadisticas": {
-      "J": "2",
+      "J": "3",
       "G": "0",
       "E": "0",
-      "P": "2",
+      "P": "3",
       "GF": "1",
-      "GC": "8",
-      "DIF": "-7",
+      "GC": "10",
+      "DIF": "-9",
       "PTS": "0"
     }
   }
