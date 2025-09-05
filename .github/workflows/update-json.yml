@@ -5,6 +5,9 @@ on:
     - cron: "0 */5 * * *"   # cada 5 horas (UTC)
   workflow_dispatch:         # permite lanzarlo manualmente desde Actions
 
+permissions:
+  contents: write
+  
 jobs:
   update-json:
     runs-on: ubuntu-latest
