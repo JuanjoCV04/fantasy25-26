@@ -1,0 +1,36 @@
+name: Update JSON and redeploy
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"   # cada 2 horas (UTC)
+  workflow_dispatch:         # permite lanzarlo manualmente desde Actions
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run update script
+        run: python Clasificacion-laliga.py   # ⚡ pon aquí el nombre de tu script
+
+      - name: Commit changes
+        run: |
+          git config user.name "JuanjoCV04"
+          git config user.email "juanjocaval@gmail.com"
+          git add clasificacion_laliga.json
+          git commit -m "Auto update clasificacion_laliga.json [skip ci]" || echo "No changes to commit"
+          git push origin HEAD:main
+
+      - name: Trigger Vercel Deploy Hook
+        run: curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_KrAGHIs6trOY5HQkvUwm0h9t3Zbk/nIqYE9IjX8
