@@ -2,7 +2,7 @@ name: Update JSON and redeploy
 
 on:
   schedule:
-    - cron: "0 */2 * * *"   # cada 2 horas (UTC)
+    - cron: "0 */5 * * *"   # cada 5 horas (UTC)
   workflow_dispatch:         # permite lanzarlo manualmente desde Actions
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -19,10 +19,15 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "requirements.txt not found, skipping dependencies"
+          fi
 
       - name: Run update script
-        run: python Clasificacion-laliga.py   # ⚡ pon aquí el nombre de tu script
+        run: python tablaLaliga/Clasificacion-laliga.py   # 🔥 CAMBIO AQUÍ
 
       - name: Commit changes
         run: |
