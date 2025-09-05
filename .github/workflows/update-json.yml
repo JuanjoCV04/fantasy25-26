@@ -30,7 +30,7 @@ jobs:
           fi
 
       - name: Run update script
-        run: python tablaLaliga/Clasificacion-laliga.py   # 🔥 CAMBIO AQUÍ
+        run: python Clasificacion-laliga.py   # 🔥 CAMBIO AQUÍ
         working-directory: tablaLaliga  # ✅ Ejecuta desde la carpeta tablaLaliga
 
       - name: Commit changes
