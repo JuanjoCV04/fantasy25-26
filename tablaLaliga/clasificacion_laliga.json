@@ -4,35 +4,35 @@
     "codigo": "MAD",
     "club": "Real Madrid",
     "estadisticas": {
-      "J": "3",
-      "G": "3",
+      "J": "4",
+      "G": "4",
       "E": "0",
       "P": "0",
-      "GF": "6",
-      "GC": "1",
-      "DIF": "+5",
-      "PTS": "9"
+      "GF": "8",
+      "GC": "2",
+      "DIF": "+6",
+      "PTS": "12"
     }
   },
   {
     "posicion": "2",
-    "codigo": "ATH",
-    "club": "Athletic Club",
+    "codigo": "GET",
+    "club": "Getafe",
     "estadisticas": {
-      "J": "3",
+      "J": "4",
       "G": "3",
       "E": "0",
-      "P": "0",
+      "P": "1",
       "GF": "6",
-      "GC": "3",
-      "DIF": "+3",
+      "GC": "4",
+      "DIF": "+2",
       "PTS": "9"
     }
   },
   {
     "posicion": "3",
-    "codigo": "GET",
-    "club": "Getafe",
+    "codigo": "ATH",
+    "club": "Athletic Club",
     "estadisticas": {
       "J": "4",
       "G": "3",
@@ -91,6 +91,21 @@
   },
   {
     "posicion": "7",
+    "codigo": "ALA",
+    "club": "Alavés",
+    "estadisticas": {
+      "J": "4",
+      "G": "2",
+      "E": "1",
+      "P": "1",
+      "GF": "4",
+      "GC": "3",
+      "DIF": "+1",
+      "PTS": "7"
+    }
+  },
+  {
+    "posicion": "8",
     "codigo": "ELC",
     "club": "Elche",
     "estadisticas": {
@@ -105,7 +120,7 @@
     }
   },
   {
-    "posicion": "8",
+    "posicion": "9",
     "codigo": "BET",
     "club": "Real Betis",
     "estadisticas": {
@@ -120,7 +135,7 @@
     }
   },
   {
-    "posicion": "9",
+    "posicion": "10",
     "codigo": "VAL",
     "club": "Valencia",
     "estadisticas": {
@@ -135,7 +150,7 @@
     }
   },
   {
-    "posicion": "10",
+    "posicion": "11",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -150,7 +165,7 @@
     }
   },
   {
-    "posicion": "11",
+    "posicion": "12",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -160,21 +175,6 @@
       "P": "2",
       "GF": "7",
       "GC": "7",
-      "DIF": "0",
-      "PTS": "4"
-    }
-  },
-  {
-    "posicion": "12",
-    "codigo": "ALA",
-    "club": "Alavés",
-    "estadisticas": {
-      "J": "3",
-      "G": "1",
-      "E": "1",
-      "P": "1",
-      "GF": "3",
-      "GC": "3",
       "DIF": "0",
       "PTS": "4"
     }
@@ -226,8 +226,8 @@
   },
   {
     "posicion": "16",
-    "codigo": "SOC",
-    "club": "Real Sociedad",
+    "codigo": "ATL",
+    "club": "Atlético Madrid",
     "estadisticas": {
       "J": "3",
       "G": "0",
@@ -241,16 +241,16 @@
   },
   {
     "posicion": "17",
-    "codigo": "ATL",
-    "club": "Atlético Madrid",
+    "codigo": "SOC",
+    "club": "Real Sociedad",
     "estadisticas": {
-      "J": "3",
+      "J": "4",
       "G": "0",
       "E": "2",
-      "P": "1",
-      "GF": "3",
-      "GC": "4",
-      "DIF": "-1",
+      "P": "2",
+      "GF": "4",
+      "GC": "6",
+      "DIF": "-2",
       "PTS": "2"
     }
   },
