@@ -49,13 +49,13 @@
     "codigo": "VLR",
     "club": "Villarreal",
     "estadisticas": {
-      "J": "3",
+      "J": "4",
       "G": "2",
       "E": "1",
-      "P": "0",
+      "P": "1",
       "GF": "8",
-      "GC": "1",
-      "DIF": "+7",
+      "GC": "3",
+      "DIF": "+5",
       "PTS": "7"
     }
   },
@@ -121,6 +121,21 @@
   },
   {
     "posicion": "9",
+    "codigo": "ATL",
+    "club": "Atlético Madrid",
+    "estadisticas": {
+      "J": "4",
+      "G": "1",
+      "E": "2",
+      "P": "1",
+      "GF": "5",
+      "GC": "4",
+      "DIF": "+1",
+      "PTS": "5"
+    }
+  },
+  {
+    "posicion": "10",
     "codigo": "BET",
     "club": "Real Betis",
     "estadisticas": {
@@ -135,7 +150,7 @@
     }
   },
   {
-    "posicion": "10",
+    "posicion": "11",
     "codigo": "VAL",
     "club": "Valencia",
     "estadisticas": {
@@ -150,7 +165,7 @@
     }
   },
   {
-    "posicion": "11",
+    "posicion": "12",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -165,7 +180,7 @@
     }
   },
   {
-    "posicion": "12",
+    "posicion": "13",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -180,7 +195,7 @@
     }
   },
   {
-    "posicion": "13",
+    "posicion": "14",
     "codigo": "OSA",
     "club": "Osasuna",
     "estadisticas": {
@@ -195,7 +210,7 @@
     }
   },
   {
-    "posicion": "14",
+    "posicion": "15",
     "codigo": "VIG",
     "club": "Celta Vigo",
     "estadisticas": {
@@ -210,7 +225,7 @@
     }
   },
   {
-    "posicion": "15",
+    "posicion": "16",
     "codigo": "OVI",
     "club": "Real Oviedo",
     "estadisticas": {
@@ -222,21 +237,6 @@
       "GC": "7",
       "DIF": "-6",
       "PTS": "3"
-    }
-  },
-  {
-    "posicion": "16",
-    "codigo": "ATL",
-    "club": "Atlético Madrid",
-    "estadisticas": {
-      "J": "3",
-      "G": "0",
-      "E": "2",
-      "P": "1",
-      "GF": "3",
-      "GC": "4",
-      "DIF": "-1",
-      "PTS": "2"
     }
   },
   {
