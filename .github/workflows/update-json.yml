@@ -2,7 +2,7 @@ name: Update JSON and redeploy
 
 on:
   schedule:
-    - cron: "0 */5 * * *"   # cada 5 horas (UTC)
+    - cron: "0 */1 * * *"   # cada 1 hora (UTC)
   workflow_dispatch:         # permite lanzarlo manualmente desde Actions
 
 permissions:
