@@ -16,6 +16,21 @@
   },
   {
     "posicion": "2",
+    "codigo": "BAR",
+    "club": "Barcelona",
+    "estadisticas": {
+      "J": "4",
+      "G": "3",
+      "E": "1",
+      "P": "0",
+      "GF": "13",
+      "GC": "3",
+      "DIF": "+10",
+      "PTS": "10"
+    }
+  },
+  {
+    "posicion": "3",
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
@@ -30,7 +45,7 @@
     }
   },
   {
-    "posicion": "3",
+    "posicion": "4",
     "codigo": "ATH",
     "club": "Athletic Club",
     "estadisticas": {
@@ -45,7 +60,7 @@
     }
   },
   {
-    "posicion": "4",
+    "posicion": "5",
     "codigo": "VLR",
     "club": "Villarreal",
     "estadisticas": {
@@ -56,21 +71,6 @@
       "GF": "8",
       "GC": "3",
       "DIF": "+5",
-      "PTS": "7"
-    }
-  },
-  {
-    "posicion": "5",
-    "codigo": "BAR",
-    "club": "Barcelona",
-    "estadisticas": {
-      "J": "3",
-      "G": "2",
-      "E": "1",
-      "P": "0",
-      "GF": "7",
-      "GC": "3",
-      "DIF": "+4",
       "PTS": "7"
     }
   },
@@ -166,21 +166,6 @@
   },
   {
     "posicion": "12",
-    "codigo": "VAL",
-    "club": "Valencia",
-    "estadisticas": {
-      "J": "3",
-      "G": "1",
-      "E": "1",
-      "P": "1",
-      "GF": "4",
-      "GC": "2",
-      "DIF": "+2",
-      "PTS": "4"
-    }
-  },
-  {
-    "posicion": "13",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -195,7 +180,7 @@
     }
   },
   {
-    "posicion": "14",
+    "posicion": "13",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -210,7 +195,7 @@
     }
   },
   {
-    "posicion": "15",
+    "posicion": "14",
     "codigo": "VIG",
     "club": "Celta Vigo",
     "estadisticas": {
@@ -221,6 +206,21 @@
       "GF": "4",
       "GC": "6",
       "DIF": "-2",
+      "PTS": "4"
+    }
+  },
+  {
+    "posicion": "15",
+    "codigo": "VAL",
+    "club": "Valencia",
+    "estadisticas": {
+      "J": "4",
+      "G": "1",
+      "E": "1",
+      "P": "2",
+      "GF": "4",
+      "GC": "8",
+      "DIF": "-4",
       "PTS": "4"
     }
   },
