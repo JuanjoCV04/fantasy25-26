@@ -46,6 +46,21 @@
   },
   {
     "posicion": "4",
+    "codigo": "BET",
+    "club": "Real Betis",
+    "estadisticas": {
+      "J": "6",
+      "G": "2",
+      "E": "3",
+      "P": "1",
+      "GF": "9",
+      "GC": "7",
+      "DIF": "+2",
+      "PTS": "9"
+    }
+  },
+  {
+    "posicion": "5",
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
@@ -60,7 +75,7 @@
     }
   },
   {
-    "posicion": "5",
+    "posicion": "6",
     "codigo": "ATH",
     "club": "Athletic Club",
     "estadisticas": {
@@ -75,7 +90,7 @@
     }
   },
   {
-    "posicion": "6",
+    "posicion": "7",
     "codigo": "VLR",
     "club": "Villarreal",
     "estadisticas": {
@@ -90,7 +105,7 @@
     }
   },
   {
-    "posicion": "7",
+    "posicion": "8",
     "codigo": "ALA",
     "club": "Alavés",
     "estadisticas": {
@@ -105,7 +120,7 @@
     }
   },
   {
-    "posicion": "8",
+    "posicion": "9",
     "codigo": "ELC",
     "club": "Elche",
     "estadisticas": {
@@ -120,7 +135,7 @@
     }
   },
   {
-    "posicion": "9",
+    "posicion": "10",
     "codigo": "OSA",
     "club": "Osasuna",
     "estadisticas": {
@@ -131,21 +146,6 @@
       "GF": "3",
       "GC": "2",
       "DIF": "+1",
-      "PTS": "6"
-    }
-  },
-  {
-    "posicion": "10",
-    "codigo": "BET",
-    "club": "Real Betis",
-    "estadisticas": {
-      "J": "5",
-      "G": "1",
-      "E": "3",
-      "P": "1",
-      "GF": "6",
-      "GC": "6",
-      "DIF": "0",
       "PTS": "6"
     }
   },
@@ -244,13 +244,13 @@
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
-      "J": "4",
+      "J": "5",
       "G": "0",
       "E": "2",
-      "P": "2",
-      "GF": "4",
-      "GC": "6",
-      "DIF": "-2",
+      "P": "3",
+      "GF": "5",
+      "GC": "9",
+      "DIF": "-4",
       "PTS": "2"
     }
   },
