@@ -166,6 +166,21 @@
   },
   {
     "posicion": "12",
+    "codigo": "LEV",
+    "club": "Levante",
+    "estadisticas": {
+      "J": "5",
+      "G": "1",
+      "E": "1",
+      "P": "3",
+      "GF": "9",
+      "GC": "9",
+      "DIF": "0",
+      "PTS": "4"
+    }
+  },
+  {
+    "posicion": "13",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -180,7 +195,7 @@
     }
   },
   {
-    "posicion": "13",
+    "posicion": "14",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -195,7 +210,7 @@
     }
   },
   {
-    "posicion": "14",
+    "posicion": "15",
     "codigo": "VIG",
     "club": "Celta Vigo",
     "estadisticas": {
@@ -210,7 +225,7 @@
     }
   },
   {
-    "posicion": "15",
+    "posicion": "16",
     "codigo": "VAL",
     "club": "Valencia",
     "estadisticas": {
@@ -225,7 +240,7 @@
     }
   },
   {
-    "posicion": "16",
+    "posicion": "17",
     "codigo": "OVI",
     "club": "Real Oviedo",
     "estadisticas": {
@@ -240,7 +255,7 @@
     }
   },
   {
-    "posicion": "17",
+    "posicion": "18",
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
@@ -252,21 +267,6 @@
       "GC": "9",
       "DIF": "-4",
       "PTS": "2"
-    }
-  },
-  {
-    "posicion": "18",
-    "codigo": "LEV",
-    "club": "Levante",
-    "estadisticas": {
-      "J": "4",
-      "G": "0",
-      "E": "1",
-      "P": "3",
-      "GF": "5",
-      "GC": "9",
-      "DIF": "-4",
-      "PTS": "1"
     }
   },
   {
@@ -289,13 +289,13 @@
     "codigo": "GIR",
     "club": "Girona",
     "estadisticas": {
-      "J": "4",
+      "J": "5",
       "G": "0",
       "E": "1",
-      "P": "3",
+      "P": "4",
       "GF": "2",
-      "GC": "11",
-      "DIF": "-9",
+      "GC": "15",
+      "DIF": "-13",
       "PTS": "1"
     }
   }
