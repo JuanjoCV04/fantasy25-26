@@ -196,6 +196,36 @@
   },
   {
     "posicion": "14",
+    "codigo": "RAY",
+    "club": "Rayo Vallecano",
+    "estadisticas": {
+      "J": "5",
+      "G": "1",
+      "E": "2",
+      "P": "2",
+      "GF": "5",
+      "GC": "6",
+      "DIF": "-1",
+      "PTS": "5"
+    }
+  },
+  {
+    "posicion": "15",
+    "codigo": "VIG",
+    "club": "Celta Vigo",
+    "estadisticas": {
+      "J": "6",
+      "G": "0",
+      "E": "5",
+      "P": "1",
+      "GF": "5",
+      "GC": "7",
+      "DIF": "-2",
+      "PTS": "5"
+    }
+  },
+  {
+    "posicion": "16",
     "codigo": "LEV",
     "club": "Levante",
     "estadisticas": {
@@ -206,36 +236,6 @@
       "GF": "9",
       "GC": "9",
       "DIF": "0",
-      "PTS": "4"
-    }
-  },
-  {
-    "posicion": "15",
-    "codigo": "RAY",
-    "club": "Rayo Vallecano",
-    "estadisticas": {
-      "J": "4",
-      "G": "1",
-      "E": "1",
-      "P": "2",
-      "GF": "4",
-      "GC": "5",
-      "DIF": "-1",
-      "PTS": "4"
-    }
-  },
-  {
-    "posicion": "16",
-    "codigo": "VIG",
-    "club": "Celta Vigo",
-    "estadisticas": {
-      "J": "5",
-      "G": "0",
-      "E": "4",
-      "P": "1",
-      "GF": "4",
-      "GC": "6",
-      "DIF": "-2",
       "PTS": "4"
     }
   },
