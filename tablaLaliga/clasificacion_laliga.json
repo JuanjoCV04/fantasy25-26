@@ -19,14 +19,14 @@
     "codigo": "BAR",
     "club": "Barcelona",
     "estadisticas": {
-      "J": "4",
-      "G": "3",
+      "J": "5",
+      "G": "4",
       "E": "1",
       "P": "0",
-      "GF": "13",
+      "GF": "16",
       "GC": "3",
-      "DIF": "+10",
-      "PTS": "10"
+      "DIF": "+13",
+      "PTS": "13"
     }
   },
   {
@@ -91,21 +91,6 @@
   },
   {
     "posicion": "7",
-    "codigo": "GET",
-    "club": "Getafe",
-    "estadisticas": {
-      "J": "4",
-      "G": "3",
-      "E": "0",
-      "P": "1",
-      "GF": "6",
-      "GC": "4",
-      "DIF": "+2",
-      "PTS": "9"
-    }
-  },
-  {
-    "posicion": "8",
     "codigo": "ATH",
     "club": "Athletic Club",
     "estadisticas": {
@@ -116,6 +101,21 @@
       "GF": "6",
       "GC": "6",
       "DIF": "0",
+      "PTS": "9"
+    }
+  },
+  {
+    "posicion": "8",
+    "codigo": "GET",
+    "club": "Getafe",
+    "estadisticas": {
+      "J": "5",
+      "G": "3",
+      "E": "0",
+      "P": "2",
+      "GF": "6",
+      "GC": "7",
+      "DIF": "-1",
       "PTS": "9"
     }
   },
