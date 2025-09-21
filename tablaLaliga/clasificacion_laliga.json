@@ -166,6 +166,21 @@
   },
   {
     "posicion": "12",
+    "codigo": "ATL",
+    "club": "Atlético Madrid",
+    "estadisticas": {
+      "J": "5",
+      "G": "1",
+      "E": "3",
+      "P": "1",
+      "GF": "6",
+      "GC": "5",
+      "DIF": "+1",
+      "PTS": "6"
+    }
+  },
+  {
+    "posicion": "13",
     "codigo": "OSA",
     "club": "Osasuna",
     "estadisticas": {
@@ -177,21 +192,6 @@
       "GC": "4",
       "DIF": "0",
       "PTS": "6"
-    }
-  },
-  {
-    "posicion": "13",
-    "codigo": "ATL",
-    "club": "Atlético Madrid",
-    "estadisticas": {
-      "J": "4",
-      "G": "1",
-      "E": "2",
-      "P": "1",
-      "GF": "5",
-      "GC": "4",
-      "DIF": "+1",
-      "PTS": "5"
     }
   },
   {
@@ -274,14 +274,14 @@
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
-      "J": "4",
+      "J": "5",
       "G": "0",
-      "E": "1",
+      "E": "2",
       "P": "3",
-      "GF": "4",
-      "GC": "9",
+      "GF": "5",
+      "GC": "10",
       "DIF": "-5",
-      "PTS": "1"
+      "PTS": "2"
     }
   },
   {
