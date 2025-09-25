@@ -61,6 +61,21 @@
   },
   {
     "posicion": "5",
+    "codigo": "ELC",
+    "club": "Elche",
+    "estadisticas": {
+      "J": "6",
+      "G": "2",
+      "E": "4",
+      "P": "0",
+      "GF": "8",
+      "GC": "5",
+      "DIF": "+3",
+      "PTS": "10"
+    }
+  },
+  {
+    "posicion": "6",
     "codigo": "ATH",
     "club": "Athletic Club",
     "estadisticas": {
@@ -75,7 +90,7 @@
     }
   },
   {
-    "posicion": "6",
+    "posicion": "7",
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
@@ -87,21 +102,6 @@
       "GC": "8",
       "DIF": "-1",
       "PTS": "10"
-    }
-  },
-  {
-    "posicion": "7",
-    "codigo": "ELC",
-    "club": "Elche",
-    "estadisticas": {
-      "J": "5",
-      "G": "2",
-      "E": "3",
-      "P": "0",
-      "GF": "7",
-      "GC": "4",
-      "DIF": "+3",
-      "PTS": "9"
     }
   },
   {
@@ -184,14 +184,14 @@
     "codigo": "OSA",
     "club": "Osasuna",
     "estadisticas": {
-      "J": "5",
+      "J": "6",
       "G": "2",
-      "E": "0",
+      "E": "1",
       "P": "3",
-      "GF": "4",
-      "GC": "4",
+      "GF": "5",
+      "GC": "5",
       "DIF": "0",
-      "PTS": "6"
+      "PTS": "7"
     }
   },
   {
