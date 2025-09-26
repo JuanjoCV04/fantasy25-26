@@ -49,14 +49,14 @@
     "codigo": "ESP",
     "club": "Espanyol",
     "estadisticas": {
-      "J": "6",
+      "J": "7",
       "G": "3",
-      "E": "2",
+      "E": "3",
       "P": "1",
       "GF": "10",
       "GC": "9",
       "DIF": "+1",
-      "PTS": "11"
+      "PTS": "12"
     }
   },
   {
@@ -271,6 +271,21 @@
   },
   {
     "posicion": "19",
+    "codigo": "GIR",
+    "club": "Girona",
+    "estadisticas": {
+      "J": "7",
+      "G": "0",
+      "E": "3",
+      "P": "4",
+      "GF": "3",
+      "GC": "16",
+      "DIF": "-13",
+      "PTS": "3"
+    }
+  },
+  {
+    "posicion": "20",
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
@@ -281,21 +296,6 @@
       "GF": "5",
       "GC": "11",
       "DIF": "-6",
-      "PTS": "2"
-    }
-  },
-  {
-    "posicion": "20",
-    "codigo": "GIR",
-    "club": "Girona",
-    "estadisticas": {
-      "J": "6",
-      "G": "0",
-      "E": "2",
-      "P": "4",
-      "GF": "3",
-      "GC": "16",
-      "DIF": "-13",
       "PTS": "2"
     }
   }
