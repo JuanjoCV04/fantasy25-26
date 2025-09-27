@@ -34,14 +34,14 @@
     "codigo": "VLR",
     "club": "Villarreal",
     "estadisticas": {
-      "J": "6",
-      "G": "4",
+      "J": "7",
+      "G": "5",
       "E": "1",
       "P": "1",
-      "GF": "12",
+      "GF": "13",
       "GC": "5",
-      "DIF": "+7",
-      "PTS": "13"
+      "DIF": "+8",
+      "PTS": "16"
     }
   },
   {
@@ -109,13 +109,13 @@
     "codigo": "ATH",
     "club": "Athletic Club",
     "estadisticas": {
-      "J": "6",
+      "J": "7",
       "G": "3",
       "E": "1",
-      "P": "2",
+      "P": "3",
       "GF": "7",
-      "GC": "7",
-      "DIF": "0",
+      "GC": "8",
+      "DIF": "-1",
       "PTS": "10"
     }
   },
