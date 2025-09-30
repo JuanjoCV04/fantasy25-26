@@ -169,13 +169,13 @@
     "codigo": "VAL",
     "club": "Valencia",
     "estadisticas": {
-      "J": "6",
+      "J": "7",
       "G": "2",
       "E": "2",
-      "P": "2",
-      "GF": "8",
-      "GC": "10",
-      "DIF": "-2",
+      "P": "3",
+      "GF": "9",
+      "GC": "12",
+      "DIF": "-3",
       "PTS": "8"
     }
   },
@@ -196,6 +196,21 @@
   },
   {
     "posicion": "14",
+    "codigo": "OVI",
+    "club": "Real Oviedo",
+    "estadisticas": {
+      "J": "7",
+      "G": "2",
+      "E": "0",
+      "P": "5",
+      "GF": "4",
+      "GC": "12",
+      "DIF": "-8",
+      "PTS": "6"
+    }
+  },
+  {
+    "posicion": "15",
     "codigo": "LEV",
     "club": "Levante",
     "estadisticas": {
@@ -210,7 +225,7 @@
     }
   },
   {
-    "posicion": "15",
+    "posicion": "16",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -225,7 +240,7 @@
     }
   },
   {
-    "posicion": "16",
+    "posicion": "17",
     "codigo": "VIG",
     "club": "Celta Vigo",
     "estadisticas": {
@@ -240,7 +255,7 @@
     }
   },
   {
-    "posicion": "17",
+    "posicion": "18",
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
@@ -255,7 +270,7 @@
     }
   },
   {
-    "posicion": "18",
+    "posicion": "19",
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
@@ -267,21 +282,6 @@
       "GC": "11",
       "DIF": "-5",
       "PTS": "5"
-    }
-  },
-  {
-    "posicion": "19",
-    "codigo": "OVI",
-    "club": "Real Oviedo",
-    "estadisticas": {
-      "J": "6",
-      "G": "1",
-      "E": "0",
-      "P": "5",
-      "GF": "2",
-      "GC": "11",
-      "DIF": "-9",
-      "PTS": "3"
     }
   },
   {
