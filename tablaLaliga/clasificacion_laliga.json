@@ -1,6 +1,21 @@
 [
   {
     "posicion": "1",
+    "codigo": "MAD",
+    "club": "Real Madrid",
+    "estadisticas": {
+      "J": "8",
+      "G": "7",
+      "E": "0",
+      "P": "1",
+      "GF": "19",
+      "GC": "9",
+      "DIF": "+10",
+      "PTS": "21"
+    }
+  },
+  {
+    "posicion": "2",
     "codigo": "BAR",
     "club": "Barcelona",
     "estadisticas": {
@@ -15,32 +30,17 @@
     }
   },
   {
-    "posicion": "2",
-    "codigo": "MAD",
-    "club": "Real Madrid",
-    "estadisticas": {
-      "J": "7",
-      "G": "6",
-      "E": "0",
-      "P": "1",
-      "GF": "16",
-      "GC": "8",
-      "DIF": "+8",
-      "PTS": "18"
-    }
-  },
-  {
     "posicion": "3",
     "codigo": "VLR",
     "club": "Villarreal",
     "estadisticas": {
-      "J": "7",
+      "J": "8",
       "G": "5",
       "E": "1",
-      "P": "1",
-      "GF": "13",
-      "GC": "5",
-      "DIF": "+8",
+      "P": "2",
+      "GF": "14",
+      "GC": "8",
+      "DIF": "+6",
       "PTS": "16"
     }
   },
