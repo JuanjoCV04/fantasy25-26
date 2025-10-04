@@ -61,6 +61,21 @@
   },
   {
     "posicion": "5",
+    "codigo": "ATH",
+    "club": "Athletic Club",
+    "estadisticas": {
+      "J": "8",
+      "G": "4",
+      "E": "1",
+      "P": "3",
+      "GF": "9",
+      "GC": "9",
+      "DIF": "0",
+      "PTS": "13"
+    }
+  },
+  {
+    "posicion": "6",
     "codigo": "ATL",
     "club": "Atlético Madrid",
     "estadisticas": {
@@ -75,7 +90,7 @@
     }
   },
   {
-    "posicion": "6",
+    "posicion": "7",
     "codigo": "BET",
     "club": "Real Betis",
     "estadisticas": {
@@ -90,7 +105,7 @@
     }
   },
   {
-    "posicion": "7",
+    "posicion": "8",
     "codigo": "ESP",
     "club": "Espanyol",
     "estadisticas": {
@@ -105,7 +120,7 @@
     }
   },
   {
-    "posicion": "8",
+    "posicion": "9",
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
@@ -120,7 +135,7 @@
     }
   },
   {
-    "posicion": "9",
+    "posicion": "10",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -131,21 +146,6 @@
       "GF": "11",
       "GC": "10",
       "DIF": "+1",
-      "PTS": "10"
-    }
-  },
-  {
-    "posicion": "10",
-    "codigo": "ATH",
-    "club": "Athletic Club",
-    "estadisticas": {
-      "J": "7",
-      "G": "3",
-      "E": "1",
-      "P": "3",
-      "GF": "7",
-      "GC": "8",
-      "DIF": "-1",
       "PTS": "10"
     }
   },
@@ -289,13 +289,13 @@
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
-      "J": "7",
+      "J": "8",
       "G": "1",
       "E": "2",
-      "P": "4",
-      "GF": "6",
-      "GC": "11",
-      "DIF": "-5",
+      "P": "5",
+      "GF": "7",
+      "GC": "13",
+      "DIF": "-6",
       "PTS": "5"
     }
   }
