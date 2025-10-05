@@ -19,13 +19,13 @@
     "codigo": "BAR",
     "club": "Barcelona",
     "estadisticas": {
-      "J": "7",
+      "J": "8",
       "G": "6",
       "E": "1",
-      "P": "0",
-      "GF": "21",
-      "GC": "5",
-      "DIF": "+16",
+      "P": "1",
+      "GF": "22",
+      "GC": "9",
+      "DIF": "+13",
       "PTS": "19"
     }
   },
@@ -46,6 +46,21 @@
   },
   {
     "posicion": "4",
+    "codigo": "SEV",
+    "club": "Sevilla FC",
+    "estadisticas": {
+      "J": "8",
+      "G": "4",
+      "E": "1",
+      "P": "3",
+      "GF": "15",
+      "GC": "11",
+      "DIF": "+4",
+      "PTS": "13"
+    }
+  },
+  {
+    "posicion": "5",
     "codigo": "ELC",
     "club": "Elche",
     "estadisticas": {
@@ -60,7 +75,7 @@
     }
   },
   {
-    "posicion": "5",
+    "posicion": "6",
     "codigo": "ATH",
     "club": "Athletic Club",
     "estadisticas": {
@@ -75,7 +90,7 @@
     }
   },
   {
-    "posicion": "6",
+    "posicion": "7",
     "codigo": "ATL",
     "club": "Atlético Madrid",
     "estadisticas": {
@@ -90,7 +105,7 @@
     }
   },
   {
-    "posicion": "7",
+    "posicion": "8",
     "codigo": "BET",
     "club": "Real Betis",
     "estadisticas": {
@@ -105,7 +120,7 @@
     }
   },
   {
-    "posicion": "8",
+    "posicion": "9",
     "codigo": "ESP",
     "club": "Espanyol",
     "estadisticas": {
@@ -120,7 +135,7 @@
     }
   },
   {
-    "posicion": "9",
+    "posicion": "10",
     "codigo": "ALA",
     "club": "Alavés",
     "estadisticas": {
@@ -135,7 +150,7 @@
     }
   },
   {
-    "posicion": "10",
+    "posicion": "11",
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
@@ -147,21 +162,6 @@
       "GC": "11",
       "DIF": "-2",
       "PTS": "11"
-    }
-  },
-  {
-    "posicion": "11",
-    "codigo": "SEV",
-    "club": "Sevilla FC",
-    "estadisticas": {
-      "J": "7",
-      "G": "3",
-      "E": "1",
-      "P": "3",
-      "GF": "11",
-      "GC": "10",
-      "DIF": "+1",
-      "PTS": "10"
     }
   },
   {
