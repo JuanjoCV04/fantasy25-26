@@ -61,6 +61,21 @@
   },
   {
     "posicion": "5",
+    "codigo": "ESP",
+    "club": "Espanyol",
+    "estadisticas": {
+      "J": "9",
+      "G": "4",
+      "E": "3",
+      "P": "2",
+      "GF": "13",
+      "GC": "11",
+      "DIF": "+2",
+      "PTS": "15"
+    }
+  },
+  {
+    "posicion": "6",
     "codigo": "ATL",
     "club": "Atlético Madrid",
     "estadisticas": {
@@ -75,7 +90,7 @@
     }
   },
   {
-    "posicion": "6",
+    "posicion": "7",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -90,7 +105,7 @@
     }
   },
   {
-    "posicion": "7",
+    "posicion": "8",
     "codigo": "ELC",
     "club": "Elche",
     "estadisticas": {
@@ -105,7 +120,7 @@
     }
   },
   {
-    "posicion": "8",
+    "posicion": "9",
     "codigo": "ATH",
     "club": "Athletic Club",
     "estadisticas": {
@@ -117,21 +132,6 @@
       "GC": "9",
       "DIF": "0",
       "PTS": "13"
-    }
-  },
-  {
-    "posicion": "9",
-    "codigo": "ESP",
-    "club": "Espanyol",
-    "estadisticas": {
-      "J": "8",
-      "G": "3",
-      "E": "3",
-      "P": "2",
-      "GF": "11",
-      "GC": "11",
-      "DIF": "0",
-      "PTS": "12"
     }
   },
   {
@@ -241,21 +241,6 @@
   },
   {
     "posicion": "17",
-    "codigo": "OVI",
-    "club": "Real Oviedo",
-    "estadisticas": {
-      "J": "8",
-      "G": "2",
-      "E": "0",
-      "P": "6",
-      "GF": "4",
-      "GC": "14",
-      "DIF": "-10",
-      "PTS": "6"
-    }
-  },
-  {
-    "posicion": "18",
     "codigo": "GIR",
     "club": "Girona",
     "estadisticas": {
@@ -265,6 +250,21 @@
       "P": "4",
       "GF": "5",
       "GC": "17",
+      "DIF": "-12",
+      "PTS": "6"
+    }
+  },
+  {
+    "posicion": "18",
+    "codigo": "OVI",
+    "club": "Real Oviedo",
+    "estadisticas": {
+      "J": "9",
+      "G": "2",
+      "E": "0",
+      "P": "7",
+      "GF": "4",
+      "GC": "16",
       "DIF": "-12",
       "PTS": "6"
     }
