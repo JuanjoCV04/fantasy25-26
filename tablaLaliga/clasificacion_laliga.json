@@ -46,6 +46,21 @@
   },
   {
     "posicion": "4",
+    "codigo": "ATL",
+    "club": "Atlético Madrid",
+    "estadisticas": {
+      "J": "9",
+      "G": "4",
+      "E": "4",
+      "P": "1",
+      "GF": "16",
+      "GC": "10",
+      "DIF": "+6",
+      "PTS": "16"
+    }
+  },
+  {
+    "posicion": "5",
     "codigo": "BET",
     "club": "Real Betis",
     "estadisticas": {
@@ -60,7 +75,7 @@
     }
   },
   {
-    "posicion": "5",
+    "posicion": "6",
     "codigo": "ESP",
     "club": "Espanyol",
     "estadisticas": {
@@ -72,21 +87,6 @@
       "GC": "11",
       "DIF": "+2",
       "PTS": "15"
-    }
-  },
-  {
-    "posicion": "6",
-    "codigo": "ATL",
-    "club": "Atlético Madrid",
-    "estadisticas": {
-      "J": "8",
-      "G": "3",
-      "E": "4",
-      "P": "1",
-      "GF": "15",
-      "GC": "10",
-      "DIF": "+5",
-      "PTS": "13"
     }
   },
   {
@@ -169,13 +169,13 @@
     "codigo": "OSA",
     "club": "Osasuna",
     "estadisticas": {
-      "J": "8",
+      "J": "9",
       "G": "3",
       "E": "1",
-      "P": "4",
+      "P": "5",
       "GF": "7",
-      "GC": "8",
-      "DIF": "-1",
+      "GC": "9",
+      "DIF": "-2",
       "PTS": "10"
     }
   },
