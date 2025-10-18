@@ -1,6 +1,21 @@
 [
   {
     "posicion": "1",
+    "codigo": "BAR",
+    "club": "Barcelona",
+    "estadisticas": {
+      "J": "9",
+      "G": "7",
+      "E": "1",
+      "P": "1",
+      "GF": "24",
+      "GC": "10",
+      "DIF": "+14",
+      "PTS": "22"
+    }
+  },
+  {
+    "posicion": "2",
     "codigo": "MAD",
     "club": "Real Madrid",
     "estadisticas": {
@@ -12,21 +27,6 @@
       "GC": "9",
       "DIF": "+10",
       "PTS": "21"
-    }
-  },
-  {
-    "posicion": "2",
-    "codigo": "BAR",
-    "club": "Barcelona",
-    "estadisticas": {
-      "J": "8",
-      "G": "6",
-      "E": "1",
-      "P": "1",
-      "GF": "22",
-      "GC": "9",
-      "DIF": "+13",
-      "PTS": "19"
     }
   },
   {
@@ -256,21 +256,6 @@
   },
   {
     "posicion": "18",
-    "codigo": "GIR",
-    "club": "Girona",
-    "estadisticas": {
-      "J": "8",
-      "G": "1",
-      "E": "3",
-      "P": "4",
-      "GF": "5",
-      "GC": "17",
-      "DIF": "-12",
-      "PTS": "6"
-    }
-  },
-  {
-    "posicion": "19",
     "codigo": "OVI",
     "club": "Real Oviedo",
     "estadisticas": {
@@ -281,6 +266,21 @@
       "GF": "4",
       "GC": "16",
       "DIF": "-12",
+      "PTS": "6"
+    }
+  },
+  {
+    "posicion": "19",
+    "codigo": "GIR",
+    "club": "Girona",
+    "estadisticas": {
+      "J": "9",
+      "G": "1",
+      "E": "3",
+      "P": "5",
+      "GF": "6",
+      "GC": "19",
+      "DIF": "-13",
       "PTS": "6"
     }
   },
