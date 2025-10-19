@@ -1,6 +1,21 @@
 [
   {
     "posicion": "1",
+    "codigo": "MAD",
+    "club": "Real Madrid",
+    "estadisticas": {
+      "J": "9",
+      "G": "8",
+      "E": "0",
+      "P": "1",
+      "GF": "20",
+      "GC": "9",
+      "DIF": "+11",
+      "PTS": "24"
+    }
+  },
+  {
+    "posicion": "2",
     "codigo": "BAR",
     "club": "Barcelona",
     "estadisticas": {
@@ -12,21 +27,6 @@
       "GC": "10",
       "DIF": "+14",
       "PTS": "22"
-    }
-  },
-  {
-    "posicion": "2",
-    "codigo": "MAD",
-    "club": "Real Madrid",
-    "estadisticas": {
-      "J": "8",
-      "G": "7",
-      "E": "0",
-      "P": "1",
-      "GF": "19",
-      "GC": "9",
-      "DIF": "+10",
-      "PTS": "21"
     }
   },
   {
@@ -169,13 +169,13 @@
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
-      "J": "8",
+      "J": "9",
       "G": "3",
       "E": "2",
-      "P": "3",
+      "P": "4",
       "GF": "9",
-      "GC": "11",
-      "DIF": "-2",
+      "GC": "12",
+      "DIF": "-3",
       "PTS": "11"
     }
   },
