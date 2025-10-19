@@ -91,6 +91,36 @@
   },
   {
     "posicion": "7",
+    "codigo": "ELC",
+    "club": "Elche",
+    "estadisticas": {
+      "J": "9",
+      "G": "3",
+      "E": "5",
+      "P": "1",
+      "GF": "11",
+      "GC": "9",
+      "DIF": "+2",
+      "PTS": "14"
+    }
+  },
+  {
+    "posicion": "8",
+    "codigo": "ATH",
+    "club": "Athletic Club",
+    "estadisticas": {
+      "J": "9",
+      "G": "4",
+      "E": "2",
+      "P": "3",
+      "GF": "9",
+      "GC": "9",
+      "DIF": "0",
+      "PTS": "14"
+    }
+  },
+  {
+    "posicion": "9",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -101,36 +131,6 @@
       "GF": "16",
       "GC": "14",
       "DIF": "+2",
-      "PTS": "13"
-    }
-  },
-  {
-    "posicion": "8",
-    "codigo": "ELC",
-    "club": "Elche",
-    "estadisticas": {
-      "J": "8",
-      "G": "3",
-      "E": "4",
-      "P": "1",
-      "GF": "11",
-      "GC": "9",
-      "DIF": "+2",
-      "PTS": "13"
-    }
-  },
-  {
-    "posicion": "9",
-    "codigo": "ATH",
-    "club": "Athletic Club",
-    "estadisticas": {
-      "J": "8",
-      "G": "4",
-      "E": "1",
-      "P": "3",
-      "GF": "9",
-      "GC": "9",
-      "DIF": "0",
       "PTS": "13"
     }
   },
