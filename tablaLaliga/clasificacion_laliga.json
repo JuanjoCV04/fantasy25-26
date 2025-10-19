@@ -244,18 +244,33 @@
     "codigo": "VIG",
     "club": "Celta Vigo",
     "estadisticas": {
-      "J": "8",
+      "J": "9",
       "G": "0",
-      "E": "6",
+      "E": "7",
       "P": "2",
-      "GF": "7",
-      "GC": "10",
+      "GF": "8",
+      "GC": "11",
       "DIF": "-3",
-      "PTS": "6"
+      "PTS": "7"
     }
   },
   {
     "posicion": "18",
+    "codigo": "SOC",
+    "club": "Real Sociedad",
+    "estadisticas": {
+      "J": "9",
+      "G": "1",
+      "E": "3",
+      "P": "5",
+      "GF": "8",
+      "GC": "13",
+      "DIF": "-5",
+      "PTS": "6"
+    }
+  },
+  {
+    "posicion": "19",
     "codigo": "OVI",
     "club": "Real Oviedo",
     "estadisticas": {
@@ -270,7 +285,7 @@
     }
   },
   {
-    "posicion": "19",
+    "posicion": "20",
     "codigo": "GIR",
     "club": "Girona",
     "estadisticas": {
@@ -282,21 +297,6 @@
       "GC": "19",
       "DIF": "-13",
       "PTS": "6"
-    }
-  },
-  {
-    "posicion": "20",
-    "codigo": "SOC",
-    "club": "Real Sociedad",
-    "estadisticas": {
-      "J": "8",
-      "G": "1",
-      "E": "2",
-      "P": "5",
-      "GF": "7",
-      "GC": "12",
-      "DIF": "-5",
-      "PTS": "5"
     }
   }
 ]
