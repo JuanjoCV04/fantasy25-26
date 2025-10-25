@@ -31,6 +31,21 @@
   },
   {
     "posicion": "3",
+    "codigo": "ESP",
+    "club": "Espanyol",
+    "estadisticas": {
+      "J": "10",
+      "G": "5",
+      "E": "3",
+      "P": "2",
+      "GF": "14",
+      "GC": "11",
+      "DIF": "+3",
+      "PTS": "18"
+    }
+  },
+  {
+    "posicion": "4",
     "codigo": "VLR",
     "club": "Villarreal",
     "estadisticas": {
@@ -45,7 +60,7 @@
     }
   },
   {
-    "posicion": "4",
+    "posicion": "5",
     "codigo": "ATL",
     "club": "Atlético Madrid",
     "estadisticas": {
@@ -60,7 +75,7 @@
     }
   },
   {
-    "posicion": "5",
+    "posicion": "6",
     "codigo": "BET",
     "club": "Real Betis",
     "estadisticas": {
@@ -75,32 +90,17 @@
     }
   },
   {
-    "posicion": "6",
-    "codigo": "ESP",
-    "club": "Espanyol",
-    "estadisticas": {
-      "J": "9",
-      "G": "4",
-      "E": "3",
-      "P": "2",
-      "GF": "13",
-      "GC": "11",
-      "DIF": "+2",
-      "PTS": "15"
-    }
-  },
-  {
     "posicion": "7",
     "codigo": "ELC",
     "club": "Elche",
     "estadisticas": {
-      "J": "9",
+      "J": "10",
       "G": "3",
       "E": "5",
-      "P": "1",
+      "P": "2",
       "GF": "11",
-      "GC": "9",
-      "DIF": "+2",
+      "GC": "10",
+      "DIF": "+1",
       "PTS": "14"
     }
   },
