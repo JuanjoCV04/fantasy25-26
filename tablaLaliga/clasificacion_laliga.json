@@ -31,6 +31,21 @@
   },
   {
     "posicion": "3",
+    "codigo": "VLR",
+    "club": "Villarreal",
+    "estadisticas": {
+      "J": "10",
+      "G": "6",
+      "E": "2",
+      "P": "2",
+      "GF": "18",
+      "GC": "10",
+      "DIF": "+8",
+      "PTS": "20"
+    }
+  },
+  {
+    "posicion": "4",
     "codigo": "ESP",
     "club": "Espanyol",
     "estadisticas": {
@@ -42,21 +57,6 @@
       "GC": "11",
       "DIF": "+3",
       "PTS": "18"
-    }
-  },
-  {
-    "posicion": "4",
-    "codigo": "VLR",
-    "club": "Villarreal",
-    "estadisticas": {
-      "J": "9",
-      "G": "5",
-      "E": "2",
-      "P": "2",
-      "GF": "16",
-      "GC": "10",
-      "DIF": "+6",
-      "PTS": "17"
     }
   },
   {
@@ -196,21 +196,6 @@
   },
   {
     "posicion": "14",
-    "codigo": "VAL",
-    "club": "Valencia",
-    "estadisticas": {
-      "J": "9",
-      "G": "2",
-      "E": "3",
-      "P": "4",
-      "GF": "10",
-      "GC": "14",
-      "DIF": "-4",
-      "PTS": "9"
-    }
-  },
-  {
-    "posicion": "15",
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
@@ -221,6 +206,21 @@
       "GF": "10",
       "GC": "14",
       "DIF": "-4",
+      "PTS": "9"
+    }
+  },
+  {
+    "posicion": "15",
+    "codigo": "VAL",
+    "club": "Valencia",
+    "estadisticas": {
+      "J": "10",
+      "G": "2",
+      "E": "3",
+      "P": "5",
+      "GF": "10",
+      "GC": "16",
+      "DIF": "-6",
       "PTS": "9"
     }
   },
