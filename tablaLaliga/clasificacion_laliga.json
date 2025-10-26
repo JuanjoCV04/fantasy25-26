@@ -196,6 +196,36 @@
   },
   {
     "posicion": "14",
+    "codigo": "LEV",
+    "club": "Levante",
+    "estadisticas": {
+      "J": "10",
+      "G": "2",
+      "E": "3",
+      "P": "5",
+      "GF": "14",
+      "GC": "18",
+      "DIF": "-4",
+      "PTS": "9"
+    }
+  },
+  {
+    "posicion": "15",
+    "codigo": "MLA",
+    "club": "Mallorca",
+    "estadisticas": {
+      "J": "10",
+      "G": "2",
+      "E": "3",
+      "P": "5",
+      "GF": "11",
+      "GC": "15",
+      "DIF": "-4",
+      "PTS": "9"
+    }
+  },
+  {
+    "posicion": "16",
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
@@ -210,7 +240,7 @@
     }
   },
   {
-    "posicion": "15",
+    "posicion": "17",
     "codigo": "VAL",
     "club": "Valencia",
     "estadisticas": {
@@ -222,36 +252,6 @@
       "GC": "16",
       "DIF": "-6",
       "PTS": "9"
-    }
-  },
-  {
-    "posicion": "16",
-    "codigo": "LEV",
-    "club": "Levante",
-    "estadisticas": {
-      "J": "9",
-      "G": "2",
-      "E": "2",
-      "P": "5",
-      "GF": "13",
-      "GC": "17",
-      "DIF": "-4",
-      "PTS": "8"
-    }
-  },
-  {
-    "posicion": "17",
-    "codigo": "MLA",
-    "club": "Mallorca",
-    "estadisticas": {
-      "J": "9",
-      "G": "2",
-      "E": "2",
-      "P": "5",
-      "GF": "10",
-      "GC": "14",
-      "DIF": "-4",
-      "PTS": "8"
     }
   },
   {
