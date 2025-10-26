@@ -181,21 +181,36 @@
   },
   {
     "posicion": "13",
-    "codigo": "OSA",
-    "club": "Osasuna",
+    "codigo": "VIG",
+    "club": "Celta Vigo",
     "estadisticas": {
-      "J": "9",
-      "G": "3",
-      "E": "1",
-      "P": "5",
-      "GF": "7",
-      "GC": "9",
+      "J": "10",
+      "G": "1",
+      "E": "7",
+      "P": "2",
+      "GF": "11",
+      "GC": "13",
       "DIF": "-2",
       "PTS": "10"
     }
   },
   {
     "posicion": "14",
+    "codigo": "OSA",
+    "club": "Osasuna",
+    "estadisticas": {
+      "J": "10",
+      "G": "3",
+      "E": "1",
+      "P": "6",
+      "GF": "9",
+      "GC": "12",
+      "DIF": "-3",
+      "PTS": "10"
+    }
+  },
+  {
+    "posicion": "15",
     "codigo": "LEV",
     "club": "Levante",
     "estadisticas": {
@@ -210,7 +225,7 @@
     }
   },
   {
-    "posicion": "15",
+    "posicion": "16",
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
@@ -225,7 +240,7 @@
     }
   },
   {
-    "posicion": "16",
+    "posicion": "17",
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
@@ -240,7 +255,7 @@
     }
   },
   {
-    "posicion": "17",
+    "posicion": "18",
     "codigo": "VAL",
     "club": "Valencia",
     "estadisticas": {
@@ -252,21 +267,6 @@
       "GC": "16",
       "DIF": "-6",
       "PTS": "9"
-    }
-  },
-  {
-    "posicion": "18",
-    "codigo": "VIG",
-    "club": "Celta Vigo",
-    "estadisticas": {
-      "J": "9",
-      "G": "0",
-      "E": "7",
-      "P": "2",
-      "GF": "8",
-      "GC": "11",
-      "DIF": "-3",
-      "PTS": "7"
     }
   },
   {
