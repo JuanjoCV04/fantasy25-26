@@ -91,6 +91,21 @@
   },
   {
     "posicion": "7",
+    "codigo": "RAY",
+    "club": "Rayo Vallecano",
+    "estadisticas": {
+      "J": "10",
+      "G": "4",
+      "E": "2",
+      "P": "4",
+      "GF": "12",
+      "GC": "10",
+      "DIF": "+2",
+      "PTS": "14"
+    }
+  },
+  {
+    "posicion": "8",
     "codigo": "ELC",
     "club": "Elche",
     "estadisticas": {
@@ -105,7 +120,7 @@
     }
   },
   {
-    "posicion": "8",
+    "posicion": "9",
     "codigo": "ATH",
     "club": "Athletic Club",
     "estadisticas": {
@@ -120,7 +135,7 @@
     }
   },
   {
-    "posicion": "9",
+    "posicion": "10",
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
@@ -135,7 +150,7 @@
     }
   },
   {
-    "posicion": "10",
+    "posicion": "11",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -150,33 +165,18 @@
     }
   },
   {
-    "posicion": "11",
+    "posicion": "12",
     "codigo": "ALA",
     "club": "Alavés",
     "estadisticas": {
-      "J": "9",
+      "J": "10",
       "G": "3",
       "E": "3",
-      "P": "3",
-      "GF": "9",
-      "GC": "8",
-      "DIF": "+1",
-      "PTS": "12"
-    }
-  },
-  {
-    "posicion": "12",
-    "codigo": "RAY",
-    "club": "Rayo Vallecano",
-    "estadisticas": {
-      "J": "9",
-      "G": "3",
-      "E": "2",
       "P": "4",
-      "GF": "11",
-      "GC": "10",
-      "DIF": "+1",
-      "PTS": "11"
+      "GF": "9",
+      "GC": "9",
+      "DIF": "0",
+      "PTS": "12"
     }
   },
   {
