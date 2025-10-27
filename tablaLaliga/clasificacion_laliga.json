@@ -46,6 +46,21 @@
   },
   {
     "posicion": "4",
+    "codigo": "ATL",
+    "club": "Atlético Madrid",
+    "estadisticas": {
+      "J": "10",
+      "G": "5",
+      "E": "4",
+      "P": "1",
+      "GF": "18",
+      "GC": "10",
+      "DIF": "+8",
+      "PTS": "19"
+    }
+  },
+  {
+    "posicion": "5",
     "codigo": "ESP",
     "club": "Espanyol",
     "estadisticas": {
@@ -60,32 +75,17 @@
     }
   },
   {
-    "posicion": "5",
-    "codigo": "ATL",
-    "club": "Atlético Madrid",
-    "estadisticas": {
-      "J": "9",
-      "G": "4",
-      "E": "4",
-      "P": "1",
-      "GF": "16",
-      "GC": "10",
-      "DIF": "+6",
-      "PTS": "16"
-    }
-  },
-  {
     "posicion": "6",
     "codigo": "BET",
     "club": "Real Betis",
     "estadisticas": {
-      "J": "9",
+      "J": "10",
       "G": "4",
       "E": "4",
-      "P": "1",
+      "P": "2",
       "GF": "15",
-      "GC": "10",
-      "DIF": "+5",
+      "GC": "12",
+      "DIF": "+3",
       "PTS": "16"
     }
   },
