@@ -61,6 +61,21 @@
   },
   {
     "posicion": "5",
+    "codigo": "BET",
+    "club": "Real Betis",
+    "estadisticas": {
+      "J": "11",
+      "G": "5",
+      "E": "4",
+      "P": "2",
+      "GF": "18",
+      "GC": "12",
+      "DIF": "+6",
+      "PTS": "19"
+    }
+  },
+  {
+    "posicion": "6",
     "codigo": "ESP",
     "club": "Espanyol",
     "estadisticas": {
@@ -75,7 +90,7 @@
     }
   },
   {
-    "posicion": "6",
+    "posicion": "7",
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
@@ -87,21 +102,6 @@
       "GC": "13",
       "DIF": "-1",
       "PTS": "17"
-    }
-  },
-  {
-    "posicion": "7",
-    "codigo": "BET",
-    "club": "Real Betis",
-    "estadisticas": {
-      "J": "10",
-      "G": "4",
-      "E": "4",
-      "P": "2",
-      "GF": "15",
-      "GC": "12",
-      "DIF": "+3",
-      "PTS": "16"
     }
   },
   {
@@ -226,21 +226,6 @@
   },
   {
     "posicion": "16",
-    "codigo": "MLA",
-    "club": "Mallorca",
-    "estadisticas": {
-      "J": "10",
-      "G": "2",
-      "E": "3",
-      "P": "5",
-      "GF": "11",
-      "GC": "15",
-      "DIF": "-4",
-      "PTS": "9"
-    }
-  },
-  {
-    "posicion": "17",
     "codigo": "LEV",
     "club": "Levante",
     "estadisticas": {
@@ -251,6 +236,21 @@
       "GF": "15",
       "GC": "20",
       "DIF": "-5",
+      "PTS": "9"
+    }
+  },
+  {
+    "posicion": "17",
+    "codigo": "MLA",
+    "club": "Mallorca",
+    "estadisticas": {
+      "J": "11",
+      "G": "2",
+      "E": "3",
+      "P": "6",
+      "GF": "11",
+      "GC": "18",
+      "DIF": "-7",
       "PTS": "9"
     }
   },
