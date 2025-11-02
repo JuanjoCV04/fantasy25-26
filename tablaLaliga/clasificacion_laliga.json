@@ -16,6 +16,21 @@
   },
   {
     "posicion": "2",
+    "codigo": "BAR",
+    "club": "Barcelona",
+    "estadisticas": {
+      "J": "11",
+      "G": "8",
+      "E": "1",
+      "P": "2",
+      "GF": "28",
+      "GC": "13",
+      "DIF": "+15",
+      "PTS": "25"
+    }
+  },
+  {
+    "posicion": "3",
     "codigo": "VLR",
     "club": "Villarreal",
     "estadisticas": {
@@ -27,21 +42,6 @@
       "GC": "10",
       "DIF": "+12",
       "PTS": "23"
-    }
-  },
-  {
-    "posicion": "3",
-    "codigo": "BAR",
-    "club": "Barcelona",
-    "estadisticas": {
-      "J": "10",
-      "G": "7",
-      "E": "1",
-      "P": "2",
-      "GF": "25",
-      "GC": "12",
-      "DIF": "+13",
-      "PTS": "22"
     }
   },
   {
@@ -124,13 +124,13 @@
     "codigo": "ELC",
     "club": "Elche",
     "estadisticas": {
-      "J": "10",
+      "J": "11",
       "G": "3",
       "E": "5",
-      "P": "2",
-      "GF": "11",
-      "GC": "10",
-      "DIF": "+1",
+      "P": "3",
+      "GF": "12",
+      "GC": "13",
+      "DIF": "-1",
       "PTS": "14"
     }
   },
