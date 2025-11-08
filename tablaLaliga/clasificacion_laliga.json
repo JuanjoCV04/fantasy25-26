@@ -109,13 +109,13 @@
     "codigo": "ALA",
     "club": "Alavés",
     "estadisticas": {
-      "J": "11",
+      "J": "12",
       "G": "4",
       "E": "3",
-      "P": "4",
+      "P": "5",
       "GF": "11",
-      "GC": "10",
-      "DIF": "+1",
+      "GC": "11",
+      "DIF": "0",
       "PTS": "15"
     }
   },
@@ -226,6 +226,21 @@
   },
   {
     "posicion": "16",
+    "codigo": "GIR",
+    "club": "Girona",
+    "estadisticas": {
+      "J": "12",
+      "G": "2",
+      "E": "4",
+      "P": "6",
+      "GF": "11",
+      "GC": "24",
+      "DIF": "-13",
+      "PTS": "10"
+    }
+  },
+  {
+    "posicion": "17",
     "codigo": "LEV",
     "club": "Levante",
     "estadisticas": {
@@ -240,7 +255,7 @@
     }
   },
   {
-    "posicion": "17",
+    "posicion": "18",
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
@@ -255,7 +270,7 @@
     }
   },
   {
-    "posicion": "18",
+    "posicion": "19",
     "codigo": "VAL",
     "club": "Valencia",
     "estadisticas": {
@@ -270,7 +285,7 @@
     }
   },
   {
-    "posicion": "19",
+    "posicion": "20",
     "codigo": "OVI",
     "club": "Real Oviedo",
     "estadisticas": {
@@ -282,21 +297,6 @@
       "GC": "19",
       "DIF": "-12",
       "PTS": "8"
-    }
-  },
-  {
-    "posicion": "20",
-    "codigo": "GIR",
-    "club": "Girona",
-    "estadisticas": {
-      "J": "11",
-      "G": "1",
-      "E": "4",
-      "P": "6",
-      "GF": "10",
-      "GC": "24",
-      "DIF": "-14",
-      "PTS": "7"
     }
   }
 ]
