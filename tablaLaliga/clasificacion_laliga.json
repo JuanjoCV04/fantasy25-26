@@ -4,14 +4,14 @@
     "codigo": "MAD",
     "club": "Real Madrid",
     "estadisticas": {
-      "J": "11",
+      "J": "12",
       "G": "10",
-      "E": "0",
+      "E": "1",
       "P": "1",
       "GF": "26",
       "GC": "10",
       "DIF": "+16",
-      "PTS": "30"
+      "PTS": "31"
     }
   },
   {
@@ -169,14 +169,14 @@
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
-      "J": "11",
+      "J": "12",
       "G": "4",
-      "E": "2",
+      "E": "3",
       "P": "5",
       "GF": "12",
       "GC": "14",
       "DIF": "-2",
-      "PTS": "14"
+      "PTS": "15"
     }
   },
   {
