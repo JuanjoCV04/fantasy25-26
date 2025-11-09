@@ -64,14 +64,14 @@
     "codigo": "BET",
     "club": "Real Betis",
     "estadisticas": {
-      "J": "11",
+      "J": "12",
       "G": "5",
-      "E": "4",
+      "E": "5",
       "P": "2",
-      "GF": "18",
-      "GC": "12",
+      "GF": "19",
+      "GC": "13",
       "DIF": "+6",
-      "PTS": "19"
+      "PTS": "20"
     }
   },
   {
@@ -109,13 +109,13 @@
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
-      "J": "11",
+      "J": "12",
       "G": "5",
       "E": "2",
-      "P": "4",
+      "P": "5",
       "GF": "12",
-      "GC": "13",
-      "DIF": "-1",
+      "GC": "14",
+      "DIF": "-2",
       "PTS": "17"
     }
   },
@@ -211,6 +211,21 @@
   },
   {
     "posicion": "15",
+    "codigo": "MLA",
+    "club": "Mallorca",
+    "estadisticas": {
+      "J": "12",
+      "G": "3",
+      "E": "3",
+      "P": "6",
+      "GF": "12",
+      "GC": "18",
+      "DIF": "-6",
+      "PTS": "12"
+    }
+  },
+  {
+    "posicion": "16",
     "codigo": "OSA",
     "club": "Osasuna",
     "estadisticas": {
@@ -225,7 +240,22 @@
     }
   },
   {
-    "posicion": "16",
+    "posicion": "17",
+    "codigo": "VAL",
+    "club": "Valencia",
+    "estadisticas": {
+      "J": "12",
+      "G": "2",
+      "E": "4",
+      "P": "6",
+      "GF": "11",
+      "GC": "21",
+      "DIF": "-10",
+      "PTS": "10"
+    }
+  },
+  {
+    "posicion": "18",
     "codigo": "GIR",
     "club": "Girona",
     "estadisticas": {
@@ -240,7 +270,7 @@
     }
   },
   {
-    "posicion": "17",
+    "posicion": "19",
     "codigo": "LEV",
     "club": "Levante",
     "estadisticas": {
@@ -251,36 +281,6 @@
       "GF": "16",
       "GC": "23",
       "DIF": "-7",
-      "PTS": "9"
-    }
-  },
-  {
-    "posicion": "18",
-    "codigo": "MLA",
-    "club": "Mallorca",
-    "estadisticas": {
-      "J": "11",
-      "G": "2",
-      "E": "3",
-      "P": "6",
-      "GF": "11",
-      "GC": "18",
-      "DIF": "-7",
-      "PTS": "9"
-    }
-  },
-  {
-    "posicion": "19",
-    "codigo": "VAL",
-    "club": "Valencia",
-    "estadisticas": {
-      "J": "11",
-      "G": "2",
-      "E": "3",
-      "P": "6",
-      "GF": "10",
-      "GC": "20",
-      "DIF": "-10",
       "PTS": "9"
     }
   },
