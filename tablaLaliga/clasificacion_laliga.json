@@ -211,6 +211,21 @@
   },
   {
     "posicion": "15",
+    "codigo": "VAL",
+    "club": "Valencia",
+    "estadisticas": {
+      "J": "13",
+      "G": "3",
+      "E": "4",
+      "P": "6",
+      "GF": "12",
+      "GC": "21",
+      "DIF": "-9",
+      "PTS": "13"
+    }
+  },
+  {
+    "posicion": "16",
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
@@ -225,7 +240,7 @@
     }
   },
   {
-    "posicion": "16",
+    "posicion": "17",
     "codigo": "OSA",
     "club": "Osasuna",
     "estadisticas": {
@@ -237,21 +252,6 @@
       "GC": "13",
       "DIF": "-4",
       "PTS": "11"
-    }
-  },
-  {
-    "posicion": "17",
-    "codigo": "VAL",
-    "club": "Valencia",
-    "estadisticas": {
-      "J": "12",
-      "G": "2",
-      "E": "4",
-      "P": "6",
-      "GF": "11",
-      "GC": "21",
-      "DIF": "-10",
-      "PTS": "10"
     }
   },
   {
@@ -274,13 +274,13 @@
     "codigo": "LEV",
     "club": "Levante",
     "estadisticas": {
-      "J": "12",
+      "J": "13",
       "G": "2",
       "E": "3",
-      "P": "7",
+      "P": "8",
       "GF": "16",
-      "GC": "23",
-      "DIF": "-7",
+      "GC": "24",
+      "DIF": "-8",
       "PTS": "9"
     }
   },
