@@ -1,6 +1,21 @@
 [
   {
     "posicion": "1",
+    "codigo": "BAR",
+    "club": "Barcelona",
+    "estadisticas": {
+      "J": "13",
+      "G": "10",
+      "E": "1",
+      "P": "2",
+      "GF": "36",
+      "GC": "15",
+      "DIF": "+21",
+      "PTS": "31"
+    }
+  },
+  {
+    "posicion": "2",
     "codigo": "MAD",
     "club": "Real Madrid",
     "estadisticas": {
@@ -12,21 +27,6 @@
       "GC": "10",
       "DIF": "+16",
       "PTS": "31"
-    }
-  },
-  {
-    "posicion": "2",
-    "codigo": "BAR",
-    "club": "Barcelona",
-    "estadisticas": {
-      "J": "12",
-      "G": "9",
-      "E": "1",
-      "P": "2",
-      "GF": "32",
-      "GC": "15",
-      "DIF": "+17",
-      "PTS": "28"
     }
   },
   {
@@ -91,21 +91,6 @@
   },
   {
     "posicion": "7",
-    "codigo": "ATH",
-    "club": "Athletic Club",
-    "estadisticas": {
-      "J": "12",
-      "G": "5",
-      "E": "2",
-      "P": "5",
-      "GF": "12",
-      "GC": "13",
-      "DIF": "-1",
-      "PTS": "17"
-    }
-  },
-  {
-    "posicion": "8",
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
@@ -116,6 +101,21 @@
       "GF": "12",
       "GC": "14",
       "DIF": "-2",
+      "PTS": "17"
+    }
+  },
+  {
+    "posicion": "8",
+    "codigo": "ATH",
+    "club": "Athletic Club",
+    "estadisticas": {
+      "J": "13",
+      "G": "5",
+      "E": "2",
+      "P": "6",
+      "GF": "12",
+      "GC": "17",
+      "DIF": "-5",
       "PTS": "17"
     }
   },
