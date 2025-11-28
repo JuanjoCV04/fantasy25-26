@@ -94,14 +94,14 @@
     "codigo": "GET",
     "club": "Getafe",
     "estadisticas": {
-      "J": "13",
-      "G": "5",
+      "J": "14",
+      "G": "6",
       "E": "2",
       "P": "6",
-      "GF": "12",
+      "GF": "13",
       "GC": "15",
-      "DIF": "-3",
-      "PTS": "17"
+      "DIF": "-2",
+      "PTS": "20"
     }
   },
   {
@@ -136,21 +136,6 @@
   },
   {
     "posicion": "10",
-    "codigo": "ELC",
-    "club": "Elche",
-    "estadisticas": {
-      "J": "13",
-      "G": "3",
-      "E": "7",
-      "P": "3",
-      "GF": "15",
-      "GC": "16",
-      "DIF": "-1",
-      "PTS": "16"
-    }
-  },
-  {
-    "posicion": "11",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -165,7 +150,7 @@
     }
   },
   {
-    "posicion": "12",
+    "posicion": "11",
     "codigo": "VIG",
     "club": "Celta Vigo",
     "estadisticas": {
@@ -175,6 +160,21 @@
       "P": "3",
       "GF": "16",
       "GC": "18",
+      "DIF": "-2",
+      "PTS": "16"
+    }
+  },
+  {
+    "posicion": "12",
+    "codigo": "ELC",
+    "club": "Elche",
+    "estadisticas": {
+      "J": "14",
+      "G": "3",
+      "E": "7",
+      "P": "4",
+      "GF": "15",
+      "GC": "17",
       "DIF": "-2",
       "PTS": "16"
     }
