@@ -16,6 +16,21 @@
   },
   {
     "posicion": "2",
+    "codigo": "VLR",
+    "club": "Villarreal",
+    "estadisticas": {
+      "J": "14",
+      "G": "10",
+      "E": "2",
+      "P": "2",
+      "GF": "29",
+      "GC": "13",
+      "DIF": "+16",
+      "PTS": "32"
+    }
+  },
+  {
+    "posicion": "3",
     "codigo": "MAD",
     "club": "Real Madrid",
     "estadisticas": {
@@ -30,7 +45,7 @@
     }
   },
   {
-    "posicion": "3",
+    "posicion": "4",
     "codigo": "ATL",
     "club": "Atlético Madrid",
     "estadisticas": {
@@ -42,21 +57,6 @@
       "GC": "11",
       "DIF": "+16",
       "PTS": "31"
-    }
-  },
-  {
-    "posicion": "4",
-    "codigo": "VLR",
-    "club": "Villarreal",
-    "estadisticas": {
-      "J": "13",
-      "G": "9",
-      "E": "2",
-      "P": "2",
-      "GF": "26",
-      "GC": "11",
-      "DIF": "+15",
-      "PTS": "29"
     }
   },
   {
@@ -124,13 +124,13 @@
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
-      "J": "13",
+      "J": "14",
       "G": "4",
       "E": "4",
-      "P": "5",
-      "GF": "17",
-      "GC": "18",
-      "DIF": "-1",
+      "P": "6",
+      "GF": "19",
+      "GC": "21",
+      "DIF": "-2",
       "PTS": "16"
     }
   },
