@@ -64,14 +64,14 @@
     "codigo": "BET",
     "club": "Real Betis",
     "estadisticas": {
-      "J": "13",
+      "J": "14",
       "G": "5",
-      "E": "6",
+      "E": "7",
       "P": "2",
       "GF": "20",
       "GC": "14",
       "DIF": "+6",
-      "PTS": "21"
+      "PTS": "22"
     }
   },
   {
@@ -121,6 +121,21 @@
   },
   {
     "posicion": "9",
+    "codigo": "SEV",
+    "club": "Sevilla FC",
+    "estadisticas": {
+      "J": "14",
+      "G": "5",
+      "E": "2",
+      "P": "7",
+      "GF": "19",
+      "GC": "21",
+      "DIF": "-2",
+      "PTS": "17"
+    }
+  },
+  {
+    "posicion": "10",
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
@@ -128,21 +143,6 @@
       "G": "4",
       "E": "4",
       "P": "6",
-      "GF": "19",
-      "GC": "21",
-      "DIF": "-2",
-      "PTS": "16"
-    }
-  },
-  {
-    "posicion": "10",
-    "codigo": "SEV",
-    "club": "Sevilla FC",
-    "estadisticas": {
-      "J": "13",
-      "G": "5",
-      "E": "1",
-      "P": "7",
       "GF": "19",
       "GC": "21",
       "DIF": "-2",
