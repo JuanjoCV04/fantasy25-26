@@ -121,6 +121,21 @@
   },
   {
     "posicion": "9",
+    "codigo": "RAY",
+    "club": "Rayo Vallecano",
+    "estadisticas": {
+      "J": "14",
+      "G": "4",
+      "E": "5",
+      "P": "5",
+      "GF": "13",
+      "GC": "15",
+      "DIF": "-2",
+      "PTS": "17"
+    }
+  },
+  {
+    "posicion": "10",
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
@@ -135,7 +150,7 @@
     }
   },
   {
-    "posicion": "10",
+    "posicion": "11",
     "codigo": "ELC",
     "club": "Elche",
     "estadisticas": {
@@ -145,21 +160,6 @@
       "P": "4",
       "GF": "15",
       "GC": "17",
-      "DIF": "-2",
-      "PTS": "16"
-    }
-  },
-  {
-    "posicion": "11",
-    "codigo": "RAY",
-    "club": "Rayo Vallecano",
-    "estadisticas": {
-      "J": "13",
-      "G": "4",
-      "E": "4",
-      "P": "5",
-      "GF": "12",
-      "GC": "14",
       "DIF": "-2",
       "PTS": "16"
     }
@@ -211,6 +211,21 @@
   },
   {
     "posicion": "15",
+    "codigo": "VAL",
+    "club": "Valencia",
+    "estadisticas": {
+      "J": "14",
+      "G": "3",
+      "E": "5",
+      "P": "6",
+      "GF": "13",
+      "GC": "22",
+      "DIF": "-9",
+      "PTS": "14"
+    }
+  },
+  {
+    "posicion": "16",
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
@@ -221,21 +236,6 @@
       "GF": "15",
       "GC": "22",
       "DIF": "-7",
-      "PTS": "13"
-    }
-  },
-  {
-    "posicion": "16",
-    "codigo": "VAL",
-    "club": "Valencia",
-    "estadisticas": {
-      "J": "13",
-      "G": "3",
-      "E": "4",
-      "P": "6",
-      "GF": "12",
-      "GC": "21",
-      "DIF": "-9",
       "PTS": "13"
     }
   },
