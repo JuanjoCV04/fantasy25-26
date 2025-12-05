@@ -211,6 +211,21 @@
   },
   {
     "posicion": "15",
+    "codigo": "MLA",
+    "club": "Mallorca",
+    "estadisticas": {
+      "J": "15",
+      "G": "3",
+      "E": "5",
+      "P": "7",
+      "GF": "15",
+      "GC": "22",
+      "DIF": "-7",
+      "PTS": "14"
+    }
+  },
+  {
+    "posicion": "16",
     "codigo": "VAL",
     "club": "Valencia",
     "estadisticas": {
@@ -222,21 +237,6 @@
       "GC": "22",
       "DIF": "-9",
       "PTS": "14"
-    }
-  },
-  {
-    "posicion": "16",
-    "codigo": "MLA",
-    "club": "Mallorca",
-    "estadisticas": {
-      "J": "14",
-      "G": "3",
-      "E": "4",
-      "P": "7",
-      "GF": "15",
-      "GC": "22",
-      "DIF": "-7",
-      "PTS": "13"
     }
   },
   {
@@ -271,6 +271,21 @@
   },
   {
     "posicion": "19",
+    "codigo": "OVI",
+    "club": "Real Oviedo",
+    "estadisticas": {
+      "J": "15",
+      "G": "2",
+      "E": "4",
+      "P": "9",
+      "GF": "7",
+      "GC": "22",
+      "DIF": "-15",
+      "PTS": "10"
+    }
+  },
+  {
+    "posicion": "20",
     "codigo": "LEV",
     "club": "Levante",
     "estadisticas": {
@@ -281,21 +296,6 @@
       "GF": "16",
       "GC": "26",
       "DIF": "-10",
-      "PTS": "9"
-    }
-  },
-  {
-    "posicion": "20",
-    "codigo": "OVI",
-    "club": "Real Oviedo",
-    "estadisticas": {
-      "J": "14",
-      "G": "2",
-      "E": "3",
-      "P": "9",
-      "GF": "7",
-      "GC": "22",
-      "DIF": "-15",
       "PTS": "9"
     }
   }
