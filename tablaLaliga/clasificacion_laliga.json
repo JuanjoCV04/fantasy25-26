@@ -121,6 +121,21 @@
   },
   {
     "posicion": "9",
+    "codigo": "ALA",
+    "club": "Alavés",
+    "estadisticas": {
+      "J": "15",
+      "G": "5",
+      "E": "3",
+      "P": "7",
+      "GF": "13",
+      "GC": "15",
+      "DIF": "-2",
+      "PTS": "18"
+    }
+  },
+  {
+    "posicion": "10",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -132,21 +147,6 @@
       "GC": "15",
       "DIF": "-2",
       "PTS": "17"
-    }
-  },
-  {
-    "posicion": "10",
-    "codigo": "SOC",
-    "club": "Real Sociedad",
-    "estadisticas": {
-      "J": "14",
-      "G": "4",
-      "E": "4",
-      "P": "6",
-      "GF": "19",
-      "GC": "21",
-      "DIF": "-2",
-      "PTS": "16"
     }
   },
   {
@@ -166,6 +166,21 @@
   },
   {
     "posicion": "12",
+    "codigo": "SOC",
+    "club": "Real Sociedad",
+    "estadisticas": {
+      "J": "15",
+      "G": "4",
+      "E": "4",
+      "P": "7",
+      "GF": "19",
+      "GC": "22",
+      "DIF": "-3",
+      "PTS": "16"
+    }
+  },
+  {
+    "posicion": "13",
     "codigo": "VIG",
     "club": "Celta Vigo",
     "estadisticas": {
@@ -180,7 +195,7 @@
     }
   },
   {
-    "posicion": "13",
+    "posicion": "14",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -192,21 +207,6 @@
       "GC": "23",
       "DIF": "-4",
       "PTS": "16"
-    }
-  },
-  {
-    "posicion": "14",
-    "codigo": "ALA",
-    "club": "Alavés",
-    "estadisticas": {
-      "J": "14",
-      "G": "4",
-      "E": "3",
-      "P": "7",
-      "GF": "12",
-      "GC": "15",
-      "DIF": "-3",
-      "PTS": "15"
     }
   },
   {
