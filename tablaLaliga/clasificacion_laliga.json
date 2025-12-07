@@ -121,6 +121,21 @@
   },
   {
     "posicion": "9",
+    "codigo": "ELC",
+    "club": "Elche",
+    "estadisticas": {
+      "J": "15",
+      "G": "4",
+      "E": "7",
+      "P": "4",
+      "GF": "18",
+      "GC": "17",
+      "DIF": "+1",
+      "PTS": "19"
+    }
+  },
+  {
+    "posicion": "10",
     "codigo": "ALA",
     "club": "Alavés",
     "estadisticas": {
@@ -135,7 +150,7 @@
     }
   },
   {
-    "posicion": "10",
+    "posicion": "11",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -147,21 +162,6 @@
       "GC": "15",
       "DIF": "-2",
       "PTS": "17"
-    }
-  },
-  {
-    "posicion": "11",
-    "codigo": "ELC",
-    "club": "Elche",
-    "estadisticas": {
-      "J": "14",
-      "G": "3",
-      "E": "7",
-      "P": "4",
-      "GF": "15",
-      "GC": "17",
-      "DIF": "-2",
-      "PTS": "16"
     }
   },
   {
@@ -259,13 +259,13 @@
     "codigo": "GIR",
     "club": "Girona",
     "estadisticas": {
-      "J": "14",
+      "J": "15",
       "G": "2",
       "E": "6",
-      "P": "6",
+      "P": "7",
       "GF": "13",
-      "GC": "26",
-      "DIF": "-13",
+      "GC": "29",
+      "DIF": "-16",
       "PTS": "12"
     }
   },
