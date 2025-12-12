@@ -199,13 +199,13 @@
     "codigo": "SOC",
     "club": "Real Sociedad",
     "estadisticas": {
-      "J": "15",
+      "J": "16",
       "G": "4",
       "E": "4",
-      "P": "7",
-      "GF": "19",
-      "GC": "22",
-      "DIF": "-3",
+      "P": "8",
+      "GF": "20",
+      "GC": "24",
+      "DIF": "-4",
       "PTS": "16"
     }
   },
@@ -241,6 +241,21 @@
   },
   {
     "posicion": "17",
+    "codigo": "GIR",
+    "club": "Girona",
+    "estadisticas": {
+      "J": "16",
+      "G": "3",
+      "E": "6",
+      "P": "7",
+      "GF": "15",
+      "GC": "30",
+      "DIF": "-15",
+      "PTS": "15"
+    }
+  },
+  {
+    "posicion": "18",
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
@@ -252,21 +267,6 @@
       "GC": "22",
       "DIF": "-7",
       "PTS": "14"
-    }
-  },
-  {
-    "posicion": "18",
-    "codigo": "GIR",
-    "club": "Girona",
-    "estadisticas": {
-      "J": "15",
-      "G": "2",
-      "E": "6",
-      "P": "7",
-      "GF": "13",
-      "GC": "29",
-      "DIF": "-16",
-      "PTS": "12"
     }
   },
   {
