@@ -91,6 +91,21 @@
   },
   {
     "posicion": "7",
+    "codigo": "VIG",
+    "club": "Celta Vigo",
+    "estadisticas": {
+      "J": "17",
+      "G": "5",
+      "E": "8",
+      "P": "4",
+      "GF": "20",
+      "GC": "19",
+      "DIF": "+1",
+      "PTS": "23"
+    }
+  },
+  {
+    "posicion": "8",
     "codigo": "ATH",
     "club": "Athletic Club",
     "estadisticas": {
@@ -102,21 +117,6 @@
       "GC": "22",
       "DIF": "-7",
       "PTS": "23"
-    }
-  },
-  {
-    "posicion": "8",
-    "codigo": "VIG",
-    "club": "Celta Vigo",
-    "estadisticas": {
-      "J": "16",
-      "G": "5",
-      "E": "7",
-      "P": "4",
-      "GF": "20",
-      "GC": "19",
-      "DIF": "+1",
-      "PTS": "22"
     }
   },
   {
@@ -274,14 +274,14 @@
     "codigo": "OVI",
     "club": "Real Oviedo",
     "estadisticas": {
-      "J": "16",
+      "J": "17",
       "G": "2",
-      "E": "4",
+      "E": "5",
       "P": "10",
       "GF": "7",
       "GC": "26",
       "DIF": "-19",
-      "PTS": "10"
+      "PTS": "11"
     }
   },
   {
