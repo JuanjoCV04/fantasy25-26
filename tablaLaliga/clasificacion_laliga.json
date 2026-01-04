@@ -49,14 +49,14 @@
     "codigo": "ATL",
     "club": "Atlético Madrid",
     "estadisticas": {
-      "J": "18",
+      "J": "19",
       "G": "11",
-      "E": "4",
+      "E": "5",
       "P": "3",
-      "GF": "33",
-      "GC": "16",
+      "GF": "34",
+      "GC": "17",
       "DIF": "+17",
-      "PTS": "37"
+      "PTS": "38"
     }
   },
   {
@@ -211,6 +211,21 @@
   },
   {
     "posicion": "15",
+    "codigo": "SOC",
+    "club": "Real Sociedad",
+    "estadisticas": {
+      "J": "18",
+      "G": "4",
+      "E": "6",
+      "P": "8",
+      "GF": "22",
+      "GC": "26",
+      "DIF": "-4",
+      "PTS": "18"
+    }
+  },
+  {
+    "posicion": "16",
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
@@ -225,7 +240,7 @@
     }
   },
   {
-    "posicion": "16",
+    "posicion": "17",
     "codigo": "GIR",
     "club": "Girona",
     "estadisticas": {
@@ -237,21 +252,6 @@
       "GC": "34",
       "DIF": "-17",
       "PTS": "18"
-    }
-  },
-  {
-    "posicion": "17",
-    "codigo": "SOC",
-    "club": "Real Sociedad",
-    "estadisticas": {
-      "J": "17",
-      "G": "4",
-      "E": "5",
-      "P": "8",
-      "GF": "21",
-      "GC": "25",
-      "DIF": "-4",
-      "PTS": "17"
     }
   },
   {
