@@ -136,21 +136,36 @@
   },
   {
     "posicion": "10",
-    "codigo": "GET",
-    "club": "Getafe",
+    "codigo": "SOC",
+    "club": "Real Sociedad",
     "estadisticas": {
-      "J": "18",
-      "G": "6",
-      "E": "3",
-      "P": "9",
-      "GF": "14",
-      "GC": "23",
-      "DIF": "-9",
+      "J": "19",
+      "G": "5",
+      "E": "6",
+      "P": "8",
+      "GF": "24",
+      "GC": "27",
+      "DIF": "-3",
       "PTS": "21"
     }
   },
   {
     "posicion": "11",
+    "codigo": "GET",
+    "club": "Getafe",
+    "estadisticas": {
+      "J": "19",
+      "G": "6",
+      "E": "3",
+      "P": "10",
+      "GF": "15",
+      "GC": "25",
+      "DIF": "-10",
+      "PTS": "21"
+    }
+  },
+  {
+    "posicion": "12",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -165,7 +180,7 @@
     }
   },
   {
-    "posicion": "12",
+    "posicion": "13",
     "codigo": "OSA",
     "club": "Osasuna",
     "estadisticas": {
@@ -180,7 +195,7 @@
     }
   },
   {
-    "posicion": "13",
+    "posicion": "14",
     "codigo": "ALA",
     "club": "Alavés",
     "estadisticas": {
@@ -195,7 +210,7 @@
     }
   },
   {
-    "posicion": "14",
+    "posicion": "15",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -207,21 +222,6 @@
       "GC": "21",
       "DIF": "-7",
       "PTS": "19"
-    }
-  },
-  {
-    "posicion": "15",
-    "codigo": "SOC",
-    "club": "Real Sociedad",
-    "estadisticas": {
-      "J": "18",
-      "G": "4",
-      "E": "6",
-      "P": "8",
-      "GF": "22",
-      "GC": "26",
-      "DIF": "-4",
-      "PTS": "18"
     }
   },
   {
