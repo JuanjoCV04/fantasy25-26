@@ -34,14 +34,14 @@
     "codigo": "VLR",
     "club": "Villarreal",
     "estadisticas": {
-      "J": "17",
-      "G": "12",
+      "J": "18",
+      "G": "13",
       "E": "2",
       "P": "3",
-      "GF": "34",
-      "GC": "16",
-      "DIF": "+18",
-      "PTS": "38"
+      "GF": "37",
+      "GC": "17",
+      "DIF": "+20",
+      "PTS": "41"
     }
   },
   {
@@ -196,21 +196,6 @@
   },
   {
     "posicion": "14",
-    "codigo": "ALA",
-    "club": "Alavés",
-    "estadisticas": {
-      "J": "18",
-      "G": "5",
-      "E": "4",
-      "P": "9",
-      "GF": "15",
-      "GC": "21",
-      "DIF": "-6",
-      "PTS": "19"
-    }
-  },
-  {
-    "posicion": "15",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -221,6 +206,21 @@
       "GF": "14",
       "GC": "21",
       "DIF": "-7",
+      "PTS": "19"
+    }
+  },
+  {
+    "posicion": "15",
+    "codigo": "ALA",
+    "club": "Alavés",
+    "estadisticas": {
+      "J": "19",
+      "G": "5",
+      "E": "4",
+      "P": "10",
+      "GF": "16",
+      "GC": "24",
+      "DIF": "-8",
       "PTS": "19"
     }
   },
