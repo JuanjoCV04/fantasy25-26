@@ -166,6 +166,21 @@
   },
   {
     "posicion": "12",
+    "codigo": "GIR",
+    "club": "Girona",
+    "estadisticas": {
+      "J": "19",
+      "G": "5",
+      "E": "6",
+      "P": "8",
+      "GF": "18",
+      "GC": "34",
+      "DIF": "-16",
+      "PTS": "21"
+    }
+  },
+  {
+    "posicion": "13",
     "codigo": "SEV",
     "club": "Sevilla FC",
     "estadisticas": {
@@ -180,22 +195,22 @@
     }
   },
   {
-    "posicion": "13",
+    "posicion": "14",
     "codigo": "OSA",
     "club": "Osasuna",
     "estadisticas": {
-      "J": "18",
+      "J": "19",
       "G": "5",
       "E": "4",
-      "P": "9",
+      "P": "10",
       "GF": "18",
-      "GC": "21",
-      "DIF": "-3",
+      "GC": "22",
+      "DIF": "-4",
       "PTS": "19"
     }
   },
   {
-    "posicion": "14",
+    "posicion": "15",
     "codigo": "RAY",
     "club": "Rayo Vallecano",
     "estadisticas": {
@@ -210,7 +225,7 @@
     }
   },
   {
-    "posicion": "15",
+    "posicion": "16",
     "codigo": "ALA",
     "club": "Alavés",
     "estadisticas": {
@@ -225,7 +240,7 @@
     }
   },
   {
-    "posicion": "16",
+    "posicion": "17",
     "codigo": "MLA",
     "club": "Mallorca",
     "estadisticas": {
@@ -236,21 +251,6 @@
       "GF": "20",
       "GC": "26",
       "DIF": "-6",
-      "PTS": "18"
-    }
-  },
-  {
-    "posicion": "17",
-    "codigo": "GIR",
-    "club": "Girona",
-    "estadisticas": {
-      "J": "18",
-      "G": "4",
-      "E": "6",
-      "P": "8",
-      "GF": "17",
-      "GC": "34",
-      "DIF": "-17",
       "PTS": "18"
     }
   },
