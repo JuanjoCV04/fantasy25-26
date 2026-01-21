@@ -1,7 +1,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no">
   <title>Mi Liga Fantasy - LaLiga</title>
   <link rel="icon" type="image/png" href="imagenes\LogoLaLigaSinFondo.png">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -131,7 +131,7 @@
             <tr>
               <th class="px-2 py-1 cursor-pointer" onclick="sortTable('name')">Club</th>
               <th class="px-2 py-1 cursor-pointer" onclick="sortTable('points')">Puntos</th>
-              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('money')">Dinero (€)</th>
+              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('money')">Dinero</th>
             </tr>
           </thead>
           <tbody id="finalTableBody"></tbody>
@@ -175,7 +175,7 @@
         <tr>
           <th class="py-3 px-2">Club</th>
           <th class="py-3 px-2">Puntos</th>
-          <th class="py-3 px-2">Dinero (€)</th>
+          <th class="py-3 px-2">Dinero</th>
         </tr>
       </thead>
       <tbody id="jornadaTableBody" class="divide-y divide-gray-700 bg-gray-900"></tbody>
@@ -561,48 +561,93 @@
     function renderPagination() {
       pagination.innerHTML = "";
       
-      // Definir rango según la vuelta seleccionada
-      // 1ª Vuelta: índices 0 a 18 (J1 - J19)
-      // 2ª Vuelta: índices 19 a 37 (J20 - J38)
       let startIndex = (vueltaActual - 1) * 19;
       let endIndex = startIndex + 19;
 
-      // Comprobar si hay jornadas en esta vuelta
       if (startIndex >= jornadas.length) {
          pagination.innerHTML = `<div class="col-span-full text-center text-gray-500 py-4 italic">Aún no hay jornadas en esta vuelta</div>`;
-         jornadaTableBody.innerHTML = ""; // Limpiar tabla
+         jornadaTableBody.innerHTML = ""; 
          return;
       }
 
-      // Limitar el bucle a la cantidad real de jornadas que existen
       const limit = Math.min(endIndex, jornadas.length);
 
+      // Crear botones de J1, J2...
       for (let i = startIndex; i < limit; i++) {
         const btn = document.createElement("button");
         btn.textContent = `J${i+1}`;
-        // Estilo moderno para los botones de las jornadas
         btn.className = "py-2 px-1 bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white rounded border border-gray-600 transition-all duration-200 text-sm font-medium focus:ring-2 focus:ring-red-500";
         
-        // Evento click
         btn.onclick = () => {
-            // Quitar clase activa a todos
             Array.from(pagination.children).forEach(b => b.classList.remove('bg-red-600', 'text-white', 'border-red-500'));
-            // Poner clase activa al clickado
             btn.classList.add('bg-red-600', 'text-white', 'border-red-500');
             btn.classList.remove('bg-gray-800', 'text-gray-300', 'border-gray-600');
             renderJornada(i);
         };
-        
         pagination.appendChild(btn);
       }
 
-      // Cargar automáticamente la última jornada disponible de esa vuelta o la primera de la lista
+      // === BOTÓN EXTRA "TOTAL" (Solo en Vuelta 1) ===
+      if (vueltaActual === 1 && jornadas.length >= 1) {
+        const btnTotal = document.createElement("button");
+        btnTotal.textContent = "TOTAL";
+        btnTotal.className = "py-2 px-1 bg-blue-900 hover:bg-blue-700 text-blue-200 hover:text-white rounded border border-blue-700 transition-all duration-200 text-xs font-bold uppercase shadow-lg";
+        
+        btnTotal.onclick = () => {
+            Array.from(pagination.children).forEach(b => b.classList.remove('bg-red-600', 'text-white', 'border-red-500'));
+            btnTotal.classList.add('bg-red-600', 'text-white', 'border-red-500');
+            btnTotal.classList.remove('bg-blue-900', 'text-blue-200', 'border-blue-700');
+            renderTotalVuelta(0, 18); // Calcula del índice 0 al 18 (J1 a J19)
+        };
+        pagination.appendChild(btnTotal);
+      }
+
       if (limit > startIndex) {
-          // Simulamos click en el último botón generado para ver la jornada más reciente de esa vuelta
           pagination.lastElementChild.click();
       }
     }
 
+    function renderTotalVuelta(start, end) {
+      jornadaTableBody.innerHTML = "";
+      
+      // Objeto para acumular los datos
+      let totales = {};
+
+      // Recorremos solo las jornadas del rango solicitado
+      const rangoJornadas = jornadas.slice(start, end + 1);
+      
+      rangoJornadas.forEach(jornada => {
+        jornada.forEach(entry => {
+          if (!totales[entry.club]) {
+            totales[entry.club] = { puntos: 0, dinero: 0 };
+          }
+          totales[entry.club].puntos += entry.puntos;
+          totales[entry.club].dinero += entry.dinero;
+        });
+      });
+
+      // Convertir a array y ordenar
+      const listaTotales = Object.keys(totales).map(club => ({
+        club: club,
+        puntos: totales[club].puntos,
+        dinero: totales[club].dinero
+      })).sort((a, b) => b.puntos - a.puntos);
+
+      // Renderizar en la tabla
+      listaTotales.forEach((entry, idx) => {
+        const isWinner = idx === 0;
+        const rowClass = idx % 2 === 0 ? "bg-gray-800" : "bg-gray-900";
+        const textClass = isWinner ? "text-yellow-400 font-bold" : "text-gray-300";
+
+        jornadaTableBody.innerHTML += `
+          <tr class="${rowClass} border-b border-gray-700">
+            <td class="py-3 px-2 ${textClass}">${entry.club} ${isWinner ? '👑' : ''}</td>
+            <td class="py-3 px-2 font-semibold">${entry.puntos} pts</td>
+            <td class="py-3 px-2 text-green-400 font-bold">${entry.dinero} €</td>
+          </tr>
+        `;
+      });
+    }
     function renderJornada(index) {
       jornadaTableBody.innerHTML = "";
       
@@ -755,4 +800,22 @@ window.addEventListener("orientationchange", actualizarNombresClub);
 </script>
 </body>
 </html>
+
+<style>
+/* Evita el refresco "pull-to-refresh" y el rebote elástico en toda la web */
+html, body {
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+}
+
+/* Aplica esto a las secciones que contienen las tablas */
+#jornadas, #clasificacion-fantasy {
+  overscroll-behavior-y: contain;
+}
+
+/* Evita que el cuerpo de la tabla cambie de tamaño bruscamente */
+#jornadaTableBody {
+  min-height: 400px;
+}
+</style>
 
