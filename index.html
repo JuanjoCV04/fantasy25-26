@@ -16,19 +16,19 @@
 </header>
 
 <!-- Barra de navegación con dropdown -->
-<nav class="bg-red-600 text-white py-3 flex justify-center shadow-md relative">
-  <div class="relative">
+<nav class="bg-red-600 text-white py-3 flex justify-center shadow-md relative z-40">
+    <div class="relative">
     <!-- Botón principal -->
     <button onclick="toggleMenu()" class="px-4 py-2 rounded font-semibold bg-red-700 hover:bg-red-500">
       Menú ▾
     </button>
 
     <!-- Menú desplegable -->
-    <div id="dropdownMenu" class="absolute left-0 mt-2 w-40 bg-red-700 rounded shadow-lg hidden">
-      <button onclick="showSection('clasificacion', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación Fantasy</button>
-      <button onclick="showSection('jornadas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Jornadas</button>
-      <button onclick="showSection('clasificacionLaLiga', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Clasificación LALIGA</button>
-      <button onclick="showSection('reglamento', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Reglamento</button>
+      <div id="dropdownMenu" class="absolute left-0 mt-2 w-40 bg-red-700 rounded shadow-lg hidden z-50">
+      <button onclick="showSection('clasificacion', this)" class="block w-full text-left px-4 py-3 hover:bg-red-500 border-b border-red-800 last:border-none">  Clasificación Fantasy</button>
+      <button onclick="showSection('jornadas', this)" class="block w-full text-left px-4 py-3 hover:bg-red-500 border-b border-red-800 last:border-none">Jornadas</button>
+      <button onclick="showSection('clasificacionLaLiga', this)" class="block w-full text-left px-4 py-3 hover:bg-red-500 border-b border-red-800 last:border-none">Clasificación LALIGA</button>
+      <button onclick="showSection('reglamento', this)" class="block w-full text-left px-4 py-3 hover:bg-red-500 border-b border-red-800 last:border-none">Reglamento</button>
      <!-- <button onclick="showSection('estadisticas', this)" class="block w-full text-left px-4 py-2 hover:bg-red-500">Estadisticas</button>-->
 
 
