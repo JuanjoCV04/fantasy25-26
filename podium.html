@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podio Estilo Kahoot</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #46178f 0%, #25074d 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            overflow: hidden;
+            padding-bottom: 50px;
+        }
+
+        h1 {
+            position: absolute;
+            top: 5%;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Contenedor principal del podio */
+        .podium-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            height: 60vh;
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        /* Estilo base para cada columna */
+        .podium-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            flex: 1;
+            height: 100%;
+        }
+
+        .name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .block {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            height: 0; /* Empiezan desde abajo */
+            transition: height 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Colores y alturas específicas estilo Kahoot */
+        .second .block {
+            background: linear-gradient(to top, #1368ce, #3085e3);
+            border: 3px solid #66a6ff;
+        }
+        
+        .first .block {
+            background: linear-gradient(to top, #b81414, #e22d2d);
+            border: 3px solid #ff6b6b;
+        }
+
+        .third .block {
+            background: linear-gradient(to top, #d47400, #ff9914);
+            border: 3px solid #ffbe6b;
+        }
+
+        /* Animaciones de aparición de nombres */
+        @keyframes revealName {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¡Resultados Finales!</h1>
+
+    <div class="podium-container">
+        <div class="podium-column second">
+            <div class="name" id="name-2">Rabovic 🥈</div>
+            <div class="block" id="block-2">2</div>
+        </div>
+
+        <div class="podium-column first">
+            <div class="name" id="name-1">Kino04 👑</div>
+            <div class="block" id="block-1">1</div>
+        </div>
+
+        <div class="podium-column third">
+            <div class="name" id="name-3">su_florentineza123 🥉</div>
+            <div class="block" id="block-3">3</div>
+        </div>
+    </div>
+
+<script>
+        // Esperamos un momento para que cargue la pantalla y lanzamos la animación en orden
+        window.addEventListener('DOMContentLoaded', () => {
+            const b1 = document.getElementById('block-1');
+            const b2 = document.getElementById('block-2');
+            const b3 = document.getElementById('block-3');
+
+            const n1 = document.getElementById('name-1');
+            const n2 = document.getElementById('name-2');
+            const n3 = document.getElementById('name-3');
+
+            // 1. Aparece el 3er puesto (0.5s)
+            setTimeout(() => {
+                b3.style.height = '40%';
+                n3.style.animation = 'revealName 0.5s forwards';
+            }, 500);
+
+            // 2. Aparece el 2º puesto (2.0s)
+            setTimeout(() => {
+                b2.style.height = '55%';
+                n2.style.animation = 'revealName 0.5s forwards';
+            }, 2000);
+
+            // 3. Aparece el GANADOR (3.5s) y explota el confeti
+            setTimeout(() => {
+                b1.style.height = '75%';
+                n1.style.animation = 'revealName 0.5s forwards'; // <-- Corregido el ';' intruso
+                
+                // Retrasamos el confeti un pelín para que coincida con la subida del bloque
+                setTimeout(lanzarConfeti, 600);
+            }, 3500);
+        });
+
+        // Función para lanzar ráfagas de confeti continuas estilo celebración
+        function lanzarConfeti() {
+            const duracion = 5 * 1000; // 5 segundos de confeti
+            const fin = Date.now() + duracion;
+
+            (function marcoAnimacion() {
+                // Confeti desde la izquierda
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0, y: 0.8 }
+                });
+                // Confeti desde la derecha
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1, y: 0.8 }
+                });
+
+                if (Date.now() < fin) {
+                    requestAnimationFrame(marcoAnimacion);
+                }
+            }());
+        }
+    </script>
+</body>
+</html>

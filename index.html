@@ -5,8 +5,92 @@
   <title>Mi Liga Fantasy - LaLiga</title>
   <link rel="icon" type="image/png" href="imagenes\LogoLaLigaSinFondo.png">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body class="bg-black text-white">
+
+<!-- ===== OVERLAY PODIO ===== -->
+<div id="podiumOverlay" style="
+  position: fixed; inset: 0; z-index: 9999;
+  background: linear-gradient(135deg, #46178f 0%, #25074d 100%);
+  display: flex; flex-direction: column;
+  justify-content: flex-end; align-items: center;
+  overflow: hidden; padding-bottom: 50px;
+">
+  <!-- Botón cerrar -->
+  <button onclick="cerrarPodium()" id="btnCerrarPodium" style="
+    position: absolute; top: 18px; right: 22px;
+    background: rgba(255,255,255,0.15); border: none; color: white;
+    font-size: 1.4rem; width: 40px; height: 40px; border-radius: 50%;
+    cursor: pointer; display: none; align-items: center; justify-content: center;
+    backdrop-filter: blur(4px); transition: background 0.2s;
+  " title="Cerrar">✕</button>
+
+  <h1 style="
+    position: absolute; top: 5%; font-size: 2.2rem; color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    animation: podFadeIn 1s ease-out; font-family: 'Segoe UI', sans-serif;
+    font-weight: bold; text-align: center;
+  ">🏆 Clasificación Final 🏆</h1>
+
+  <!-- Contenedor del podio -->
+  <div style="
+    display: flex; align-items: flex-end; justify-content: center;
+    width: 100%; max-width: 800px; height: 60vh; gap: 15px; padding: 0 20px;
+  ">
+    <!-- 2º puesto -->
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%;">
+      <div id="podName2" style="font-size:1.1rem; font-weight:bold; margin-bottom:12px; text-align:center; color:white; font-family:'Segoe UI',sans-serif; opacity:0; transform:translateY(20px); transition: opacity 0.5s, transform 0.5s;">
+        — 🥈
+      </div>
+      <div id="podBlock2" style="
+        width:100%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
+        padding-top: 18px; font-size:2.5rem; font-weight:bold; color:rgba(255,255,255,0.9);
+        border-top-left-radius:10px; border-top-right-radius:10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        background: linear-gradient(to top, #1368ce, #3085e3);
+        border: 3px solid #66a6ff;
+        height: 0; overflow:hidden;
+        transition: height 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      ">2</div>
+    </div>
+
+    <!-- 1º puesto -->
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%;">
+      <div id="podName1" style="font-size:1.1rem; font-weight:bold; margin-bottom:12px; text-align:center; color:white; font-family:'Segoe UI',sans-serif; opacity:0; transform:translateY(20px); transition: opacity 0.5s, transform 0.5s;">
+        — 👑
+      </div>
+      <div id="podBlock1" style="
+        width:100%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
+        padding-top: 18px; font-size:2.5rem; font-weight:bold; color:rgba(255,255,255,0.9);
+        border-top-left-radius:10px; border-top-right-radius:10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        background: linear-gradient(to top, #b81414, #e22d2d);
+        border: 3px solid #ff6b6b;
+        height: 0; overflow:hidden;
+        transition: height 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      ">1</div>
+    </div>
+
+    <!-- 3º puesto -->
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%;">
+      <div id="podName3" style="font-size:1.1rem; font-weight:bold; margin-bottom:12px; text-align:center; color:white; font-family:'Segoe UI',sans-serif; opacity:0; transform:translateY(20px); transition: opacity 0.5s, transform 0.5s;">
+        — 🥉
+      </div>
+      <div id="podBlock3" style="
+        width:100%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
+        padding-top: 18px; font-size:2.5rem; font-weight:bold; color:rgba(255,255,255,0.9);
+        border-top-left-radius:10px; border-top-right-radius:10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        background: linear-gradient(to top, #d47400, #ff9914);
+        border: 3px solid #ffbe6b;
+        height: 0; overflow:hidden;
+        transition: height 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      ">3</div>
+    </div>
+  </div>
+</div>
+<!-- ===== FIN OVERLAY PODIO ===== -->
 
 <!-- Título principal con imágenes en línea -->
 <header class="py-6 shadow-lg bg-black flex justify-center items-center gap-3">
@@ -1025,6 +1109,77 @@ fetch("tablaLaliga/clasificacion_laliga.json")
 window.addEventListener("resize", actualizarNombresClub);
 window.addEventListener("orientationchange", actualizarNombresClub);
 </script>
+
+<!-- Confeti cargado en el <head> -->
+<script>
+(function() {
+  window.addEventListener('DOMContentLoaded', function() {
+    // Calcular top3 desde los datos ya definidos en el script principal
+    const totalesPodio = {};
+    jornadas.forEach(function(jornada) {
+      jornada.forEach(function(entry) {
+        if (!totalesPodio[entry.club]) totalesPodio[entry.club] = 0;
+        totalesPodio[entry.club] += entry.puntos;
+      });
+    });
+
+    const ranking = Object.entries(totalesPodio).sort(function(a,b){ return b[1]-a[1]; });
+    const top1 = ranking[0] ? ranking[0][0] : 'x';
+    const top2 = ranking[1] ? ranking[1][0] : 'x';
+    const top3 = ranking[2] ? ranking[2][0] : 'x';
+
+    document.getElementById('podName1').textContent = top1 + ' \uD83D\uDC51';
+    document.getElementById('podName2').textContent = top2 + ' \uD83E\uDD48';
+    document.getElementById('podName3').textContent = top3 + ' \uD83E\uDD49';
+
+    setTimeout(function() {
+      document.getElementById('podBlock3').style.height = '40%';
+      var n3 = document.getElementById('podName3');
+      n3.style.opacity = '1'; n3.style.transform = 'translateY(0)';
+    }, 600);
+
+    setTimeout(function() {
+      document.getElementById('podBlock2').style.height = '55%';
+      var n2 = document.getElementById('podName2');
+      n2.style.opacity = '1'; n2.style.transform = 'translateY(0)';
+    }, 2100);
+
+    setTimeout(function() {
+      document.getElementById('podBlock1').style.height = '75%';
+      var n1 = document.getElementById('podName1');
+      n1.style.opacity = '1'; n1.style.transform = 'translateY(0)';
+      setTimeout(lanzarConfeti, 600);
+    }, 3600);
+
+    setTimeout(function() {
+      var btn = document.getElementById('btnCerrarPodium');
+      btn.style.display = 'flex';
+    }, 5200);
+  });
+
+  function lanzarConfeti() {
+    var fin = Date.now() + 5000;
+    (function marco() {
+      confetti({ particleCount: 3, angle: 60,  spread: 55, origin: { x: 0, y: 0.8 } });
+      confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1, y: 0.8 } });
+      if (Date.now() < fin) requestAnimationFrame(marco);
+    }());
+  }
+
+  window.cerrarPodium = function() {
+    var overlay = document.getElementById('podiumOverlay');
+    overlay.style.transition = 'opacity 0.6s ease';
+    overlay.style.opacity = '0';
+    setTimeout(function(){ overlay.style.display = 'none'; }, 620);
+  };
+})();
+</script>
+<style>
+@keyframes podFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
 </body>
 </html>
 
@@ -1045,4 +1200,3 @@ html, body {
   min-height: 400px;
 }
 </style>
-
