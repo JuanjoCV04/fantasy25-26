@@ -9,7 +9,7 @@
 </head>
 <body class="bg-black text-white">
 
-<!-- ===== OVERLAY PODIO ===== -->
+<!-- 
 <div id="podiumOverlay" style="
   position: fixed; inset: 0; z-index: 9999;
   background: linear-gradient(135deg, #46178f 0%, #25074d 100%);
@@ -17,7 +17,6 @@
   justify-content: flex-end; align-items: center;
   overflow: hidden; padding-bottom: 50px;
 ">
-  <!-- Botón cerrar -->
   <button onclick="cerrarPodium()" id="btnCerrarPodium" style="
     position: absolute; top: 18px; right: 22px;
     background: rgba(255,255,255,0.15); border: none; color: white;
@@ -33,12 +32,10 @@
     font-weight: bold; text-align: center;
   ">🏆 Clasificación Final 🏆</h1>
 
-  <!-- Contenedor del podio -->
   <div style="
     display: flex; align-items: flex-end; justify-content: center;
     width: 100%; max-width: 800px; height: 60vh; gap: 15px; padding: 0 20px;
   ">
-    <!-- 2º puesto -->
     <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%;">
       <div id="podName2" style="font-size:1.1rem; font-weight:bold; margin-bottom:12px; text-align:center; color:white; font-family:'Segoe UI',sans-serif; opacity:0; transform:translateY(20px); transition: opacity 0.5s, transform 0.5s;">
         — 🥈
@@ -55,7 +52,6 @@
       ">2</div>
     </div>
 
-    <!-- 1º puesto -->
     <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%;">
       <div id="podName1" style="font-size:1.1rem; font-weight:bold; margin-bottom:12px; text-align:center; color:white; font-family:'Segoe UI',sans-serif; opacity:0; transform:translateY(20px); transition: opacity 0.5s, transform 0.5s;">
         — 👑
@@ -72,7 +68,6 @@
       ">1</div>
     </div>
 
-    <!-- 3º puesto -->
     <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%;">
       <div id="podName3" style="font-size:1.1rem; font-weight:bold; margin-bottom:12px; text-align:center; color:white; font-family:'Segoe UI',sans-serif; opacity:0; transform:translateY(20px); transition: opacity 0.5s, transform 0.5s;">
         — 🥉
@@ -90,7 +85,7 @@
     </div>
   </div>
 </div>
-<!-- ===== FIN OVERLAY PODIO ===== -->
+ -->
 
 <!-- Título principal con imágenes en línea -->
 <header class="py-6 shadow-lg bg-black flex justify-center items-center gap-3">
@@ -114,8 +109,8 @@
     </div>
   </div>
 
-  <!-- <a href="html/reporte.html" class="px-4 py-2 rounded font-bold bg-gradient-to-r from-yellow-500 to-amber-500 text-slate-950 hover:from-yellow-400 hover:to-amber-400 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-1.5 animate-pulse-subtle">
-    <span>📊</span> Reporte-->
+<a href="html/reporte.html" class="px-4 py-2 rounded font-bold bg-gradient-to-r from-yellow-500 to-amber-500 text-slate-950 hover:from-yellow-400 hover:to-amber-400 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-1.5 animate-pulse-subtle">
+    <span>📊</span> Reporte
   </a>
 </nav>
 
