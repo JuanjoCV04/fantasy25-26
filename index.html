@@ -1,1196 +1,144 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no">
-  <title>Mi Liga Fantasy - LaLiga</title>
-  <link rel="icon" type="image/png" href="imagenes\LogoLaLigaSinFondo.png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Selección de Temporada</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      color: #ffffff;
+    }
+
+    /* Contenedor del Carrusel de Fondo */
+    .carousel-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* Capa oscura superpuesta para mejorar la legibilidad del texto */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: -1;
+    }
+
+    /* Capa de Contenido Principal */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Menú de Selección de Temporada */
+    .season-menu {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .season-card {
+      display: inline-block;
+      padding: 18px 40px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .season-card:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: #ffffff;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+  </style>
 </head>
-<body class="bg-black text-white">
+<body>
 
-<!-- 
-<div id="podiumOverlay" style="
-  position: fixed; inset: 0; z-index: 9999;
-  background: linear-gradient(135deg, #46178f 0%, #25074d 100%);
-  display: flex; flex-direction: column;
-  justify-content: flex-end; align-items: center;
-  overflow: hidden; padding-bottom: 50px;
-">
-  <button onclick="cerrarPodium()" id="btnCerrarPodium" style="
-    position: absolute; top: 18px; right: 22px;
-    background: rgba(255,255,255,0.15); border: none; color: white;
-    font-size: 1.4rem; width: 40px; height: 40px; border-radius: 50%;
-    cursor: pointer; display: none; align-items: center; justify-content: center;
-    backdrop-filter: blur(4px); transition: background 0.2s;
-  " title="Cerrar">✕</button>
-
-  <h1 style="
-    position: absolute; top: 5%; font-size: 2.2rem; color: white;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-    animation: podFadeIn 1s ease-out; font-family: 'Segoe UI', sans-serif;
-    font-weight: bold; text-align: center;
-  ">🏆 Clasificación Final 🏆</h1>
-
-  <div style="
-    display: flex; align-items: flex-end; justify-content: center;
-    width: 100%; max-width: 800px; height: 60vh; gap: 15px; padding: 0 20px;
-  ">
-    <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%;">
-      <div id="podName2" style="font-size:1.1rem; font-weight:bold; margin-bottom:12px; text-align:center; color:white; font-family:'Segoe UI',sans-serif; opacity:0; transform:translateY(20px); transition: opacity 0.5s, transform 0.5s;">
-        — 🥈
-      </div>
-      <div id="podBlock2" style="
-        width:100%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
-        padding-top: 18px; font-size:2.5rem; font-weight:bold; color:rgba(255,255,255,0.9);
-        border-top-left-radius:10px; border-top-right-radius:10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        background: linear-gradient(to top, #1368ce, #3085e3);
-        border: 3px solid #66a6ff;
-        height: 0; overflow:hidden;
-        transition: height 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      ">2</div>
-    </div>
-
-    <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%;">
-      <div id="podName1" style="font-size:1.1rem; font-weight:bold; margin-bottom:12px; text-align:center; color:white; font-family:'Segoe UI',sans-serif; opacity:0; transform:translateY(20px); transition: opacity 0.5s, transform 0.5s;">
-        — 👑
-      </div>
-      <div id="podBlock1" style="
-        width:100%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
-        padding-top: 18px; font-size:2.5rem; font-weight:bold; color:rgba(255,255,255,0.9);
-        border-top-left-radius:10px; border-top-right-radius:10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        background: linear-gradient(to top, #b81414, #e22d2d);
-        border: 3px solid #ff6b6b;
-        height: 0; overflow:hidden;
-        transition: height 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      ">1</div>
-    </div>
-
-    <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%;">
-      <div id="podName3" style="font-size:1.1rem; font-weight:bold; margin-bottom:12px; text-align:center; color:white; font-family:'Segoe UI',sans-serif; opacity:0; transform:translateY(20px); transition: opacity 0.5s, transform 0.5s;">
-        — 🥉
-      </div>
-      <div id="podBlock3" style="
-        width:100%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
-        padding-top: 18px; font-size:2.5rem; font-weight:bold; color:rgba(255,255,255,0.9);
-        border-top-left-radius:10px; border-top-right-radius:10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        background: linear-gradient(to top, #d47400, #ff9914);
-        border: 3px solid #ffbe6b;
-        height: 0; overflow:hidden;
-        transition: height 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      ">3</div>
-    </div>
-  </div>
-</div>
- -->
-
-<!-- Título principal con imágenes en línea -->
-<header class="py-6 shadow-lg bg-black flex justify-center items-center gap-3">
-  <img src="imagenes/LogoFantasySinFondo.png" 
-       alt="Logo Fantasy sin fondo" 
-       class="max-w-full h-24 md:h-32 lg:h-40">
-</header>
-
-<!-- Barra de navegación con dropdown -->
-<nav class="bg-red-600 text-white py-3 flex justify-center items-center gap-4 shadow-md relative z-40">
-  <div class="relative">
-    <button onclick="toggleMenu()" class="px-4 py-2 rounded font-semibold bg-red-700 hover:bg-red-500 transition-colors">
-      Menú ▾
-    </button>
-
-    <div id="dropdownMenu" class="absolute left-0 mt-2 w-40 bg-red-700 rounded shadow-lg hidden z-50">
-      <button onclick="showSection('clasificacion', this)" class="block w-full text-left px-4 py-3 hover:bg-red-500 border-b border-red-800 last:border-none">Clasificación Fantasy</button>
-      <button onclick="showSection('jornadas', this)" class="block w-full text-left px-4 py-3 hover:bg-red-500 border-b border-red-800 last:border-none">Jornadas</button>
-      <button onclick="showSection('clasificacionLaLiga', this)" class="block w-full text-left px-4 py-3 hover:bg-red-500 border-b border-red-800 last:border-none">Clasificación LALIGA</button>
-      <button onclick="showSection('reglamento', this)" class="block w-full text-left px-4 py-3 hover:bg-red-500 border-b border-red-800 last:border-none">Reglamento</button>
-    </div>
+  <div class="carousel-container">
+    <div class="slide active" style="background-image: url('https://picsum.photos/1920/1080?random=1');"></div>
+    <div class="slide" style="background-image: url('https://picsum.photos/1920/1080?random=2');"></div>
+    <div class="slide" style="background-image: url('https://picsum.photos/1920/1080?random=3');"></div>
   </div>
 
-<a href="html/reporte.html" class="px-4 py-2 rounded font-bold bg-gradient-to-r from-yellow-500 to-amber-500 text-slate-950 hover:from-yellow-400 hover:to-amber-400 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-1.5 animate-pulse-subtle">
-    <span>📊</span> Reporte
-  </a>
-</nav>
+  <div class="overlay"></div>
 
-
-  <main class="max-w-6xl mx-auto px-4 py-6 space-y-8">
-<!-- Reglamento -->
-<section id="reglamento" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
-
-</section>
-
-  <!-- Clasificación LALIGA -->
-<section id="clasificacionLaLiga" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
-  <h2 class="text-2xl font-semibold mb-4 text-red-400">Clasificación LaLiga</h2>
-  <!-- Tabla de Clasificación LALIGA -->
-<div class="overflow-x-auto">
-    <table class="table-auto w-full text-center border border-gray-700 text-white">
-      <thead class="bg-gray-800">
-        <tr>
-          <th class="px-2 py-1">Pos</th>
-          <th class="px-2 py-1">Equipo</th>
-          <th class="px-2 py-1">J</th>
-          <th class="px-2 py-1">G</th>
-          <th class="px-2 py-1">E</th>
-          <th class="px-2 py-1">P</th>
-          <th class="px-2 py-1">GF</th>
-          <th class="px-2 py-1">GC</th>
-          <th class="px-2 py-1">DIF</th>
-          <th class="px-2 py-1">PTS</th>
-        </tr>
-      </thead>
-      <tbody id="tablaClasificacion"></tbody>
-<tfoot class="bg-gray-800 text-gray-300">
-  <tr>
-    <td colspan="10" class="px-2 py-4 text-left">
-      <div class="grid grid-cols-3 gap-6">
-        <!-- Columna 1: Leyenda de colores -->
-        <div>
-          <p class="mb-2"><strong class="text-blue-400">🔵</strong> Champions League</p>
-          <p class="mb-2"><strong class="text-orange-400">🟠</strong> Europa League</p>
-          <p class="mb-2"><strong class="text-green-400">🟢</strong> Conference League</p>
-          <p class="mb-4"><strong class="text-red-400">🔴</strong> Descenso</p>
-        </div>
-
-        <!-- Columna 2: Glosario (Parte 1) -->
-        <div>
-          <ul class="list-disc list-inside text-sm">
-            <li><strong>J:</strong> Partidos jugados</li>
-            <li><strong>G:</strong> Partidos ganados</li>
-            <li><strong>E:</strong> Empates</li>
-            <li><strong>P:</strong> Derrotas</li>
-          </ul>
-        </div>
-
-        <!-- Columna 3: Glosario (Parte 2) -->
-        <div>
-          <ul class="list-disc list-inside text-sm">
-            <li><strong>GF:</strong> Goles a favor</li>
-            <li><strong>GC:</strong> Goles en contra</li>
-            <li><strong>DIF:</strong> Diferencia de goles</li>
-            <li><strong>PTS:</strong> Puntos</li>
-          </ul>
-        </div>
-      </div>
-    </td>
-  </tr>
-</tfoot>
-    </table>
-  </div>
-</section>
-
-
-
-  <!-- ESTADISTICAS -->
-    <section id="estadisticas" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
-     <h2 class="text-2xl font-semibold mb-4 text-red-400">Estadisticas proximamente ....</h2>
-    </section>
-
-    <!-- Clasificación Final -->
-    <section id="clasificacion" class="bg-gray-900 p-6 rounded-2xl shadow-lg">
-     <h2 class="text-2xl font-semibold mb-4 text-red-400 flex items-center gap-2">
-  Clasificación Final
-  <button onclick="toggleInfo()" class="text-white rounded-full w-6 h-6 flex items-center justify-center">
-    ℹ️
-  </button>
-</h2>
-
-<!-- Información oculta -->
-<p id="infoClasificacion" class="hidden text-gray-300 bg-gray-800 p-3 rounded-lg mb-4">
-  Tocando los titulares de la tabla se ordenan segun (Club alfabeticamente, puntos o dinero).
-</p>
-
-      
-      <div class="overflow-x-auto">
-        <table class="table-auto w-full text-center border border-gray-700 text-white" id="finalTable">
-          <thead class="bg-gray-800">
-            <tr>
-              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('name')">Club</th>
-              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('points')">Puntos</th>
-              <th class="px-2 py-1 cursor-pointer" onclick="sortTable('money')">Dinero</th>
-            </tr>
-          </thead>
-          <tbody id="finalTableBody"></tbody>
-        </table>
-      </div>
-
-      <!-- Bote Final -->
-      <div class="mt-6 p-4 bg-red-600 rounded-lg text-white font-semibold text-lg">
-        💰 Bote Final: <span id="boteFinal">0</span><span  class="py-3 px-2 text-green-400">€ </span> 
-      </div>
-    </section>
-
-    <!-- Jornadas -->
-    <section id="jornadas" class="bg-gray-900 p-6 rounded-2xl shadow-lg hidden">
-  <h2 class="text-2xl font-semibold mb-4 text-red-400 flex items-center gap-2">
-    Jornadas
-    <button onclick="toggleInfo2()" class="text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-gray-700 transition">
-      ℹ️
-    </button>
-  </h2>
-
-  <p id="infoJornadas" class="hidden text-gray-300 bg-gray-800 p-3 rounded-lg mb-4 text-sm">
-    La tabla de puntuación actualizada se añadirá 24h después del último partido disputado.
-  </p>
-
-  <div class="flex justify-center gap-4 mb-6">
-    <button id="btnVuelta1" onclick="cambiarVuelta(1)" class="flex-1 py-2 rounded-lg font-bold transition-colors border-2 border-red-600 bg-red-600 text-white">
-      1ª Vuelta
-    </button>
-    <button id="btnVuelta2" onclick="cambiarVuelta(2)" class="flex-1 py-2 rounded-lg font-bold transition-colors border-2 border-red-600 text-red-400 hover:bg-red-900/30">
-      2ª Vuelta
-    </button>
-  </div>
-
-  <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2 mb-6" id="pagination">
-    </div>
-
-  <div class="overflow-x-auto rounded-lg border border-gray-700">
-    <table class="table-auto w-full text-center text-white">
-      <thead class="bg-gray-800 text-red-400 uppercase text-sm tracking-wider">
-        <tr>
-          <th class="py-3 px-2">Club</th>
-          <th class="py-3 px-2">Puntos</th>
-          <th class="py-3 px-2">Dinero</th>
-        </tr>
-      </thead>
-      <tbody id="jornadaTableBody" class="divide-y divide-gray-700 bg-gray-900"></tbody>
-    </table>
-  </div>
-</section>
-
+  <main class="main-content">
+    <h1 class="title">Selecciona Temporada</h1>
+    
+    <nav class="season-menu">
+      <a href="temporadaFantasy25-26.html" class="season-card">Temporada 25/26</a>
+      <a href="temporada-26-27.html" class="season-card">Temporada 26/27</a>
+    </nav>
   </main>
 
   <script>
+    // Rotación automática del fondo cada 5 segundos
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
 
-    // ==== Aparecer contenido de otros html1 ====
-   async function loadPartial(id, file) {
-    const resp = await fetch(file);
-    document.getElementById(id).innerHTML = await resp.text();
-  }
-
-  loadPartial("reglamento", "html/reglamento.html");
-    // ==== CONFIGURACIÓN DE DATOS MANUAL ====
-
-    const clubs = [
-      { name: "MrMaxi01" },
-      { name: "su_florentineza123" },
-      { name: "tonidiaz22" },
-      { name: "Juanjoneta04" },
-      { name: "Kino04" },
-      { name: "Batman..." },
-      { name: "Achoman" },
-      { name: "Raycon69" },
-      { name: "Juanpm_43" },
-      { name: "Rabovic" },
-    ];
-
-    // Datos por jornada
-    const jornadas = [
-  [
-    { club: "MrMaxi01", puntos: 71, dinero: 0 },
-    { club: "su_florentineza123", puntos: 95, dinero: 0 },
-    { club: "tonidiaz22", puntos: 66, dinero: 1 },
-    { club: "Juanjoneta04", puntos: 74, dinero: 0 },
-    { club: "Kino04", puntos: 86, dinero: 0 },
-    { club: "Batman...", puntos: 86, dinero: 0 },
-    { club: "Achoman", puntos: 50, dinero: 2 },
-    { club: "Raycon69", puntos: 71, dinero: 0 },
-    { club: "Juanpm_43", puntos: 49, dinero: 3 },
-    { club: "Rabovic", puntos: 81, dinero: 0 }        
-  ],
-  [
-    { club: "MrMaxi01", puntos: 66, dinero: 0 },
-    { club: "su_florentineza123", puntos: 92, dinero: 0 },
-    { club: "tonidiaz22", puntos: 84, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 35, dinero: 3 },
-    { club: "Kino04", puntos: 72, dinero: 0 },
-    { club: "Batman...", puntos: 81, dinero: 0 },
-    { club: "Achoman", puntos: 67, dinero: 0 },
-    { club: "Raycon69", puntos: 66, dinero: 1 },
-    { club: "Juanpm_43", puntos: 47, dinero: 2 },
-    { club: "Rabovic", puntos: 81, dinero: 0 }        
-  ],
-  [
-    { club: "MrMaxi01", puntos: 48, dinero: 3 },
-    { club: "su_florentineza123", puntos: 84, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 66, dinero: 0 },
-    { club: "Kino04", puntos: 65, dinero: 0 },
-    { club: "Batman...", puntos: 62, dinero: 0 },
-    { club: "Achoman", puntos: 69, dinero: 0 },
-    { club: "Raycon69", puntos: 79, dinero: 0 },
-    { club: "Juanpm_43", puntos: 67, dinero: 0 },
-    { club: "Rabovic", puntos: 53, dinero: 1 } , 
-    { club: "tonidiaz22", puntos: 53, dinero: 2 }
-      
-  ], 
-    [
-    { club: "tonidiaz22", puntos: 49, dinero: 0 },
-    { club: "MrMaxi01", puntos: 0, dinero: 3 },
-    { club: "su_florentineza123", puntos: 52, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 54, dinero: 0 },
-    { club: "Kino04", puntos: 64, dinero: 0 },
-    { club: "Batman...", puntos: 51, dinero: 0 },
-    { club: "Achoman", puntos: 38, dinero: 1 },
-    { club: "Raycon69", puntos: 49, dinero: 0 },
-    { club: "Juanpm_43", puntos: 34, dinero: 2 },
-    { club: "Rabovic", puntos: 82, dinero: 0 } , 
-      
-  ],
-  [
-    { club: "Juanpm_43", puntos: 64, dinero: 0 },
-    { club: "tonidiaz22", puntos: 79, dinero: 0 },
-    { club: "MrMaxi01", puntos: 42, dinero: 3 },
-    { club: "su_florentineza123", puntos: 72, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 63, dinero: 1 },
-    { club: "Kino04", puntos: 46, dinero: 2 },
-    { club: "Batman...", puntos: 64, dinero: 0 },
-    { club: "Achoman", puntos: 78, dinero: 0 },
-    { club: "Raycon69", puntos: 70, dinero: 0 },
-    { club: "Rabovic", puntos: 64, dinero: 0 } , 
-  ],
-  [
-    { club: "Juanpm_43", puntos: 45, dinero: 1 },
-    { club: "tonidiaz22", puntos: 48, dinero: 0 },
-    { club: "MrMaxi01", puntos: 71, dinero: 0 },
-    { club: "su_florentineza123", puntos: 53, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 42, dinero: 2 },
-    { club: "Kino04", puntos: 92, dinero: 0 },
-    { club: "Batman...", puntos: 37, dinero: 3 },
-    { club: "Achoman", puntos: 69, dinero: 0 },
-    { club: "Raycon69", puntos: 92, dinero: 0 },
-    { club: "Rabovic", puntos: 72, dinero: 0 } , 
-  ],
-    [
-    { club: "Juanpm_43", puntos: 51, dinero: 1 },
-    { club: "tonidiaz22", puntos: 59, dinero: 0 },
-    { club: "MrMaxi01", puntos: 84, dinero: 0 },
-    { club: "su_florentineza123", puntos: 76, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 59, dinero: 0 },
-    { club: "Kino04", puntos: 65, dinero: 0 },
-    { club: "Batman...", puntos: 59, dinero: 0 },
-    { club: "Achoman", puntos: 37, dinero: 3 },
-    { club: "Raycon69", puntos: 78, dinero: 0 },
-    { club: "Rabovic", puntos: 46, dinero: 2 } , 
-  ],
-    [
-    { club: "Juanpm_43", puntos: 45, dinero: 1 },
-    { club: "tonidiaz22", puntos: 65, dinero: 0 },
-    { club: "MrMaxi01", puntos: 61, dinero: 0 },
-    { club: "su_florentineza123", puntos: 57, dinero: 0 },
-    { club: "Raycon69", puntos: 57, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 57, dinero: 0 },
-    { club: "Kino04", puntos: 52, dinero: 0 },
-    { club: "Batman...", puntos: 0, dinero: 3 },
-    { club: "Achoman", puntos: 32, dinero: 2 },
-    { club: "Rabovic", puntos: 75, dinero: 0 } , 
-  ],
-  [
-    { club: "Batman...", puntos: 58, dinero: 0 },
-    { club: "Juanpm_43", puntos: 61, dinero: 0 },
-    { club: "tonidiaz22", puntos: 55, dinero: 2 },
-    { club: "MrMaxi01", puntos: 68, dinero: 0 },
-    { club: "su_florentineza123", puntos: 64, dinero: 0 },
-    { club: "Raycon69", puntos: 58, dinero: 1 },
-    { club: "Juanjoneta04", puntos: 49, dinero: 3 },
-    { club: "Kino04", puntos: 74, dinero: 0 },
-    { club: "Achoman", puntos: 71, dinero: 0 },
-    { club: "Rabovic", puntos: 79, dinero: 0 } , 
-  ],
-    [
-    { club: "Batman...", puntos: 45, dinero: 3 },
-    { club: "Juanpm_43", puntos: 49, dinero: 2 },
-    { club: "tonidiaz22", puntos: 60, dinero: 0 },
-    { club: "MrMaxi01", puntos: 79, dinero: 0 },
-    { club: "su_florentineza123", puntos: 56, dinero: 0 },
-    { club: "Raycon69", puntos: 70, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 50, dinero: 1 },
-    { club: "Kino04", puntos: 91, dinero: 0 },
-    { club: "Achoman", puntos: 53, dinero: 0 },
-    { club: "Rabovic", puntos: 58, dinero: 0 } , 
-  ],
-    [
-    { club: "Batman...", puntos: 111, dinero: 0 },
-    { club: "Juanpm_43", puntos: 49, dinero: 2 },
-    { club: "tonidiaz22", puntos: 36, dinero: 3 },
-    { club: "MrMaxi01", puntos: 52, dinero: 1 },
-    { club: "su_florentineza123", puntos: 65, dinero: 0 },
-    { club: "Raycon69", puntos: 66, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 64, dinero: 0 },
-    { club: "Kino04", puntos: 97, dinero: 0 },
-    { club: "Achoman", puntos: 76, dinero: 0 },
-    { club: "Rabovic", puntos: 66, dinero: 0 } , 
-  ],
-  [
-    { club: "Batman...", puntos: 102, dinero: 0 },
-    { club: "Juanpm_43", puntos: 70, dinero: 0 },
-    { club: "tonidiaz22", puntos: 72, dinero: 0},
-    { club: "MrMaxi01", puntos: 59, dinero: 0 },
-    { club: "su_florentineza123", puntos: 70, dinero: 0 },
-    { club: "Raycon69", puntos: 68, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 54, dinero: 2 },
-    { club: "Kino04", puntos: 60, dinero: 0 },
-    { club: "Achoman", puntos: 47, dinero: 3 },
-    { club: "Rabovic", puntos: 58, dinero: 1 } , 
-  ],
-    [
-    { club: "Batman...", puntos: 61, dinero: 0 },
-    { club: "Juanpm_43", puntos: 52, dinero: 1 },
-    { club: "tonidiaz22", puntos: 45, dinero: 3},
-    { club: "MrMaxi01", puntos: 57, dinero: 0 },
-    { club: "su_florentineza123", puntos: 67, dinero: 0 },
-    { club: "Raycon69", puntos: 51, dinero: 2 },
-    { club: "Juanjoneta04", puntos: 80, dinero: 0 },
-    { club: "Kino04", puntos: 98, dinero: 0 },
-    { club: "Achoman", puntos: 70, dinero: 0 },
-    { club: "Rabovic", puntos: 59, dinero: 0 } , 
-  ],
-    [
-    { club: "Batman...", puntos: 65, dinero: 0 },
-    { club: "Juanpm_43", puntos: 29, dinero: 3 },
-    { club: "tonidiaz22", puntos: 82, dinero: 0 },
-    { club: "MrMaxi01", puntos: 53, dinero: 0 },
-    { club: "su_florentineza123", puntos: 79, dinero: 0 },
-    { club: "Raycon69", puntos: 88, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 43, dinero: 2 },
-    { club: "Kino04", puntos: 100, dinero: 0 },
-    { club: "Achoman", puntos: 81, dinero: 0 },
-    { club: "Rabovic", puntos: 46, dinero: 1 } , 
-  ],
-
-  [
-    { club: "Batman...", puntos: 50, dinero: 0 },
-    { club: "Juanpm_43", puntos: 70, dinero: 0 },
-    { club: "tonidiaz22", puntos: 21, dinero: 3 },
-    { club: "MrMaxi01", puntos: 67, dinero: 0 },
-    { club: "su_florentineza123", puntos: 49, dinero: 2 },
-    { club: "Raycon69", puntos: 50, dinero: 1 },
-    { club: "Juanjoneta04", puntos: 66, dinero: 0 },
-    { club: "Kino04", puntos: 109, dinero: 0 },
-    { club: "Achoman", puntos: 60, dinero: 0 },
-    { club: "Rabovic", puntos: 68, dinero: 0 } , 
-  ],
-
-    [
-    { club: "Batman...", puntos: 65, dinero: 0 },
-    { club: "Juanpm_43", puntos: 0, dinero: 3 },
-    { club: "tonidiaz22", puntos: 83, dinero: 0 },
-    { club: "MrMaxi01", puntos: 42, dinero: 2 },
-    { club: "su_florentineza123", puntos: 80, dinero: 0 },
-    { club: "Raycon69", puntos: 82, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 43, dinero: 1 },
-    { club: "Kino04", puntos: 93, dinero: 0 },
-    { club: "Achoman", puntos: 58, dinero: 0 },
-    { club: "Rabovic", puntos: 80, dinero: 0 } , 
-  ],
-
-    [
-    { club: "Batman...", puntos: 99, dinero: 0 },
-    { club: "Juanpm_43", puntos: 38, dinero: 2 },
-    { club: "tonidiaz22", puntos: 62, dinero: 0 },
-    { club: "MrMaxi01", puntos: 35, dinero: 3 },
-    { club: "su_florentineza123", puntos: 84, dinero: 0 },
-    { club: "Raycon69", puntos: 55, dinero: 1 },
-    { club: "Juanjoneta04", puntos: 84, dinero: 0 },
-    { club: "Kino04", puntos: 98, dinero: 0 },
-    { club: "Achoman", puntos: 70, dinero: 0 },
-    { club: "Rabovic", puntos: 71, dinero: 0 } , 
-  ],
-    [
-    { club: "Batman...", puntos: 76, dinero: 0 },
-    { club: "Juanpm_43", puntos: 32, dinero: 3 },
-    { club: "tonidiaz22", puntos: 45, dinero: 0 },
-    { club: "MrMaxi01", puntos: 35, dinero: 2 },
-    { club: "su_florentineza123", puntos: 74, dinero: 0 },
-    { club: "Raycon69", puntos: 60, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 47, dinero: 0 },
-    { club: "Kino04", puntos: 96, dinero: 0 },
-    { club: "Achoman", puntos: 42, dinero: 1 },
-    { club: "Rabovic", puntos: 48, dinero: 0 } , 
-  ],
-   [
-    { club: "Batman...", puntos: 80, dinero: 0 },
-    { club: "Juanpm_43", puntos: 24, dinero: 2 },
-    { club: "tonidiaz22", puntos: 62, dinero: 0 },
-    { club: "MrMaxi01", puntos: 0, dinero: 3 },
-    { club: "su_florentineza123", puntos: 92, dinero: 0 },
-    { club: "Raycon69", puntos: 101, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 67, dinero: 0 },
-    { club: "Kino04", puntos: 120, dinero: 0 },
-    { club: "Achoman", puntos: 42, dinero: 1 },
-    { club: "Rabovic", puntos: 109, dinero: 0 } , 
-  ],
-     [
-    { club: "Juanpm_43", puntos: 73, dinero: 0 },
-    { club: "Batman...", puntos: 73, dinero: 0 },
-    { club: "tonidiaz22", puntos: 44, dinero: 1 },
-    { club: "MrMaxi01", puntos: 26, dinero: 2 },
-    { club: "su_florentineza123", puntos: 59, dinero: 0 },
-    { club: "Raycon69", puntos: 64, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 49, dinero: 0 },
-    { club: "Kino04", puntos: 67, dinero: 0 },
-    { club: "Achoman", puntos: 47, dinero: 0 },
-    { club: "Rabovic", puntos: 41, dinero: 1 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 54, dinero: 0 },
-    { club: "Batman...", puntos: 0, dinero: 2 },
-    { club: "tonidiaz22", puntos: 62, dinero: 0 },
-    { club: "MrMaxi01", puntos: 58, dinero: 0},
-    { club: "su_florentineza123", puntos: 54, dinero: 0 },
-    { club: "Raycon69", puntos: 42, dinero: 1 },
-    { club: "Juanjoneta04", puntos: 47, dinero: 0 },
-    { club: "Kino04", puntos: 87, dinero: 0 },
-    { club: "Achoman", puntos: 34, dinero: 1 },
-    { club: "Rabovic", puntos: 59, dinero: 0 } , 
-  ],
-    [
-    { club: "Juanpm_43", puntos: 50, dinero: 1 },
-    { club: "Batman...", puntos: 69, dinero: 0 },
-    { club: "tonidiaz22", puntos: 61, dinero: 0 },
-    { club: "MrMaxi01", puntos: 25, dinero: 2},
-    { club: "su_florentineza123", puntos: 74, dinero: 0 },
-    { club: "Raycon69", puntos: 85, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 51, dinero: 1 },
-    { club: "Kino04", puntos: 57, dinero: 0 },
-    { club: "Achoman", puntos: 60, dinero: 0 },
-    { club: "Rabovic", puntos: 54, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 44, dinero: 0 },
-    { club: "Batman...", puntos: 42, dinero: 1 },
-    { club: "tonidiaz22", puntos: 48, dinero: 0 },
-    { club: "MrMaxi01", puntos: 0, dinero: 2},
-    { club: "su_florentineza123", puntos: 44, dinero: 0 },
-    { club: "Raycon69", puntos: 51, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 44, dinero: 0 },
-    { club: "Kino04", puntos: 92, dinero: 0 },
-    { club: "Achoman", puntos: 0, dinero: 2 },
-    { club: "Rabovic", puntos: 58, dinero: 0 } , 
-  ],
-
-    [
-    { club: "Juanpm_43", puntos: 0, dinero: 2 },
-    { club: "Batman...", puntos: 42, dinero: 1 },
-    { club: "tonidiaz22", puntos: 52, dinero: 0 },
-    { club: "MrMaxi01", puntos: 47, dinero: 0},
-    { club: "su_florentineza123", puntos: 64, dinero: 0 },
-    { club: "Raycon69", puntos: 50, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 59, dinero: 0 },
-    { club: "Kino04", puntos: 44, dinero: 1 },
-    { club: "Achoman", puntos: 54, dinero: 0 },
-    { club: "Rabovic", puntos: 48, dinero: 0 } , 
-  ],
-    [
-    { club: "Juanpm_43", puntos: 25, dinero: 2 },
-    { club: "Batman...", puntos: 57, dinero: 0 },
-    { club: "tonidiaz22", puntos: 74, dinero: 0 },
-    { club: "MrMaxi01", puntos: 48, dinero: 0},
-    { club: "su_florentineza123", puntos: 51, dinero: 0 },
-    { club: "Raycon69", puntos: 68, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 44, dinero: 1 },
-    { club: "Kino04", puntos: 68, dinero: 0 },
-    { club: "Achoman", puntos: 44, dinero: 1 },
-    { club: "Rabovic", puntos: 70, dinero: 0 } , 
-  ],
-    [
-    { club: "Juanpm_43", puntos: 62, dinero: 0 },
-    { club: "Batman...", puntos: 51, dinero: 0 },
-    { club: "tonidiaz22", puntos: 45, dinero: 0 },
-    { club: "MrMaxi01", puntos: 0, dinero: 2},
-    { club: "su_florentineza123", puntos: 84, dinero: 0 },
-    { club: "Raycon69", puntos: 52, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 31, dinero: 1 },
-    { club: "Kino04", puntos: 46, dinero: 0 },
-    { club: "Achoman", puntos: 43, dinero: 1 },
-    { club: "Rabovic", puntos: 59, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 58, dinero: 0 },
-    { club: "Batman...", puntos: 47, dinero: 0 },
-    { club: "tonidiaz22", puntos: 46, dinero: 1 },
-    { club: "MrMaxi01", puntos: 73, dinero: 0},
-    { club: "su_florentineza123", puntos: 60, dinero: 0 },
-    { club: "Raycon69", puntos: 71, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 36, dinero: 1 },
-    { club: "Kino04", puntos: 32, dinero: 2 },
-    { club: "Achoman", puntos: 67, dinero: 0 },
-    { club: "Rabovic", puntos: 54, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 26, dinero: 2 },
-    { club: "Batman...", puntos: 70, dinero: 0 },
-    { club: "tonidiaz22", puntos: 54, dinero: 0 },
-    { club: "MrMaxi01", puntos: 38, dinero: 1},
-    { club: "su_florentineza123", puntos: 42, dinero: 0 },
-    { club: "Raycon69", puntos: 59, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 88, dinero: 0 },
-    { club: "Kino04", puntos: 57, dinero: 0 },
-    { club: "Achoman", puntos: 35, dinero: 1 },
-    { club: "Rabovic", puntos: 86, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 0, dinero: 2 },
-    { club: "Batman...", puntos: 60, dinero: 0 },
-    { club: "tonidiaz22", puntos: 30, dinero: 0 },
-    { club: "MrMaxi01", puntos: 0, dinero: 2},
-    { club: "su_florentineza123", puntos: 53, dinero: 0 },
-    { club: "Raycon69", puntos: 71, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 26, dinero: 0 },
-    { club: "Kino04", puntos: 58, dinero: 0 },
-    { club: "Achoman", puntos: 0, dinero: 2 },
-    { club: "Rabovic", puntos: 57, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 21, dinero: 1 },
-    { club: "Batman...", puntos: 52, dinero: 0 },
-    { club: "tonidiaz22", puntos: 15, dinero: 2 },
-    { club: "MrMaxi01", puntos: 70, dinero: 0},
-    { club: "su_florentineza123", puntos: 53, dinero: 0 },
-    { club: "Raycon69", puntos: 91, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 51, dinero: 0 },
-    { club: "Kino04", puntos: 47, dinero: 0 },
-    { club: "Achoman", puntos: 38, dinero: 1 },
-    { club: "Rabovic", puntos: 82, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 39, dinero: 1 },
-    { club: "Batman...", puntos: 44, dinero: 0 },
-    { club: "tonidiaz22", puntos: 40, dinero: 1 },
-    { club: "MrMaxi01", puntos: 52, dinero: 0},
-    { club: "su_florentineza123", puntos: 94, dinero: 0 },
-    { club: "Raycon69", puntos: 38, dinero: 2 },
-    { club: "Juanjoneta04", puntos: 76, dinero: 0 },
-    { club: "Kino04", puntos: 62, dinero: 0 },
-    { club: "Achoman", puntos: 69, dinero: 0 },
-    { club: "Rabovic", puntos: 52, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 30, dinero: 1 },
-    { club: "Batman...", puntos: 63, dinero: 0 },
-    { club: "tonidiaz22", puntos: 40, dinero: 1 },
-    { club: "MrMaxi01", puntos: 57, dinero: 0},
-    { club: "su_florentineza123", puntos: 59, dinero: 0 },
-    { club: "Raycon69", puntos: 56, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 64, dinero: 0 },
-    { club: "Kino04", puntos: 72, dinero: 0 },
-    { club: "Achoman", puntos: 26, dinero: 2 },
-    { club: "Rabovic", puntos: 50, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 0, dinero: 2 },
-    { club: "Batman...", puntos: 57, dinero: 0 },
-    { club: "tonidiaz22", puntos: 38, dinero: 1 },
-    { club: "MrMaxi01", puntos: 45, dinero: 1},
-    { club: "su_florentineza123", puntos: 65, dinero: 0 },
-    { club: "Raycon69", puntos: 72, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 54, dinero: 0 },
-    { club: "Kino04", puntos: 53, dinero: 0 },
-    { club: "Achoman", puntos: 58, dinero: 0 },
-    { club: "Rabovic", puntos: 50, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 26, dinero: 2 },
-    { club: "Batman...", puntos: 79, dinero: 0 },
-    { club: "tonidiaz22", puntos: 53, dinero: 0 },
-    { club: "MrMaxi01", puntos: 47, dinero: 1},
-    { club: "su_florentineza123", puntos: 59, dinero: 0 },
-    { club: "Raycon69", puntos: 62, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 53, dinero: 0 },
-    { club: "Kino04", puntos: 58, dinero: 0 },
-    { club: "Achoman", puntos: 48, dinero: 1 },
-    { club: "Rabovic", puntos: 67, dinero: 0 } , 
-  ],
-  [
-    { club: "Juanpm_43", puntos: 35, dinero: 1 },
-    { club: "Batman...", puntos: 50, dinero: 0 },
-    { club: "tonidiaz22", puntos: 21, dinero: 2 },
-    { club: "MrMaxi01", puntos: 45, dinero: 1},
-    { club: "su_florentineza123", puntos: 68, dinero: 0 },
-    { club: "Raycon69", puntos: 53, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 64, dinero: 0 },
-    { club: "Kino04", puntos: 53, dinero: 0 },
-    { club: "Achoman", puntos: 53, dinero: 0 },
-    { club: "Rabovic", puntos: 84, dinero: 0 } , 
-  ],
-  [
-    { club: "Juanpm_43", puntos: 0, dinero: 2 },
-    { club: "Batman...", puntos: 95, dinero: 0 },
-    { club: "tonidiaz22", puntos: 0, dinero: 2 },
-    { club: "MrMaxi01", puntos: 24, dinero: 1},
-    { club: "su_florentineza123", puntos: 50, dinero: 0 },
-    { club: "Raycon69", puntos: 60, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 37, dinero: 0 },
-    { club: "Kino04", puntos: 76, dinero: 0 },
-    { club: "Achoman", puntos: 36, dinero: 0 },
-    { club: "Rabovic", puntos: 82, dinero: 0 } , 
-  ],
-      [
-    { club: "Juanpm_43", puntos: 57, dinero: 0 },
-    { club: "Batman...", puntos: 48, dinero: 0 },
-    { club: "tonidiaz22", puntos: 0, dinero: 2 },
-    { club: "MrMaxi01", puntos: 32, dinero: 1},
-    { club: "su_florentineza123", puntos: 46, dinero: 0 },
-    { club: "Raycon69", puntos: 61, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 64, dinero: 0 },
-    { club: "Kino04", puntos: 65, dinero: 0 },
-    { club: "Achoman", puntos: 24, dinero: 1 },
-    { club: "Rabovic", puntos: 65, dinero: 0 } , 
-  ],
-    [
-    { club: "Juanpm_43", puntos: 0, dinero: 2 },
-    { club: "Batman...", puntos: 60, dinero: 0 },
-    { club: "tonidiaz22", puntos: 0, dinero: 2 },
-    { club: "MrMaxi01", puntos: 29, dinero: 1},
-    { club: "su_florentineza123", puntos: 58, dinero: 0 },
-    { club: "Raycon69", puntos: 50, dinero: 0 },
-    { club: "Juanjoneta04", puntos: 40, dinero: 0 },
-    { club: "Kino04", puntos: 102, dinero: 0 },
-    { club: "Achoman", puntos: 35, dinero: 0 },
-    { club: "Rabovic", puntos: 98, dinero: 0 } , 
-  ],
-
-];
-
-    // ==== CLASIFICACIÓN FINAL ====
-    let clasificacion = clubs.map(c => ({
-      name: c.name,
-      puntosTotales: 0,
-      dineroTotal: 0
-    }));
-
-    jornadas.forEach(jornada => {
-      jornada.forEach(entry => {
-        let club = clasificacion.find(c => c.name === entry.club);
-        if (club) {
-          club.puntosTotales += entry.puntos;
-          club.dineroTotal += entry.dinero;
-        }
-      });
-    });
-  // Ordenar por puntos de mayor a menor antes de renderizar
-    clasificacion.sort((a, b) => b.puntosTotales - a.puntosTotales);
-
-    const finalTableBody = document.getElementById("finalTableBody");
-    const boteFinalSpan = document.getElementById("boteFinal");
-
-// ==== CLASIFICACIÓN FINAL ACTUALIZADA ====
-    function renderFinalTable(data) {
-      finalTableBody.innerHTML = "";
-      let totalBote = 0;
-
-      data.forEach((club, idx) => {
-        totalBote += club.dineroTotal;
-
-        // Lógica de estilos por posición
-        let rowClass = ""; 
-        let textClass = "text-gray-300";
-        let emoji = "";
-
-        if (idx === 0) {
-          rowClass = "bg-yellow-900/20"; // Oro
-          textClass = "text-yellow-400 font-bold";
-          emoji = "👑";
-        } else if (idx === 1) {
-          rowClass = "bg-gray-800/40"; // Plata más grisáceo/suave
-          textClass = "text-gray-400 font-bold"; // Texto gris plata
-          emoji = "🥈";
-        } else if (idx === 2) {
-          rowClass = "bg-orange-900/10"; // Bronce
-          textClass = "text-orange-600 font-bold";
-          emoji = "🥉";
-        } else {
-          // Filas alternas para el resto
-          rowClass = idx % 2 === 0 ? "bg-gray-800" : "bg-gray-900";
-        }
-
-        finalTableBody.innerHTML += `
-          <tr class="${rowClass} border-t border-gray-700 hover:bg-gray-700 transition-colors">
-            <td class="py-3 px-2 text-center ${textClass}">${club.name} ${emoji}</td>
-            <td class="py-3 px-2 font-semibold text-white">${club.puntosTotales}</td>
-            <td class="py-3 px-2 text-green-400">${club.dineroTotal} €</td>
-          </tr>
-        `;
-      });
-
-      // Aplicar color verde al número del bote
-      boteFinalSpan.textContent = totalBote;
-      boteFinalSpan.className = "text-green-400 font-bold text-xl"; 
-    }
-    renderFinalTable(clasificacion);
-
-    // ==== ORDENAR TABLA FINAL ====
-    function sortTable(by) {
-      if (by === "name") clasificacion.sort((a,b) => a.name.localeCompare(b.name));
-      if (by === "points") clasificacion.sort((a,b) => b.puntosTotales - a.puntosTotales);
-      if (by === "money") clasificacion.sort((a,b) => b.dineroTotal - a.dineroTotal);
-      renderFinalTable(clasificacion);
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
     }
 
-   // ==== PAGINACIÓN DE JORNADAS MEJORADA ====
-    const pagination = document.getElementById("pagination");
-    const jornadaTableBody = document.getElementById("jornadaTableBody");
-    
-    // Estado inicial
-    let vueltaActual = 1; 
+    setInterval(nextSlide, 5000);
+  </script>
 
-    function cambiarVuelta(vuelta) {
-      vueltaActual = vuelta;
-      
-      // Actualizar estilos de los botones de vuelta (Tabs)
-      const btn1 = document.getElementById("btnVuelta1");
-      const btn2 = document.getElementById("btnVuelta2");
-
-      if (vuelta === 1) {
-        btn1.className = "flex-1 py-2 rounded-lg font-bold transition-colors border-2 border-red-600 bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.5)]";
-        btn2.className = "flex-1 py-2 rounded-lg font-bold transition-colors border-2 border-red-600 text-red-400 hover:bg-red-900/30";
-      } else {
-        btn1.className = "flex-1 py-2 rounded-lg font-bold transition-colors border-2 border-red-600 text-red-400 hover:bg-red-900/30";
-        btn2.className = "flex-1 py-2 rounded-lg font-bold transition-colors border-2 border-red-600 bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.5)]";
-      }
-
-      renderPagination();
-    }
-
-function renderPagination() {
-  pagination.innerHTML = "";
-  
-  let startIndex = (vueltaActual - 1) * 19;
-  let endIndex = startIndex + 19;
-
-  if (startIndex >= jornadas.length) {
-     pagination.innerHTML = `<div class="col-span-full text-center text-gray-500 py-4 italic">Aún no hay jornadas en esta vuelta</div>`;
-     jornadaTableBody.innerHTML = ""; 
-     return;
-  }
-
-  const limit = Math.min(endIndex, jornadas.length);
-
-  // Crear botones de J1, J2... (Esto se mantiene igual)
-  for (let i = startIndex; i < limit; i++) {
-    const btn = document.createElement("button");
-    btn.textContent = `J${i+1}`;
-    btn.className = "py-2 px-1 bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white rounded border border-gray-600 transition-all duration-200 text-sm font-medium focus:ring-2 focus:ring-red-500";
-    
-    btn.onclick = () => {
-        Array.from(pagination.children).forEach(b => b.classList.remove('bg-red-600', 'text-white', 'border-red-500'));
-        btn.classList.add('bg-red-600', 'text-white', 'border-red-500');
-        btn.classList.remove('bg-gray-800', 'text-gray-300', 'border-gray-600');
-        renderJornada(i);
-    };
-    pagination.appendChild(btn);
-  }
-
-  // === BOTÓN EXTRA "TOTAL" (CORREGIDO PARA AMBAS VUELTAS) ===
-  // Comprobamos si hay al menos una jornada en la vuelta actual para mostrar el botón
-  if (jornadas.length > startIndex) {
-    const btnTotal = document.createElement("button");
-    btnTotal.textContent = "TOTAL";
-    btnTotal.className = "py-2 px-1 bg-blue-900 hover:bg-blue-700 text-blue-200 hover:text-white rounded border border-blue-700 transition-all duration-200 text-xs font-bold uppercase shadow-lg";
-    
-    btnTotal.onclick = () => {
-        // Estilos de selección
-        Array.from(pagination.children).forEach(b => b.classList.remove('bg-red-600', 'text-white', 'border-red-500'));
-        btnTotal.classList.add('bg-red-600', 'text-white', 'border-red-500');
-        btnTotal.classList.remove('bg-blue-900', 'text-blue-200', 'border-blue-700');
-
-        // Cálculo dinámico del rango:
-        // Si vueltaActual es 1 -> start: 0, end: 18
-        // Si vueltaActual es 2 -> start: 19, end: 37
-        const startTotal = (vueltaActual - 1) * 19;
-        const endTotal = startTotal + 18;
-        
-        renderTotalVuelta(startTotal, endTotal);
-    };
-    pagination.appendChild(btnTotal);
-  }
-
-  // Auto-clic en la última jornada disponible al cambiar de vuelta
-  if (limit > startIndex) {
-      pagination.lastElementChild.click();
-  }
-}
-    function renderTotalVuelta(start, end) {
-      jornadaTableBody.innerHTML = "";
-      
-      // Objeto para acumular los datos
-      let totales = {};
-
-      // Recorremos solo las jornadas del rango solicitado
-      const rangoJornadas = jornadas.slice(start, end + 1);
-      
-      rangoJornadas.forEach(jornada => {
-        jornada.forEach(entry => {
-          if (!totales[entry.club]) {
-            totales[entry.club] = { puntos: 0, dinero: 0 };
-          }
-          totales[entry.club].puntos += entry.puntos;
-          totales[entry.club].dinero += entry.dinero;
-        });
-      });
-
-      // Convertir a array y ordenar
-      const listaTotales = Object.keys(totales).map(club => ({
-        club: club,
-        puntos: totales[club].puntos,
-        dinero: totales[club].dinero
-      })).sort((a, b) => b.puntos - a.puntos);
-
-      // Renderizar en la tabla
-      listaTotales.forEach((entry, idx) => {
-        const isWinner = idx === 0;
-        const rowClass = idx % 2 === 0 ? "bg-gray-800" : "bg-gray-900";
-        const textClass = isWinner ? "text-yellow-400 font-bold" : "text-gray-300";
-
-        jornadaTableBody.innerHTML += `
-          <tr class="${rowClass} border-b border-gray-700">
-            <td class="py-3 px-2 ${textClass}">${entry.club} ${isWinner ? '👑' : ''}</td>
-            <td class="py-3 px-2 font-semibold">${entry.puntos} pts</td>
-            <td class="py-3 px-2 text-green-400 font-bold">${entry.dinero} €</td>
-          </tr>
-        `;
-      });
-    }
-    function renderJornada(index) {
-      jornadaTableBody.innerHTML = "";
-      
-      // Copia y ordena la jornada por puntos de mayor a menor
-      const jornadaOrdenada = [...jornadas[index]].sort((a, b) => b.puntos - a.puntos);
-      
-      jornadaOrdenada.forEach((entry, idx) => {
-        // Resaltar al ganador (índice 0) con un color dorado suave o borde diferente si quieres
-        const isWinner = idx === 0; 
-        const rowClass = entry.dinero > 0 ? "bg-red-900/40" : (idx % 2 === 0 ? "bg-gray-800" : "bg-gray-800/50");
-        const textClass = isWinner ? "text-yellow-400 font-bold" : "text-gray-300";
-
-        jornadaTableBody.innerHTML += `
-          <tr class="${rowClass} hover:bg-gray-700 transition-colors">
-            <td class="py-3 px-2 ${textClass}">${entry.club} ${isWinner ? '👑' : ''}</td>
-            <td class="py-3 px-2 font-semibold">${entry.puntos}</td>
-            <td class="py-3 px-2 text-green-400">${entry.dinero > 0 ? entry.dinero + ' €' : '-'}</td>
-          </tr>
-        `;
-      });
-    }
-
-    // Calculamos cuál es la última jornada registrada
-    const ultimaJornadaIdx = jornadas.length - 1;
-
-    // Si el índice es 19 o mayor (J20 en adelante), iniciamos en la 2ª vuelta. Si no, en la 1ª.
-    const vueltaInicial = ultimaJornadaIdx >= 19 ? 2 : 1; 
-    
-    // Cargamos la vuelta correcta (el código interno ya seleccionará el último botón automáticamente)
-    cambiarVuelta(vueltaInicial);
-
-    
-    // ==== MOSTRAR SECCIONES SEGÚN MENÚ ====
-    function showSection(section) {
-  const sections = ["clasificacion", "jornadas", "reglamento", "calendario"];
-  sections.forEach(id => document.getElementById(id).classList.add("hidden"));
-  document.getElementById(section).classList.remove("hidden");
-}
-
-
-function toggleInfo2() {
-  const info = document.getElementById("infoJornadas");
-  info.classList.toggle("hidden");
-}
-function toggleInfo() {
-  const info = document.getElementById("infoClasificacion");
-  info.classList.toggle("hidden");
-}
-function toggleMenu() {
-  const menu = document.getElementById("dropdownMenu");
-  menu.classList.toggle("hidden");
-}
-
-// Cierra el menú si clicas fuera
-document.addEventListener("click", function(event) {
-  const menu = document.getElementById("dropdownMenu");
-  if (!event.target.closest("nav")) {
-    menu.classList.add("hidden");
-  }
-});
-
-// Muestra la sección y cierra el menú
-function showSection(section, btn) {
-  const sections = ["clasificacion", "jornadas", "reglamento", "estadisticas","clasificacionLaLiga"];
-  
-  // Oculta todas las secciones
-  sections.forEach(id => document.getElementById(id).classList.add("hidden"));
-  document.getElementById(section).classList.remove("hidden");
-
-  // Cierra el menú desplegable después de elegir
-  document.getElementById("dropdownMenu").classList.add("hidden");
-}
-
-//=== CARGAR TABLA DE CLASIFICACION LALIGA ====
-// Función para asignar color según la posición
-  function getPosColor(pos) {
-    const num = parseInt(pos);
-    if ([1, 2, 3, 4].includes(num)) return "text-blue-400 font-bold";
-    if (num === 5) return "text-orange-400 font-bold";
-    if (num === 6) return "text-green-400 font-bold";
-    if ([18, 19, 20].includes(num)) return "text-red-500 font-bold";
-    return ""; // Sin color para otras posiciones
-  }
-// Función para actualizar los nombres según orientación
-function actualizarNombresClub() {
-  const isMobile = window.innerWidth <= 768;
-  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-
-  document.querySelectorAll("[data-club]").forEach(span => {
-    const nombre = span.dataset.club;
-    const codigo = span.dataset.codigo;
-
-    // Cambiamos solo el texto después del icono
-    span.querySelector(".nombreClub").textContent = (isMobile && isPortrait) ? codigo : nombre;
-  });
-}
-
-// Cargar JSON y llenar la tabla
-fetch("tablaLaliga/clasificacion_laliga.json")
-  .then(response => response.json())
-  .then(data => {
-    const tbody = document.getElementById("tablaClasificacion");
-    tbody.innerHTML = "";
-
-    data.forEach(equipo => {
-      const tr = document.createElement("tr");
-
-      // Posición con color según regla
-      const posClass = getPosColor(equipo.posicion);
-      const tdPos = `<td class="border border-gray-700 ${posClass} font-bold">${equipo.posicion}</td>`;
-
-      // Celda del club con dataset para cambiar texto luego
-      const tdClub = `
-        <td class="border border-gray-700 px-2 py-1">
-          <div class="flex items-center justify-between">
-            <span class="flex items-center" data-club="${equipo.club}" data-codigo="${equipo.codigo}">
-              <img src="imagenes/Clubes/${equipo.codigo}.png" alt="${equipo.club}" class="w-6 h-6 mr-2">
-              <span class="nombreClub">${equipo.club}</span>
-            </span>
-          </div>
-        </td>
-      `;
-
-      // Estadísticas nombradas
-      const stats = ["J","G","E","P","GF","GC"].map(key => 
-        `<td class="border border-gray-700">${equipo.estadisticas[key]}</td>`
-      ).join("");
-
-      // DIF con color según valor
-      const dif = equipo.estadisticas["DIF"];
-      const difClass = dif > 0 ? "text-green-400 font-bold" : (dif < 0 ? "text-red-400 font-bold" : "");
-      const tdDif = `<td class="border border-gray-700 ${difClass}">${dif}</td>`;
-
-      // PTS normal
-      const tdPts = `<td class="border border-gray-700">${equipo.estadisticas["PTS"]}</td>`;
-
-      // Insertar fila
-      tr.innerHTML = tdPos + tdClub + stats + tdDif + tdPts;
-      tbody.appendChild(tr);
-    });
-
-    // Ajuste inicial según orientación
-    actualizarNombresClub();
-  })
-  .catch(err => console.error("Error cargando JSON:", err));
-
-// Solo actualiza el texto, no recrea la tabla => sin tirones
-window.addEventListener("resize", actualizarNombresClub);
-window.addEventListener("orientationchange", actualizarNombresClub);
-</script>
-
-<!-- Confeti cargado en el <head> -->
-<script>
-(function() {
-  window.addEventListener('DOMContentLoaded', function() {
-    // Calcular top3 desde los datos ya definidos en el script principal
-    const totalesPodio = {};
-    jornadas.forEach(function(jornada) {
-      jornada.forEach(function(entry) {
-        if (!totalesPodio[entry.club]) totalesPodio[entry.club] = 0;
-        totalesPodio[entry.club] += entry.puntos;
-      });
-    });
-
-    const ranking = Object.entries(totalesPodio).sort(function(a,b){ return b[1]-a[1]; });
-    const top1 = ranking[0] ? ranking[0][0] : 'x';
-    const top2 = ranking[1] ? ranking[1][0] : 'x';
-    const top3 = ranking[2] ? ranking[2][0] : 'x';
-
-    document.getElementById('podName1').textContent = top1 + ' \uD83D\uDC51';
-    document.getElementById('podName2').textContent = top2 + ' \uD83E\uDD48';
-    document.getElementById('podName3').textContent = top3 + ' \uD83E\uDD49';
-
-    setTimeout(function() {
-      document.getElementById('podBlock3').style.height = '40%';
-      var n3 = document.getElementById('podName3');
-      n3.style.opacity = '1'; n3.style.transform = 'translateY(0)';
-    }, 600);
-
-    setTimeout(function() {
-      document.getElementById('podBlock2').style.height = '55%';
-      var n2 = document.getElementById('podName2');
-      n2.style.opacity = '1'; n2.style.transform = 'translateY(0)';
-    }, 2100);
-
-    setTimeout(function() {
-      document.getElementById('podBlock1').style.height = '75%';
-      var n1 = document.getElementById('podName1');
-      n1.style.opacity = '1'; n1.style.transform = 'translateY(0)';
-      setTimeout(lanzarConfeti, 600);
-    }, 3600);
-
-    setTimeout(function() {
-      var btn = document.getElementById('btnCerrarPodium');
-      btn.style.display = 'flex';
-    }, 5200);
-  });
-
-  function lanzarConfeti() {
-    var fin = Date.now() + 5000;
-    (function marco() {
-      confetti({ particleCount: 3, angle: 60,  spread: 55, origin: { x: 0, y: 0.8 } });
-      confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1, y: 0.8 } });
-      if (Date.now() < fin) requestAnimationFrame(marco);
-    }());
-  }
-
-  window.cerrarPodium = function() {
-    var overlay = document.getElementById('podiumOverlay');
-    overlay.style.transition = 'opacity 0.6s ease';
-    overlay.style.opacity = '0';
-    setTimeout(function(){ overlay.style.display = 'none'; }, 620);
-  };
-})();
-</script>
-<style>
-@keyframes podFadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-</style>
 </body>
 </html>
-
-<style>
-/* Evita el refresco "pull-to-refresh" y el rebote elástico en toda la web */
-html, body {
-  overscroll-behavior-y: none;
-  -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
-}
-
-/* Aplica esto a las secciones que contienen las tablas */
-#jornadas, #clasificacion-fantasy {
-  overscroll-behavior-y: contain;
-}
-
-/* Evita que el cuerpo de la tabla cambie de tamaño bruscamente */
-#jornadaTableBody {
-  min-height: 400px;
-}
-</style>
