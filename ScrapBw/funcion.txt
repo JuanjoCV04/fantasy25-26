@@ -1,0 +1,9 @@
+Funcionamiento del script:
+ - Poner la url de la jornada indicada 
+ - Ejecutar para sacar toda la informacion
+ - clasificacion de la jornada 
+    - de los jugadores fantasy
+    - de los equipos de la liga
+    - resultados de los partidos
+    - el minuto a minuto, estadisticas y puntaciones de los difeerentes jugadores
+- Cambiar el nombre del json al requerido y hacer un html adaptado a el

@@ -1,0 +1,15 @@
+{
+    "_comentario": "Rellena 'puntosJornada' y 'jugados' de cada manager para ESTA jornada. El 'General' (acumulado) lo calcula la app solo, sumando todas las pX.json cargadas. Copia este fichero como p2.json, p3.json... para cada jornada nueva, manteniendo el mismo 'nombre' exacto en todas para que sume bien.",
+    "jugadores": [
+        { "codigo": "kino", "nombre": "Kino04", "puntosJornada": 43, "jugados": 11, "dinero": 0 },
+        { "codigo": "alb", "nombre": "Alberti FC", "puntosJornada": 41, "jugados": 101, "dinero": 0 },
+        { "codigo": "jj", "nombre": "Juanjoneta04", "puntosJornada": 39, "jugados": 11, "dinero": 0 },
+        { "codigo": "rabo", "nombre": "Rabovic F.C", "puntosJornada": 40, "jugados": 11, "dinero": 0 },
+        { "codigo": "ray", "nombre": "Raycon69", "puntosJornada": 44, "jugados": 11, "dinero": 0 },
+        { "codigo": "acho", "nombre": "AchoMan", "puntosJornada": 14, "jugados": 11, "dinero": 2 },
+        { "codigo": "bat", "nombre": "Batman...", "puntosJornada": 48, "jugados": 11, "dinero": 0 },
+        { "codigo": "max", "nombre": "Maxi", "puntosJornada": 0, "jugados": 11, "dinero": 3 },
+        { "codigo": "toni", "nombre": "ToniDiaz22", "puntosJornada": 38, "jugados": 11, "dinero": 1 },
+        { "codigo": "floren","nombre": "Florentineza", "puntosJornada": 45, "jugados": 11, "dinero": 0 }
+    ]
+}

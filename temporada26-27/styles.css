@@ -1,0 +1,754 @@
+:root {
+    --bg-dark: #121212;
+    --bg-card: #1e1e24;
+    --bg-hover: #2a2a35;
+    --text-main: #ffffff;
+    --text-muted: #a0a0b0;
+    --primary: #00d2d3;
+    --primary-dark: #009c9d;
+    --success: #1dd1a1;
+    --danger: #ff6b6b;
+    --warning: #feca57;
+    --border: #333340;
+    
+    --champions: #341f97;
+    --europa: #0abde3;
+    --relegation: #ee5253;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: var(--bg-card);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.header h1 {
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Tabla de Clasificación */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+tbody tr:hover {
+    background-color: var(--bg-hover);
+}
+
+.team-name {
+    text-align: left;
+    font-weight: bold;
+}
+
+.pts {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.pos-1, .pos-2, .pos-3, .pos-4 { border-left: 4px solid var(--champions); }
+.pos-5, .pos-6 { border-left: 4px solid var(--europa); }
+.pos-18, .pos-19, .pos-20 { border-left: 4px solid var(--relegation); }
+
+/* Partidos Grid */
+.games-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.game-card {
+    background-color: var(--bg-hover);
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid transparent;
+}
+
+.game-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,210,211,0.2);
+    border-color: var(--primary);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.game-score-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.team {
+    flex: 1;
+}
+.team.home { text-align: right; }
+.team.away { text-align: left; }
+
+.score {
+    padding: 5px 15px;
+    background-color: var(--bg-dark);
+    border-radius: 20px;
+    margin: 0 15px;
+    color: var(--primary);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 12px;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover { color: var(--danger); }
+
+.modal-header {
+    padding: 30px 20px;
+    text-align: center;
+    background-color: var(--bg-hover);
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+    border: none;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.modal-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.modal-nav {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+}
+
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 15px 0;
+    color: var(--text-muted);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+}
+
+.tab-btn:hover:not(.active) {
+    background-color: var(--bg-hover);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--border);
+    top: 0; bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.timeline-item.home { left: 0; text-align: right; }
+.timeline-item.away { left: 50%; text-align: left; }
+
+.timeline-icon {
+    position: absolute;
+    top: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--bg-dark);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.timeline-item.home .timeline-icon { right: -15px; }
+.timeline-item.away .timeline-icon { left: -15px; }
+
+.timeline-content {
+    background-color: var(--bg-hover);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.minute {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Stats */
+.stat-row {
+    margin-bottom: 15px;
+}
+
+.stat-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.stat-name {
+    color: var(--text-muted);
+}
+
+.stat-bars {
+    display: flex;
+    height: 8px;
+    background-color: var(--bg-dark);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-bar-home { background-color: var(--primary); transition: width 0.5s; }
+.stat-bar-away { background-color: var(--warning); transition: width 0.5s; }
+
+/* Lineups */
+.lineups-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.team-lineup h3 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.player-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background-color: var(--bg-hover);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.player-pos {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    width: 35px;
+}
+
+.player-points {
+    font-weight: bold;
+    color: var(--success);
+}
+.player-points.negative { color: var(--danger); }
+
+/* ============================================================
+   Añadidos para temporadaFantasy26-27.html (carga dinámica)
+   ============================================================ */
+
+/* Cabecera: subtítulo de temporada */
+.season-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/* Resumen rápido (goles, partidos, jornadas cargadas...) */
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+@media (min-width: 640px) {
+    .quick-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.quick-stat {
+    text-align: center;
+    padding: 8px;
+}
+
+.qs-value {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.qs-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Navegación de jornadas (pestañas tipo pill, scroll horizontal) */
+.round-nav {
+    margin-bottom: 25px;
+}
+
+.round-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.round-tabs::-webkit-scrollbar {
+    height: 4px;
+}
+
+.round-tabs::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.round-tab {
+    flex: 0 0 auto;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.round-tab:hover {
+    background-color: var(--bg-hover);
+}
+
+.round-tab.active {
+    background-color: var(--primary);
+    color: var(--bg-dark);
+    border-color: var(--primary);
+}
+
+/* MVP de la jornada */
+.mvp-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--bg-hover), var(--bg-card));
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 15px;
+}
+
+.mvp-box.hidden {
+    display: none;
+}
+
+.mvp-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.mvp-name {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.mvp-pts {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+/* Once ideal de la jornada */
+.ideal-lineup {
+    margin-bottom: 20px;
+}
+
+.lineup-header {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.ideal-formation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formation-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.formation-player {
+    background-color: var(--bg-hover);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    text-align: center;
+    font-size: 0.78rem;
+    min-width: 70px;
+}
+
+.fp-pos {
+    display: block;
+    color: var(--primary);
+    font-size: 0.65rem;
+    font-weight: bold;
+}
+
+.fp-name {
+    display: block;
+    margin-top: 2px;
+}
+
+/* Rankings (goleadores, asistencias, tarjetas) */
+.top-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.top-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--bg-hover);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.top-rank {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.top-name {
+    flex: 1;
+}
+
+.top-count {
+    color: var(--success);
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Fila del entrenador dentro de la alineación */
+.coach-row {
+    border: 1px dashed var(--border);
+}
+
+/* Ajustes extra para móviles pequeños */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .game-score-row {
+        font-size: 1rem;
+    }
+
+    .formation-player {
+        min-width: 60px;
+        font-size: 0.72rem;
+    }
+}
+
+
+/* ============================================================
+   Tabla de Puntuaciones (liga privada de managers)
+   ============================================================ */
+
+.puntuaciones-card {
+    margin-bottom: 30px;
+}
+
+#puntuaciones-table th,
+#puntuaciones-table td {
+    text-align: center;
+}
+
+#puntuaciones-table th.pt-name,
+#puntuaciones-table td.pt-name {
+    text-align: left;
+}
+
+.pt-pos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.pt-pos-num {
+    min-width: 26px;
+}
+
+.pt-arrow {
+    font-size: 0.68rem;
+    font-weight: bold;
+}
+
+.pt-arrow.up { color: var(--success); }
+.pt-arrow.down { color: var(--danger); }
+.pt-arrow.same { color: var(--text-muted); }
+
+.pt-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.pt-avatar {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--primary-dark);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.pt-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pt-avatar-fallback {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-dark);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.pt-dinero-owed {
+    color: var(--warning);
+}
+
+.pt-badge {
+    background-color: var(--bg-hover);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-weight: bold;
+    min-width: 34px;
+}
+
+.pt-general {
+    color: var(--primary);
+}
+
+tr.pt-first {
+    background-color: var(--bg-hover);
+}
+
+tr.pt-first .pt-pos-num {
+    background-color: var(--warning);
+    color: var(--bg-dark);
+    border-radius: 6px;
+    padding: 2px 7px;
+}
+
+/* Distinguir el botón "General" del resto de pestañas de jornada */
+.round-tab-general {
+    border-color: var(--primary);
+}
+
+#puntuaciones-table code {
+    background-color: var(--bg-dark);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--primary);
+    font-size: 0.85em;
+}

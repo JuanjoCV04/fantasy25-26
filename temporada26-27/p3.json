@@ -1,0 +1,15 @@
+{
+    "_comentario": "Rellena 'puntosJornada' y 'jugados' de cada manager para ESTA jornada. El 'General' (acumulado) lo calcula la app solo, sumando todas las pX.json cargadas. Copia este fichero como p2.json, p3.json... para cada jornada nueva, manteniendo el mismo 'nombre' exacto en todas para que sume bien.",
+    "jugadores": [
+        { "codigo": "kino", "nombre": "Kino04", "puntosJornada": 59, "jugados": 11, "dinero": 0 },
+        { "codigo": "bat", "nombre": "Batman...", "puntosJornada": 55, "jugados": 11, "dinero": 0 },
+        { "codigo": "rabo", "nombre": "Rabovic F.C", "puntosJornada": 52, "jugados": 11, "dinero": 0 },
+        { "codigo": "jj", "nombre": "Juanjoneta04", "puntosJornada": 48, "jugados": 11, "dinero": 0 },
+        { "codigo": "alb", "nombre": "Alberti FC", "puntosJornada": 43, "jugados": 9, "dinero": 0 },
+        { "codigo": "toni", "nombre": "ToniDiaz22", "puntosJornada": 34, "jugados": 11, "dinero": 0 },
+        { "codigo": "floren", "nombre": "Florentineza", "puntosJornada": 32, "jugados": 11, "dinero": 0 },
+        { "codigo": "ray", "nombre": "Raycon69", "puntosJornada": 30, "jugados": 11, "dinero": 0 },
+        { "codigo": "acho", "nombre": "AchoMan", "puntosJornada": 25, "jugados": 11, "dinero": 0 },
+        { "codigo": "max", "nombre": "Maxi", "puntosJornada": 21, "jugados": 11, "dinero": 0 }
+    ]
+}

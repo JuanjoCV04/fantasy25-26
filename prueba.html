@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biwenger Fantasy Dashboard - Jornada 1</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-primary); color: var(--text-main); padding: 20px; }
+
+        .dashboard-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 24px; }
+        
+        /* Header Navigation */
+        .matchday-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-card);
+            padding: 16px 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .nav-btn {
+            background: #273549;
+            color: var(--text-main);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .nav-btn:hover { background: var(--accent-blue); }
+        .scoring-system {
+            background: #064e3b;
+            color: #34d399;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Tabs */
+        .tabs { display: flex; gap: 12px; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; }
+        .tab-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        .tab-btn.active { background: var(--accent-blue); color: #fff; }
+
+        /* Tables & Panels */
+        .panel { display: none; background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); }
+        .panel.active { display: block; }
+        
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 12px; border-bottom: 1px solid var(--border-color); }
+        th { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; }
+        tr:hover { background-color: var(--bg-hover); }
+
+        /* Badges & Indicators */
+        .pos-up { color: var(--accent-green); font-weight: bold; }
+        .pos-down { color: var(--accent-red); font-weight: bold; }
+        .pica-badge { background: #eab308; color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
+        .status-badge { background: #15803d; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; text-transform: uppercase; }
+
+        /* Fixtures Grid */
+        .fixtures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+        .fixture-card {
+            background: #111827;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .fixture-header { display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.8rem; }
+        .fixture-teams { display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; font-weight: bold; }
+        
+        /* Stats Breakdown */
+        .stat-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border-color); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    <!-- Header Controls -->
+    <div class="matchday-nav">
+        <button class="nav-btn" onclick="changeRound(-1)">❮ Anterior</button>
+        <div style="text-align: center;">
+            <h2 id="round-title">Jornada 1 (aplazada)</h2>
+            <span class="scoring-system">Sistema: Diario AS (Picas)</span>
+        </div>
+        <button class="nav-btn" onclick="changeRound(1)">Siguiente ❯</button>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('fantasy')">Clasificación Fantasy</button>
+        <button class="tab-btn" onclick="switchTab('laliga')">Liga Real</button>
+        <button class="tab-btn" onclick="switchTab('matches')">Partidos de la Jornada</button>
+        <button class="tab-btn" onclick="switchTab('analytics')">Análisis y Puntuaciones</button>
+    </div>
+
+    <!-- 1. Clasificación Fantasy -->
+    <div id="tab-fantasy" class="panel active">
+        <h3>Clasificación de los Participantes</h3>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Var</th>
+                    <th>Equipo / Usuario</th>
+                    <th>Puntos Gen.</th>
+                    <th>Puntos Jor.</th>
+                    <th>Jugadores</th>
+                </tr>
+            </thead>
+            <tbody id="fantasy-standings">
+                <tr>
+                    <td>1</td>
+                    <td class="pos-up">▲ 1</td>
+                    <td><strong>Dream Team FC</strong></td>
+                    <td>68</td>
+                    <td>68</td>
+                    <td>11 / 11</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="pos-down">▼ 1</td>
+                    <td><strong>Galácticos Vitoria</strong></td>
+                    <td>54</td>
+                    <td>54</td>
+                    <td>11 / 11</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>=</td>
+                    <td><strong>Sevilla Fantasy</strong></td>
+                    <td>49</td>
+                    <td>49</td>
+                    <td>10 / 11</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 2. Clasificación Real LaLiga -->
+    <div id="tab-laliga" class="panel">
+        <h3>Clasificación Oficial de LaLiga</h3>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Equipo</th>
+                    <th>PTS</th>
+                    <th>PJ</th>
+                    <th>PG</th>
+                    <th>PE</th>
+                    <th>PP</th>
+                    <th>GF</th>
+                    <th>GC</th>
+                    <th>DG</th>
+                </tr>
+            </thead>
+            <tbody id="laliga-standings"></tbody>
+        </table>
+    </div>
+
+    <!-- 3. Resultados de Partidos -->
+    <div id="tab-matches" class="panel">
+        <h3>Resultados de la Jornada</h3>
+        <br>
+        <div class="fixtures-grid" id="fixtures-container"></div>
+    </div>
+
+    <!-- 4. Estadísticas Avanzadas y Eventos -->
+    <div id="tab-analytics" class="panel">
+        <h3>Top Jugadores de la Jornada</h3>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Jugador</th>
+                    <th>Posición</th>
+                    <th>Equipo</th>
+                    <th>Picas</th>
+                    <th>Eventos</th>
+                    <th>Puntos Fantasy</th>
+                </tr>
+            </thead>
+            <tbody id="top-players"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // Datos parseados desde el JSON recibido
+    const rawData = {
+        standings: [
+            { pos: 1, name: "Barcelona", pts: 9, pj: 3, pg: 3, pe: 0, pp: 0, gf: 12, gc: 2 },
+            { pos: 2, name: "Real Madrid", pts: 9, pj: 3, pg: 3, pe: 0, pp: 0, gf: 10, gc: 2 },
+            { pos: 3, name: "Atlético", pts: 7, pj: 3, pg: 2, pe: 1, pp: 0, gf: 7, gc: 3 },
+            { pos: 4, name: "Alavés", pts: 7, pj: 3, pg: 2, pe: 1, pp: 0, gf: 5, gc: 1 },
+            { pos: 5, name: "Osasuna", pts: 7, pj: 3, pg: 2, pe: 1, pp: 0, gf: 3, gc: 1 },
+            { pos: 6, name: "Sevilla", pts: 6, pj: 3, pg: 2, pe: 0, pp: 1, gf: 6, gc: 5 },
+            { pos: 7, name: "Betis", pts: 6, pj: 3, pg: 2, pe: 0, pp: 1, gf: 4, gc: 5 },
+            { pos: 8, name: "Deportivo", pts: 5, pj: 3, pg: 1, pe: 2, pp: 0, gf: 5, gc: 3 },
+            { pos: 9, name: "Levante", pts: 4, pj: 3, pg: 1, pe: 1, pp: 1, gf: 5, gc: 5 },
+            { pos: 10, name: "Racing", pts: 4, pj: 3, pg: 1, pe: 1, pp: 1, gf: 5, gc: 5 },
+            { pos: 11, name: "Espanyol", pts: 3, pj: 3, pg: 1, pe: 0, pp: 2, gf: 5, gc: 4 },
+            { pos: 12, name: "Athletic", pts: 3, pj: 3, pg: 1, pe: 0, pp: 2, gf: 3, gc: 5 },
+            { pos: 13, name: "Real Sociedad", pts: 3, pj: 3, pg: 1, pe: 0, pp: 2, gf: 3, gc: 6 },
+            { pos: 14, name: "Getafe", pts: 3, pj: 3, pg: 1, pe: 0, pp: 2, gf: 1, gc: 4 },
+            { pos: 15, name: "Villarreal", pts: 2, pj: 3, pg: 0, pe: 2, pp: 1, gf: 4, gc: 5 },
+            { pos: 16, name: "Celta", pts: 1, pj: 3, pg: 0, pe: 1, pp: 2, gf: 1, gc: 4 },
+            { pos: 17, name: "Valencia", pts: 1, pj: 3, pg: 0, pe: 1, pp: 2, gf: 1, gc: 4 },
+            { pos: 18, name: "Rayo Vallecano", pts: 1, pj: 3, pg: 0, pe: 1, pp: 2, gf: 4, gc: 8 },
+            { pos: 19, name: "Elche", pts: 1, pj: 3, pg: 0, pe: 1, pp: 2, gf: 3, gc: 9 },
+            { pos: 20, name: "Málaga", pts: 1, pj: 3, pg: 0, pe: 1, pp: 2, gf: 1, gc: 7 }
+        ],
+        games: [
+            { home: "Alavés", homeScore: 3, away: "Getafe", awayScore: 0, status: "Finalizado", location: "Mendizorroza" },
+            { home: "Sevilla", homeScore: 2, away: "Rayo Vallecano", awayScore: 1, status: "Finalizado", location: "Ramón Sánchez Pizjuán" },
+            { home: "Racing", homeScore: 2, away: "Villarreal", awayScore: 2, status: "Finalizado", location: "Campos de Sport de El Sardinero" },
+            { home: "Espanyol", homeScore: 3, away: "Levante", awayScore: 0, status: "Finalizado", location: "RCDE Stadium" }
+        ],
+        topPlayers: [
+            { name: "Roberto Fernández", pos: "Delantero", team: "Espanyol", picas: "3 ♠", events: "2 Goles, MVP", pts: 16 },
+            { name: "Tenaglia", pos: "Defensa", team: "Alavés", picas: "3 ♠", events: "1 Gol, MVP", pts: 15 },
+            { name: "Sergio Martínez", pos: "Centrocampista", team: "Racing", picas: "3 ♠", events: "1 Gol", pts: 14 },
+            { name: "Mariano", pos: "Delantero", team: "Alavés", picas: "3 ♠", events: "1 Gol", pts: 13 },
+            { name: "Peque", pos: "Delantero", team: "Sevilla", picas: "3 ♠", events: "1 Gol (P), MVP", pts: 13 },
+            { name: "Pape Gueye", pos: "Centrocampista", team: "Villarreal", picas: "2 ♠", events: "1 Gol, MVP", pts: 10 }
+        ]
+    };
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
+        
+        event.target.classList.add('active');
+        document.getElementById(`tab-${tabId}`).classList.add('active');
+    }
+
+    function renderLaLiga() {
+        const tbody = document.getElementById('laliga-standings');
+        tbody.innerHTML = rawData.standings.map(t => `
+            <tr>
+                <td>${t.pos}</td>
+                <td><strong>${t.name}</strong></td>
+                <td><strong>${t.pts}</strong></td>
+                <td>${t.pj}</td>
+                <td>${t.pg}</td>
+                <td>${t.pe}</td>
+                <td>${t.pp}</td>
+                <td>${t.gf}</td>
+                <td>${t.gc}</td>
+                <td>${t.gf - t.gc}</td>
+            </tr>
+        `).join('');
+    }
+
+    function renderFixtures() {
+        const container = document.getElementById('fixtures-container');
+        container.innerHTML = rawData.games.map(g => `
+            <div class="fixture-card">
+                <div class="fixture-header">
+                    <span>${g.location}</span>
+                    <span class="status-badge">${g.status}</span>
+                </div>
+                <div class="fixture-teams">
+                    <span>${g.home}</span>
+                    <span>${g.homeScore} - ${g.awayScore}</span>
+                    <span>${g.away}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderTopPlayers() {
+        const tbody = document.getElementById('top-players');
+        tbody.innerHTML = rawData.topPlayers.map(p => `
+            <tr>
+                <td><strong>${p.name}</strong></td>
+                <td>${p.pos}</td>
+                <td>${p.team}</td>
+                <td><span class="pica-badge">${p.picas}</span></td>
+                <td>${p.events}</td>
+                <td><strong style="color: var(--accent-green);">${p.pts} pts</strong></td>
+            </tr>
+        `).join('');
+    }
+
+    // Initialize
+    renderLaLiga();
+    renderFixtures();
+    renderTopPlayers();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football Dashboard</title>
+    <link rel="icon" type="image/png" href="imagenes\LogoLaLigaSinFondo.png">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>🏆 Liga Biwenger</h1>
+            <p class="season-label" id="season-label"></p>
+        </div>
+    </header>
+
+    <nav class="round-nav container">
+        <div id="round-tabs" class="round-tabs"></div>
+    </nav>
+
+    <main class="container">
+        <section class="card quick-stats" id="quick-stats"></section>
+
+        <section class="card puntuaciones-card">
+            <h2 id="puntuaciones-title">📊 Puntuaciones</h2>
+            <div class="table-responsive">
+                <table id="puntuaciones-table">
+                    <thead id="puntuaciones-thead">
+                        <tr>
+                            <th>Pos</th>
+                            <th class="pt-name">Jugador</th>
+                            <th>Puntos</th>
+                            <th>Jugados</th>
+                            <th>Dinero</th>
+                        </tr>
+                    </thead>
+                    <tbody id="puntuaciones-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="dashboard-grid">
+            <section class="card standings-section">
+                <h2>Clasificación General</h2>
+                <div class="table-responsive">
+                    <table id="standings-table">
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Equipo</th>
+                                <th>PTS</th>
+                                <th>PJ</th>
+                                <th>PG</th>
+                                <th>PE</th>
+                                <th>PP</th>
+                                <th>GF</th>
+                                <th>GC</th>
+                                <th>DG</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standings-body">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="card games-section">
+                <h2 id="jornada-title">Jornada</h2>
+                <div id="mvp-box" class="mvp-box hidden"></div>
+                <div id="ideal-lineup" class="ideal-lineup"></div>
+                <div id="games-container" class="games-grid"></div>
+            </section>
+
+            <section class="card">
+                <h2>⚽ Máximos Goleadores</h2>
+                <div id="top-scorers" class="top-list"></div>
+            </section>
+
+            <section class="card">
+                <h2>👟 Máximas Asistencias</h2>
+                <div id="top-assists" class="top-list"></div>
+            </section>
+
+            <section class="card">
+                <h2>🟨 Más Tarjetas</h2>
+                <div id="top-cards" class="top-list"></div>
+            </section>
+        </div>
+    </main>
+
+    <div id="match-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn" id="close-modal">&times;</button>
+            <div id="modal-header" class="modal-header">
+                </div>
+
+            <div class="modal-nav">
+                <button class="tab-btn active" data-target="tab-stats">Estadísticas</button>
+                <button class="tab-btn" data-target="tab-timeline">Línea Temporal</button>
+                <button class="tab-btn" data-target="tab-lineups">Alineaciones</button>
+            </div>
+
+            <div class="modal-body">
+                <div id="tab-stats" class="tab-content active"></div>
+                <div id="tab-timeline" class="tab-content hidden"></div>
+                <div id="tab-lineups" class="tab-content hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
