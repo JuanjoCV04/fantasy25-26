@@ -75,6 +75,7 @@ async function init() {
         renderQuickStats();
         renderTopStats();
         renderPuntuacionesJornada();
+        toggleBoteBox(false);
         setupModal();
     } catch (error) {
         console.error('Error inicializando el dashboard:', error);
@@ -229,6 +230,7 @@ function selectJornadaTab(idx, btnEl) {
     renderRoundExtras();
     renderMatches(getCurrentRound().data.games);
     renderPuntuacionesJornada();
+    toggleBoteBox(false);
 }
 
 // Click en "General" -> muestra la clasificación acumulada de la liga privada.
@@ -411,6 +413,7 @@ function renderPuntuacionesGeneral() {
             `<tr><td colspan="5" style="text-align:center;color:var(--text-muted)">
                 Todavía no hay ningún <code>pX.json</code> cargado.
             </td></tr>`;
+        toggleBoteBox(false);
         return;
     }
 
@@ -424,7 +427,26 @@ function renderPuntuacionesGeneral() {
     const prevPos = {};
     rankPuntuaciones(accPrev).forEach((r, i) => { prevPos[r.nombre] = i + 1; });
 
-    renderPuntuacionesTable(rankPuntuaciones(accNow), prevPos);
+    const rankedNow = rankPuntuaciones(accNow);
+    renderPuntuacionesTable(rankedNow, prevPos);
+
+    // Bote total acumulado: la suma del dinero de todos los managers hasta la fecha
+    const totalBote = rankedNow.reduce((sum, r) => sum + (r.dinero || 0), 0);
+    toggleBoteBox(true, totalBote);
+}
+
+// Muestra u oculta la caja del Bote total (solo tiene sentido en la vista General)
+function toggleBoteBox(show, total) {
+    const box = document.getElementById('bote-box');
+    if (!box) return;
+
+    if (!show) {
+        box.classList.add('hidden');
+        return;
+    }
+
+    document.getElementById('bote-value').textContent = `${total || 0} €`;
+    box.classList.remove('hidden');
 }
 
 // Icono circular con la foto del manager (avatars/<codigo>.jpg). Si la imagen
@@ -440,7 +462,6 @@ function avatarHTML(codigo, nombre) {
     `;
 }
 
-// Pinta la tabla de Puntuaciones: Pos · Jugador (foto + nombre) · Puntos · Jugados · Dinero
 // Pinta la tabla de Puntuaciones: Pos · Jugador (foto + nombre) · Puntos · Jugados · Dinero
 function renderPuntuacionesTable(ranked, prevPos) {
     document.getElementById('puntuaciones-thead').innerHTML = puntuacionesTheadHTML();
@@ -468,22 +489,25 @@ function renderPuntuacionesTable(ranked, prevPos) {
         return `
             <tr class="${pos === 1 ? 'pt-first' : ''}">
                 <td class="pt-pos">
-                    <span class="pt-pos-num">${pos}º</span>
-                    ${arrow}
+                    <span class="pt-pos-inner">
+                        <span class="pt-pos-num">${pos}º</span>
+                        ${arrow}
+                    </span>
                 </td>
-                <td>
-                    <div class="pt-name">
+                <td class="pt-name">
+                    <span class="pt-name-inner">
                         ${avatarHTML(r.codigo, r.nombre)}
                         <span>${r.nombre}</span>
-                    </div>
+                    </span>
                 </td>
-                <td><span class="pt-badge pt-general">${r.puntos}</span></td>
-                <td><span class="pt-badge">${r.jugados}</span></td>
-                <td><span class="pt-badge ${dineroClass}">${dineroLabel}</span></td>
+                <td class="pt-badge pt-general pt-puntos">${r.puntos}</td>
+                <td class="pt-badge pt-jugados">${r.jugados}</td>
+                <td class="pt-badge pt-dinero-cell ${dineroClass}">${dineroLabel}</td>
             </tr>
         `;
     }).join('');
 }
+
 // ============================================================
 // 4. Partidos de la jornada seleccionada
 // ============================================================

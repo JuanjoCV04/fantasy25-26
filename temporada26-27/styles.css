@@ -92,6 +92,7 @@ table {
 th, td {
     padding: 12px 10px;
     border-bottom: 1px solid var(--border);
+    vertical-align: middle;
 }
 
 th {
@@ -657,21 +658,27 @@ tbody tr:hover {
 }
 
 .pt-pos {
+    white-space: nowrap;
+}
+
+.pt-pos-inner {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
     font-weight: bold;
-    white-space: nowrap;
+    line-height: 1.2;
 }
 
 .pt-pos-num {
     min-width: 26px;
+    line-height: 1.2;
 }
 
 .pt-arrow {
     font-size: 0.68rem;
     font-weight: bold;
+    line-height: 1.2;
 }
 
 .pt-arrow.up { color: var(--success); }
@@ -679,10 +686,13 @@ tbody tr:hover {
 .pt-arrow.same { color: var(--text-muted); }
 
 .pt-name {
+    font-weight: 600;
+}
+
+.pt-name-inner {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: 600;
 }
 
 .pt-avatar {
@@ -751,4 +761,217 @@ tr.pt-first .pt-pos-num {
     border-radius: 4px;
     color: var(--primary);
     font-size: 0.85em;
+}
+
+/* Caja del Bote total (solo visible en la pestaña "General") */
+.bote-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(254, 202, 87, 0.15), var(--bg-card));
+    border: 1px solid var(--warning);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+}
+
+.bote-box.hidden {
+    display: none;
+}
+
+.bote-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.bote-value {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--warning);
+    white-space: nowrap;
+}
+
+/* ============================================================
+   Homogeneización general para móvil
+   ============================================================ */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .header {
+        padding: 16px 0;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 1.25rem;
+    }
+
+    .season-label {
+        font-size: 0.75rem;
+    }
+
+    .card {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-size: 1.02rem;
+        margin-bottom: 12px;
+    }
+
+    .round-nav {
+        margin-bottom: 18px;
+    }
+
+    .round-tab {
+        padding: 6px 12px;
+        font-size: 0.76rem;
+    }
+
+    .quick-stats {
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .quick-stat {
+        padding: 4px;
+    }
+
+    .qs-value {
+        font-size: 1.3rem;
+    }
+
+    .qs-label {
+        font-size: 0.6rem;
+    }
+
+    .puntuaciones-card {
+        margin-bottom: 20px;
+    }
+
+    .bote-box {
+        padding: 10px 14px;
+        margin-bottom: 14px;
+    }
+
+    .bote-label {
+        font-size: 0.72rem;
+    }
+
+    .bote-value {
+        font-size: 1.3rem;
+    }
+
+    .dashboard-grid {
+        gap: 18px;
+    }
+}
+
+/* Tabla de Puntuaciones en móvil: en vez de columnas apretadas/recortadas,
+   cada manager se muestra como una tarjeta compacta con sus datos debajo. */
+@media (max-width: 640px) {
+    #puntuaciones-table thead {
+        display: none;
+    }
+
+    #puntuaciones-table,
+    #puntuaciones-table tbody,
+    #puntuaciones-table tr,
+    #puntuaciones-table td {
+        display: block;
+        width: 100%;
+    }
+
+    #puntuaciones-table tbody tr {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background-color: var(--bg-hover);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 10px 12px;
+        margin-bottom: 8px;
+    }
+
+    #puntuaciones-table tbody tr.pt-first {
+        border-color: var(--warning);
+    }
+
+    #puntuaciones-table td {
+        border-bottom: none;
+        padding: 0;
+        width: auto;
+    }
+
+    #puntuaciones-table td.pt-pos {
+        order: 1;
+        flex: 0 0 auto;
+        margin-right: 10px;
+    }
+
+    #puntuaciones-table td.pt-pos .pt-pos-inner {
+        justify-content: flex-start;
+    }
+
+    #puntuaciones-table td.pt-name {
+        order: 2;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    /* Fuerza que Pts/Jug/€ siempre empiecen en su propia línea,
+       sin depender de lo largo que sea el nombre del manager */
+    #puntuaciones-table tbody tr::after {
+        content: '';
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    #puntuaciones-table td.pt-name .pt-name-inner {
+        min-width: 0;
+    }
+
+    #puntuaciones-table td.pt-name .pt-name-inner span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        min-width: 0;
+    }
+
+    #puntuaciones-table td.pt-badge {
+        order: 4;
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 8px;
+        margin-right: 10px;
+        background: none;
+        padding: 0;
+    }
+
+    #puntuaciones-table td.pt-badge::before {
+        color: var(--text-muted);
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    #puntuaciones-table td.pt-puntos::before {
+        content: 'Pts';
+    }
+
+    #puntuaciones-table td.pt-jugados::before {
+        content: 'Jug';
+    }
+
+    #puntuaciones-table td.pt-dinero-cell::before {
+        content: '€';
+    }
 }
