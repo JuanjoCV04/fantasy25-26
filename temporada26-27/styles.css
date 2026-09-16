@@ -78,9 +78,6 @@ h2 {
 }
 
 /* Tabla de Clasificación */
-.table-responsive {
-    overflow-x: auto;
-}
 
 table {
     width: 100%;
