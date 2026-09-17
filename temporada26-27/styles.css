@@ -54,6 +54,13 @@ body {
     gap: 30px;
 }
 
+/* Evita que las tarjetas del grid (Clasificación, Jornada...) se ensanchen
+   más de la cuenta por culpa del contenido (tablas anchas, etc.) y acaben
+   desbordando la pantalla en móvil. Así todas las cards miden lo mismo. */
+.dashboard-grid > .card {
+    min-width: 0;
+}
+
 @media (min-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: 1fr 1fr;
@@ -78,6 +85,9 @@ h2 {
 }
 
 /* Tabla de Clasificación */
+.table-responsive {
+    overflow-x: auto;
+}
 
 table {
     width: 100%;
@@ -869,106 +879,6 @@ tr.pt-first .pt-pos-num {
     }
 }
 
-/* Tabla de Puntuaciones en móvil: en vez de columnas apretadas/recortadas,
-   cada manager se muestra como una tarjeta compacta con sus datos debajo. */
-@media (max-width: 640px) {
-    #puntuaciones-table thead {
-        display: none;
-    }
-
-    #puntuaciones-table,
-    #puntuaciones-table tbody,
-    #puntuaciones-table tr,
-    #puntuaciones-table td {
-        display: block;
-        width: 100%;
-    }
-
-    #puntuaciones-table tbody tr {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        background-color: var(--bg-hover);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 10px 12px;
-        margin-bottom: 8px;
-    }
-
-    #puntuaciones-table tbody tr.pt-first {
-        border-color: var(--warning);
-    }
-
-    #puntuaciones-table td {
-        border-bottom: none;
-        padding: 0;
-        width: auto;
-    }
-
-    #puntuaciones-table td.pt-pos {
-        order: 1;
-        flex: 0 0 auto;
-        margin-right: 10px;
-    }
-
-    #puntuaciones-table td.pt-pos .pt-pos-inner {
-        justify-content: flex-start;
-    }
-
-    #puntuaciones-table td.pt-name {
-        order: 2;
-        flex: 1 1 auto;
-        min-width: 0;
-    }
-
-    /* Fuerza que Pts/Jug/€ siempre empiecen en su propia línea,
-       sin depender de lo largo que sea el nombre del manager */
-    #puntuaciones-table tbody tr::after {
-        content: '';
-        order: 3;
-        flex-basis: 100%;
-    }
-
-    #puntuaciones-table td.pt-name .pt-name-inner {
-        min-width: 0;
-    }
-
-    #puntuaciones-table td.pt-name .pt-name-inner span:last-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: block;
-        min-width: 0;
-    }
-
-    #puntuaciones-table td.pt-badge {
-        order: 4;
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        margin-top: 8px;
-        margin-right: 10px;
-        background: none;
-        padding: 0;
-    }
-
-    #puntuaciones-table td.pt-badge::before {
-        color: var(--text-muted);
-        font-size: 0.62rem;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-
-    #puntuaciones-table td.pt-puntos::before {
-        content: 'Pts';
-    }
-
-    #puntuaciones-table td.pt-jugados::before {
-        content: 'Jug';
-    }
-
-    #puntuaciones-table td.pt-dinero-cell::before {
-        content: '€';
-    }
-}
+/* Tabla de Puntuaciones: usa el mismo comportamiento que el resto de tablas
+   (Clasificación General, etc.) — tabla normal con scroll horizontal en
+   móvil vía .table-responsive, sin layout especial propio. */

@@ -8,8 +8,8 @@
         { "codigo": "alb", "nombre": "Alberti FC", "puntosJornada": 43, "jugados": 9, "dinero": 0 },
         { "codigo": "toni", "nombre": "ToniDiaz22", "puntosJornada": 34, "jugados": 11, "dinero": 0 },
         { "codigo": "floren", "nombre": "Florentineza", "puntosJornada": 32, "jugados": 11, "dinero": 0 },
-        { "codigo": "ray", "nombre": "Raycon69", "puntosJornada": 30, "jugados": 11, "dinero": 0 },
-        { "codigo": "acho", "nombre": "AchoMan", "puntosJornada": 25, "jugados": 11, "dinero": 0 },
-        { "codigo": "max", "nombre": "Maxi", "puntosJornada": 21, "jugados": 11, "dinero": 0 }
+        { "codigo": "ray", "nombre": "Raycon69", "puntosJornada": 30, "jugados": 11, "dinero": 1 },
+        { "codigo": "acho", "nombre": "AchoMan", "puntosJornada": 25, "jugados": 11, "dinero": 2 },
+        { "codigo": "max", "nombre": "Maxi", "puntosJornada": 21, "jugados": 11, "dinero": 3 }
     ]
 }
